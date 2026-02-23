@@ -1880,16 +1880,16 @@ methods:
       Calling the `LoadCharacterAsync()` method on any `Player` fires events in
       the following order:
 
-      1. The character appearance initializes.
-      2. The character rig builds and scales.
-      3. The character moves to the spawn location.
-      4. `Class.Player.Character` sets, automatically removing old character.
-      5. `Class.Object.Changed` fires on the `Class.Player` with a value of
+      1. `Class.Player.Character` sets, automatically removing old character.
+      2. `Class.Player.CharacterAdded` fires.
+      3. `Class.Object.Changed` fires on the `Class.Player` with a value of
          `Character`.
+      4. The character appearance initializes.
+      5. `Class.Player.CharacterAppearanceLoaded` fires.
       6. The character's `Class.Instance.Parent|Parent` sets to the
          `Class.DataModel`.
-      7. `Class.Player.CharacterAdded` fires.
-      8. `Class.Player.CharacterAppearanceLoaded` fires.
+      7. The character rig builds and scales.
+      8. The character moves to the spawn location.
     code_samples:
       - Player-LoadCharacter1
     parameters: []
