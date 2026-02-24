@@ -12,6 +12,8 @@ navigation:
     section:
       - title: Overview
         path: /assistant/guide
+      - title: MCP servers
+        path: /assistant/mcp        
       - title: Prompt guide and examples
         path: /assistant/prompt-engineering
   - heading: Building tools

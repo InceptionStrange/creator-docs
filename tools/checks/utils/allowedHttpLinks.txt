@@ -753,3 +753,7 @@ https://activity-va.tiktok.com/magic/eco/runtime/release/689e44394a786f02edabc8a
 https://youtu.be/gkFKF9A-snY
 https://www.youtube-nocookie.com/embed/5HcH-9E7USc?si=IDla-YBxiO_E-O0q
 https://www.youtube-nocookie.com/watch?v=7DXTQcA9G_A
+https://github.com/Roblox/studio-rust-mcp-server
+https://ai.google.dev/gemini-api/docs/api-key
+https://platform.openai.com/api-keys
+https://platform.claude.com/settings/keys

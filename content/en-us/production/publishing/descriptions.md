@@ -21,8 +21,6 @@ Top games have millions of impressions in any given month on Google alone. Depen
 
 ## Content recommendations
 
-### Overall structure
-
 Your description should contain the following:
 
 - **[Hook]** A very short description up to 160 characters of the game with core keywords
@@ -61,14 +59,10 @@ Aim to keep this short, only highlighting the main attractions of your updates.
 
 #### Examples
 
-```text
-🏴‍☠️ [NEW] Quest Expansion!
+🏴‍☠️ [NEW] Quest Expansion!  
 Explore new islands and complete exciting quests
-```
 
-```text
 🚨 SEASON 9 is here! Featuring the new DANGER cosmetic set and updated player stats!
-```
 
 ### Main content
 
@@ -80,20 +74,16 @@ Detail your game's core gameplay and key features in an easily digestible format
 
 #### Examples
 
-```text
-🐟 Real world fishing simulation
-🦈 500+ different fish to catch
-🎣 Licensed fishing gear brands like X, Y, Z and more!
-🐡 Explore unlimited customization options
-🏅 Compete with your friends on the leaderboards
+🐟 Real world fishing simulation  
+🦈 500+ different fish to catch  
+🎣 Licensed fishing gear brands like X, Y, Z and more!  
+🐡 Explore unlimited customization options  
+🏅 Compete with your friends on the leaderboards  
 🏆 Show off your best catches at community events
-```
 
-Or, in paragraph format:
+**Or, in paragraph format:**
 
-```text
 Dive into the ultimate fishing experience with the most realistic fishing! Discover over 500 different fish species to catch using licensed fishing gear from top brands like X, Y, and Z. Explore unlimited customization options for your avatar and equipment. Compete with friends on the global leaderboards and show off your best catches at exciting community events.
-```
 
 ### Additional information
 
@@ -102,7 +92,7 @@ Dive into the ultimate fishing experience with the most realistic fishing! Disco
 - **(Optional) Premium benefits:** if your game has it, you can show it off here. If character count becomes a problem, consider this as one of the first things to cut.
 - **(Optional) Small FAQ section** below the rest of the description content.
   - Focus on basic questions here, like "How do I X?" or "What is X?".
-  - **⚠️Warning:** FAQs can take up a lot of your 1000 character count, so be concise and deliberate with your wording. Avoid too many questions, or just answer commonly asked questions in your description text.
+  - **⚠️ Warning:** FAQs can take up a lot of your 1000 character count, so be concise and deliberate with your wording. Avoid too many questions, or just answer commonly asked questions in your description text.
 - **(Optional) Changelog / Credits:** This should be a link to devforum for your changelog / credits.
 
 ### Additional notes
@@ -112,6 +102,8 @@ Dive into the ultimate fishing experience with the most realistic fishing! Disco
 - Keep the entire description appropriate for all ages.
 
 ## Full examples
+
+Here are a couple full examples to help inspire your own descriptions.
 
 ### First-person shooter game (FPS)
 
@@ -123,26 +115,26 @@ Dive into the ultimate fishing experience with the most realistic fishing! Disco
 
 🚨 NEW MAP: Abandoned Warehouse is here! Plus, check out the limited-time Tactical Gear Bundle and new Season 3 Battle Pass rewards!
 
-**[Core Game Features]**
+**[Main Content]**
 
 Jump into the action with realistic combat and non-stop adrenaline!
 
-🎯 Intense 5v5 Multiplayer: Compete across diverse maps and game modes (Team Deathmatch, Domination, Free-For-All).
-🛡️ Deep Loadout Customization: Unlock and customize over 50 unique weapons, attachments, and cosmetic skins.
-🏅 Ranked Play: Climb the global leaderboards and earn exclusive rewards as you prove your skill.
+🎯 Intense 5v5 Multiplayer: Compete across diverse maps and game modes (Team Deathmatch, Domination, Free-For-All).  
+🛡️ Deep Loadout Customization: Unlock and customize over 50 unique weapons, attachments, and cosmetic skins.  
+🏅 Ranked Play: Climb the global leaderboards and earn exclusive rewards as you prove your skill.  
 🛠️ Regular Content Updates: New maps, weapons, and seasonal events added every month!
 
 **[Additional Information]**
 
-🖥️ Play on Desktop, Mobile, and Tablet!
+🖥️ Play on Desktop, Mobile, and Tablet!  
 ⌨️ Redeem Code: FIRESTORM for 500 Credits!
 
 FAQ
 
-Q: How many people can play together?
+Q: How many people can play together?  
 A: Ragefire supports up to 16 players on the same server. Invite your friends and play together!
 
-Q: How do I earn currency for new weapons?
+Q: How do I earn currency for new weapons?  
 A: Just play the game! Winning and completing daily quests earns you even more currency.
 
 ### Soccer sports game
@@ -155,14 +147,14 @@ A: Just play the game! Winning and completing daily quests earns you even more c
 
 🚨 NEW LEAGUE SEASON 5 is live! Featuring the new "Legendary Striker" cosmetic set and updated player stats!
 
-**[Core Game Features]**
+**[Main Content]**
 
 Experience realistic soccer gameplay with intuitive controls and deep team customization!
 
-🔥Fast-Paced 5v5 Matches: Jump into quick, competitive games against other players.
-🎨Customizable Players & Gear: Unlock new jerseys, cleats, and celebrations. Personalize your look!
-🏅Skill-Based Mechanics: Perfect your passing, tackling, and special shot techniques.
-🏆Career Mode: Rise through the ranks, complete challenges, and earn exclusive rewards.
+🔥 Fast-Paced 5v5 Matches: Jump into quick, competitive games against other players.  
+🎨 Customizable Players & Gear: Unlock new jerseys, cleats, and celebrations. Personalize your look!  
+🏅 Skill-Based Mechanics: Perfect your passing, tackling, and special shot techniques.  
+🏆 Career Mode: Rise through the ranks, complete challenges, and earn exclusive rewards.
 
 OR
 
@@ -170,13 +162,13 @@ Experience realistic soccer gameplay with intuitive controls and deep team custo
 
 **[Additional Information]**
 
-🖥️ Play on Desktop, Mobile, and Tablet!
+🖥️ Play on Desktop, Mobile, and Tablet!  
 ⌨️ Redeem Code: GOLAZO for 500 Coins!
 
 FAQ
 
-Q: How do I control my player?
+Q: How do I control my player?  
 A: Use the WASD keys (PC) or the on-screen joystick (Mobile/Tablet) to move. Special actions like shoot and pass are clearly mapped in-game!
 
-Q: What kind of progression is there in the game?
+Q: What kind of progression is there in the game?  
 A: Earn gold by participating in matches to use for cool new cosmetics that come out every update! Or shoot for the top of the leaderboards!
