@@ -585,6 +585,24 @@ methods:
     thread_safety: Unsafe
     capabilities:
       - UI
+  - name: GuiService:GetInsetArea
+    summary: ''
+    description: ''
+    code_samples: []
+    parameters:
+      - name: screenInsets
+        type: ScreenInsets
+        default:
+        summary: ''
+    returns:
+      - type: Rect
+        summary: ''
+    tags: []
+    deprecation_message: ''
+    security: None
+    thread_safety: Unsafe
+    capabilities:
+      - UI
   - name: GuiService:GetInspectMenuEnabled
     summary: |
       Returns whether the avatar inspection menu is enabled.

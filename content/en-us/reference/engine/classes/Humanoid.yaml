@@ -1353,6 +1353,37 @@ methods:
     thread_safety: Unsafe
     capabilities:
       - AvatarAppearance
+  - name: Humanoid:ApplyDescription
+    summary: |
+      Makes the character's look match that of the passed in
+      `Class.HumanoidDescription`.
+    description: ''
+    code_samples: []
+    parameters:
+      - name: humanoidDescription
+        type: HumanoidDescription
+        default:
+        summary: |
+          The `Class.HumanoidDescription` instance which you want to set the
+          character to match.
+      - name: assetTypeVerification
+        type: AssetTypeVerification
+        default: Default
+        summary: |
+          The asset type verification mode.
+    returns:
+      - type: ()
+        summary: ''
+    tags:
+      - Yields
+      - Deprecated
+    deprecation_message: |
+      This method has been superseded by
+      `Class.Humanoid:ApplyDescriptionAsync()|ApplyDescriptionAsync()`.
+    security: None
+    thread_safety: Unsafe
+    capabilities:
+      - AvatarAppearance
   - name: Humanoid:ApplyDescriptionAsync
     summary: |
       Makes the character's look match that of the passed in
@@ -1407,10 +1438,10 @@ methods:
     thread_safety: Unsafe
     capabilities:
       - AvatarAppearance
-  - name: Humanoid:ApplyDescription
+  - name: Humanoid:ApplyDescriptionReset
     summary: |
       Makes the character's look match that of the passed in
-      `Class.HumanoidDescription`.
+      `Class.HumanoidDescription`, even after external changes.
     description: ''
     code_samples: []
     parameters:
@@ -1433,7 +1464,7 @@ methods:
       - Deprecated
     deprecation_message: |
       This method has been superseded by
-      `Class.Humanoid:ApplyDescriptionAsync()|ApplyDescriptionAsync()`.
+      `Class.Humanoid:ApplyDescriptionResetAsync()|ApplyDescriptionResetAsync()`.
     security: None
     thread_safety: Unsafe
     capabilities:
@@ -1478,37 +1509,6 @@ methods:
     tags:
       - Yields
     deprecation_message: ''
-    security: None
-    thread_safety: Unsafe
-    capabilities:
-      - AvatarAppearance
-  - name: Humanoid:ApplyDescriptionReset
-    summary: |
-      Makes the character's look match that of the passed in
-      `Class.HumanoidDescription`, even after external changes.
-    description: ''
-    code_samples: []
-    parameters:
-      - name: humanoidDescription
-        type: HumanoidDescription
-        default:
-        summary: |
-          The `Class.HumanoidDescription` instance which you want to set the
-          character to match.
-      - name: assetTypeVerification
-        type: AssetTypeVerification
-        default: Default
-        summary: |
-          The asset type verification mode.
-    returns:
-      - type: ()
-        summary: ''
-    tags:
-      - Yields
-      - Deprecated
-    deprecation_message: |
-      This method has been superseded by
-      `Class.Humanoid:ApplyDescriptionResetAsync()|ApplyDescriptionResetAsync()`.
     security: None
     thread_safety: Unsafe
     capabilities:
@@ -2109,32 +2109,6 @@ methods:
     capabilities:
       - AvatarAppearance
       - AvatarBehavior
-  - name: Humanoid:PlayEmoteAsync
-    summary: |
-      Plays emotes and returns if was successfully ran.
-    description: |
-      If the emote could not be played because the emoteName is not found in the
-      HumanoidDescription, this method will give an error. The method will
-      return true to indicate that the emote was played successfully.
-    code_samples: []
-    parameters:
-      - name: emoteName
-        type: string
-        default:
-        summary: |
-          name of the emote to play.
-    returns:
-      - type: boolean
-        summary: |
-          successfully played.
-    tags:
-      - Yields
-    deprecation_message: ''
-    security: None
-    thread_safety: Unsafe
-    capabilities:
-      - AvatarAppearance
-      - AvatarBehavior
   - name: Humanoid:PlayEmote
     summary: |
       Plays emotes and returns if was successfully ran.
@@ -2156,6 +2130,32 @@ methods:
     deprecation_message: |
       This method has been superseded by
       `Class.Humanoid:PlayEmoteAsync()|PlayEmoteAsync()`.
+    security: None
+    thread_safety: Unsafe
+    capabilities:
+      - AvatarAppearance
+      - AvatarBehavior
+  - name: Humanoid:PlayEmoteAsync
+    summary: |
+      Plays emotes and returns if was successfully ran.
+    description: |
+      If the emote could not be played because the emoteName is not found in the
+      HumanoidDescription, this method will give an error. The method will
+      return true to indicate that the emote was played successfully.
+    code_samples: []
+    parameters:
+      - name: emoteName
+        type: string
+        default:
+        summary: |
+          name of the emote to play.
+    returns:
+      - type: boolean
+        summary: |
+          successfully played.
+    tags:
+      - Yields
+    deprecation_message: ''
     security: None
     thread_safety: Unsafe
     capabilities:

@@ -2,7 +2,7 @@
 # To submit a bug report on the content, see
 # https://devforum.roblox.com/c/bug-reports/documentation-issues/72
 
-name: ReservedHighlightId
+name: MakeupType
 type: enum
 summary: ''
 description: ''
@@ -10,28 +10,18 @@ code_samples: []
 tags: []
 deprecation_message: ''
 items:
-  - name: Standard
+  - name: Face
     summary: ''
     value: 0
     tags: []
     deprecation_message: ''
-  - name: Active
+  - name: Lip
     summary: ''
-    value: 131072
+    value: 1
     tags: []
     deprecation_message: ''
-  - name: Hover
+  - name: Eye
     summary: ''
-    value: 262144
-    tags: []
-    deprecation_message: ''
-  - name: Selection
-    summary: ''
-    value: 524288
-    tags: []
-    deprecation_message: ''
-  - name: NegatedPart
-    summary: ''
-    value: 1048576
+    value: 2
     tags: []
     deprecation_message: ''

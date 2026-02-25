@@ -1283,6 +1283,23 @@ properties:
       can_save: false
     capabilities:
       - AvatarAppearance
+  - name: HumanoidDescription.StaticFacialAnimation
+    summary: ''
+    description: ''
+    code_samples: []
+    type: boolean
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Animation
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - AvatarAppearance
   - name: HumanoidDescription.SwimAnimation
     summary: |
       When this description is `Class.Humanoid:ApplyDescriptionAsync()|applied`
@@ -1394,6 +1411,23 @@ properties:
     serialization:
       can_load: true
       can_save: false
+    capabilities:
+      - AvatarAppearance
+  - name: HumanoidDescription.UseAvatarSettings
+    summary: ''
+    description: ''
+    code_samples: []
+    type: boolean
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Data
+    serialization:
+      can_load: true
+      can_save: true
     capabilities:
       - AvatarAppearance
   - name: HumanoidDescription.WaistAccessory

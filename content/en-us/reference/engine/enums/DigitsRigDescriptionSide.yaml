@@ -2,7 +2,7 @@
 # To submit a bug report on the content, see
 # https://devforum.roblox.com/c/bug-reports/documentation-issues/72
 
-name: ReservedHighlightId
+name: DigitsRigDescriptionSide
 type: enum
 summary: ''
 description: ''
@@ -10,28 +10,18 @@ code_samples: []
 tags: []
 deprecation_message: ''
 items:
-  - name: Standard
+  - name: None
     summary: ''
     value: 0
     tags: []
     deprecation_message: ''
-  - name: Active
+  - name: Left
     summary: ''
-    value: 131072
+    value: 1
     tags: []
     deprecation_message: ''
-  - name: Hover
+  - name: Right
     summary: ''
-    value: 262144
-    tags: []
-    deprecation_message: ''
-  - name: Selection
-    summary: ''
-    value: 524288
-    tags: []
-    deprecation_message: ''
-  - name: NegatedPart
-    summary: ''
-    value: 1048576
+    value: 2
     tags: []
     deprecation_message: ''
