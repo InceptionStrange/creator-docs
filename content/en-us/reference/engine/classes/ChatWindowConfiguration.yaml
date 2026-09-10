@@ -10,7 +10,17 @@ summary: |
 description: |
   Configures properties of the default text chat window. It is parented to
   `Class.TextChatService`.
-code_samples: []
+
+  #### Chat UI composition
+
+  The default chat UI is composed of two separate elements: the **chat window**
+  (message list) configured by this object, and the **chat input bar**
+  configured by `Class.ChatInputBarConfiguration`. Each element reports its own
+  `AbsoluteSize` and `AbsolutePosition` independently. To determine the total
+  screen bounds of the entire chat UI, combine values from both configurations
+  by computing the union of the two rectangles.
+code_samples:
+  - ChatWindowConfiguration-Get-Total-Chat-Bounds
 inherits:
   - TextChatConfigurations
 descendants: []
@@ -23,7 +33,13 @@ properties:
       Actual screen position of the default chat window, in pixels.
     description: |
       Read-only property that provides the screen position of the default chat
-      window in pixels. Behaves similarly to `Class.GuiBase2d.AbsolutePosition`.
+      window (message list) in pixels. Behaves similarly to
+      `Class.GuiBase2d.AbsolutePosition`.
+
+      This value represents only the message list portion of the chat UI, not
+      the entire chat interface. To get the total bounds including the input
+      bar, see `Class.ChatInputBarConfiguration.AbsolutePosition` and combine
+      both regions. See the code example in the class description above.
     code_samples: []
     type: Vector2
     tags:
@@ -45,7 +61,13 @@ properties:
       Actual screen size of the default chat window, in pixels.
     description: |
       Read-only property that provides the screen size of the default chat
-      window in pixels. Behaves similarly to `Class.GuiBase2d.AbsoluteSize`.
+      window (message list) in pixels. Behaves similarly to
+      `Class.GuiBase2d.AbsoluteSize`.
+
+      This value represents only the message list portion of the chat UI, not
+      the entire chat interface. To get the total bounds including the input
+      bar, see `Class.ChatInputBarConfiguration.AbsoluteSize` and combine both
+      regions. See the code example in the class description above.
     code_samples: []
     type: Vector2
     tags:
@@ -331,27 +353,17 @@ methods:
 
       This is intended to be used during custom
       `Class.TextChatService.OnChatWindowAdded` callbacks.
-
-      ```lua
-      local TextChatService = game:GetService("TextChatService")
-      local ChatWindowConfiguration = TextChatService.ChatWindowConfiguration
-
-      TextChatService.OnChatWindowAdded = function(textChatMessage)
-        local properties = ChatWindowConfiguration:DeriveNewMessageProperties()
-
-        if textChatMessage.Metadata == "Important" then
-          properties.TextColor3 = Color3.fromRGB(255, 0, 0)
-        end
-
-        return properties
-      end
-      ```
     code_samples:
       - TextChatService-User-Chat
+      - ChatWindowConfiguration-DeriveNewMessageProperties
     parameters: []
     returns:
       - type: ChatWindowMessageProperties
-        summary: ''
+        summary: |
+          A new `Class.ChatWindowMessageProperties` instance whose values you
+          can modify and return from a `Class.TextChatService.OnChatWindowAdded`
+          callback to customize how individual messages appear in the chat
+          window.
     tags: []
     deprecation_message: ''
     security: None

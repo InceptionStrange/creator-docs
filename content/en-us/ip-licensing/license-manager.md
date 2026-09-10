@@ -3,7 +3,7 @@ title: License Manager
 description: How to use IP licensing as a rights holder.
 ---
 
-**License Manager** is an intellectual property (IP) management tool that lets you grant permission to creators to use your established IP in their experiences. With the License Manager, you can define licenses, specify content standards and revenue share requirements, and set eligibility criteria that experiences must meet in order to use your IP.
+**License Manager** is an intellectual property (IP) management tool that lets you grant permission to creators to use your established IP in their games. With the License Manager, you can define licenses, specify content standards and revenue share requirements, and set eligibility criteria that games must meet in order to use your IP.
 
 Before using the License Manager, you must [register as a rights holder](./get-started.md#register-as-a-rights-holder) and [create an IP family](./get-started.md#create-an-ip-family).
 
@@ -13,12 +13,12 @@ Before using the License Manager, you must [register as a rights holder](./get-s
 
 ## Create a license listing
 
-After you [create and set up your IP family](./get-started.md#create-an-ip-family), you can create a **license listing** to help promote your IP to creators and to encourage them to request to use it in their experiences.
+After you [create and set up your IP family](./get-started.md#create-an-ip-family), you can create a **license listing** to help promote your IP to creators and to encourage them to request to use it in their games.
 
 License listings are made up of:
 
-- A listing that represents your IP family to creators and allows them to request to use your IP in their experiences through the [Licenses catalog](./creators.md#explore-licenses). A listing can have one or more licenses under it.
-- One or more licenses that represent the set of terms and conditions that define how creators can use your IP to build those experiences.
+- A listing that represents your IP family to creators and allows them to request to use your IP in their games through the [Licenses catalog](./creators.md#explore-licenses). A listing can have one or more licenses under it.
+- One or more licenses that represent the set of terms and conditions that define how creators can use your IP to build those games.
 
 To create your license listing:
 
@@ -44,7 +44,7 @@ Once your listing has been created, you will be redirected to the listing detail
       - **Perpetual** licenses grant the use of your IP from the date an agreement is active until termination of that agreement is actively sought.
 
    <Alert severity="warning">
-   Rights holders can only [offer licenses to matching experiences](#review-matches-and-send-a-license-offer) if the license's duration is set to **perpetual**. <br /> <br />If the duration is set to **time-limited**, [creators must request for your license](../ip-licensing/creators.md#request-to-use-a-license) directly. Creators can request licenses for either time-limited or perpetual licenses.
+   Rights holders can only [offer licenses to matching games](#review-matches-and-send-a-license-offer) if the license's duration is set to **perpetual**. <br /> <br />If the duration is set to **time-limited**, [creators must request for your license](../ip-licensing/creators.md#request-to-use-a-license) directly. Creators can request licenses for either time-limited or perpetual licenses.
    </Alert>
 
    <Alert severity="info">
@@ -54,9 +54,9 @@ Once your listing has been created, you will be redirected to the listing detail
 
 4. Under **Monetization**:
 
-   1. Set a **revenue share rate** between 0% and 95%. This is the revenue percentage you want to receive from experiences using your IP, and is shown to creators when they request to use your IP through a license listing.
+   1. Set a **revenue share rate** between 0% and 95%. This is the revenue percentage you want to receive from games using your IP, and is shown to creators when they request to use your IP through a license listing.
    2. Select one of the following for the **default revenue share timing**:
-      - **Monetize on activation**, which means the revenue share is applied beginning at the moment the agreement between the rights holder and the creator of the experience becomes active.
+      - **Monetize on activation**, which means the revenue share is applied beginning at the moment the agreement between the rights holder and the creator of the game becomes active.
       - **Monetize later**, which allows you to turn on revenue share at a later date of your choosing.
    3. Set a **Default revenue share timing**. This option only displays if **Revenue share rate** is not 0%.
 
@@ -64,17 +64,17 @@ Once your listing has been created, you will be redirected to the listing detail
    Time-limited licenses are set to monetize on activation by default, and this preference cannot be changed. Time-limited licenses will begin monetizing on the day the agreement is active, which will be the start date designated by the creator.
    </Alert>
 
-5. Under **Experience eligibility**, select the criteria you want experiences to meet in order to request to use the license. Creators whose experiences don't meet these requirements aren't eligible to request to use your IP. To allow all creators to request, leave the default values.
+5. Under **Experience eligibility**, select the criteria you want games to meet in order to request to use the license. Creators whose games don't meet these requirements aren't eligible to request to use your IP. To allow all creators to request, leave the default values.
    - For **Minimum average last 7 daily active users (DAU)**, choose between no requirement, greater than 1,000 DAU, or greater than 25,000 DAU.
    - For **Maximum maturity rating**, choose between minimal, mild, moderate, and restricted. See [Maturity labels](../production/promotion/content-maturity.md#questionnaire-categories) for more information about different maturity ratings.
 6. Under **Guidelines and restrictions**:
-   1. Enter the scope of your IP license. Include general background about the IP and clarify if any parts of the IP can or cannot be referenced by creators in their experience.
+   1. Enter the scope of your IP license. Include general background about the IP and clarify if any parts of the IP can or cannot be referenced by creators in their game.
    2. Under **Content standards**, set the rules that creators must follow when using your IP.
-   3. (Optional) Under **Brand guidelines**, upload a file to provide creators with creative direction.
+   3. <Chip label="OPTIONAL" size="small" variant="outlined" /> Under **Brand guidelines**, upload a file to provide creators with creative direction.
 7. Under **Privacy**, select one of the following:
 
    - **Public** to make the license listing public and visible to all creators. This option also allows all eligible creators to request to use the license.
-   - **Private** to make the license only available to creators that you reach out to directly and that have experiences that match your IP.
+   - **Private** to make the license only available to creators that you reach out to directly and that have games that match your IP.
 
    <Alert severity="info">
    Because time-limited licenses cannot be used in license offers, they should be marked as **Public** once ready so that creators can request the license with proposed dates.
@@ -91,25 +91,43 @@ After you have created a license listing, you can go to **My licenses** ⟩ **[I
 - To edit details of a specific license, click the edit icon next to that license. You can edit any field except for the revenue share rate.
 - To add new licenses to the listing, click **Add license**.
 - To copy an existing license, click the copy icon next to that license. The copied license will undergo moderation review.
+- To highlight games that use the license, [add experiences to the license showcase](#showcase-games-using-your-ip).
 
 <Alert severity="info">
   Both listings and licenses undergo moderation review when they are first created. Subsequent edits only go through moderation review if sensitive fields are updated, specifically name, description, images, or documents. Rejected licenses can no longer be edited; however, they can be copied and the copy will undergo moderation review again.
 </Alert>
 
 <Alert severity="warning">
-  Once your license has been used in any agreement, you **cannot** change the revenue share rate or experience eligibility requirements.
+  Once your license has been used in any agreement, you **cannot** change the revenue share rate or game eligibility requirements.
 </Alert>
 
 <Alert severity="info">
-  Items purchased outside of the experience on the Marketplace are not subject to the revenue share rate.
+  Items purchased outside of the game on the Marketplace are not subject to the revenue share rate.
 </Alert>
+
+## Showcase games using your IP
+
+You can optionally highlight up to 10 games that use one of your live licenses. Showcased games appear in a carousel on the license details page in the Licenses catalog, under **About**, so creators can see examples of how your IP is already being used on Roblox.
+
+Only games that already have an agreement with that license are available to showcase. Each showcased game displays its thumbnail or video, when available, and links creators to the game's details page.
+
+To add experiences to a license showcase:
+
+1. Go to **Intellectual Property** ⟩ **License Manager** ⟩ **Licenses**.
+2. Select the **My Licenses** tab.
+3. Open the license listing, then select the live license you want to update.
+4. Under **Featured creations**, select **Edit**.
+5. In the selection modal that opens, select up to 10 games that have an agreement with any license from this license listing.
+6. Click **Save**.
+
+If you don't add any showcase experiences, the license details page does not show a showcase carousel.
 
 ## Review matches and send a license offer
 
 <Alert severity="warning">
   To receive matches:
   <ul>
-    <li>**You must have a minimum of 10 approved images** when you create an IP family. If you have fewer than 10 approved images, Roblox won't generate experience matches for your IP.</li>
+    <li>**You must have a minimum of 10 approved images** when you create an IP family. If you have fewer than 10 approved images, Roblox won't generate game matches for your IP.</li>
     <li>**Your license duration must be set to Perpetual.** Licenses set to time-limited durations require a [creator license request](#review-license-requests-from-creators).</li>
   </ul>
 </Alert>
@@ -118,58 +136,71 @@ After you have created a license listing, you can go to **My licenses** ⟩ **[I
   Matches are refreshed daily. If you have just created a new IP family, it might take some time before matches appear for that IP.
 </Alert>
 
-Matches are experiences that use a significant amount of content related to your IP library. Roblox uses the primary and secondary keywords and the media added to your IP family to find experiences that include content that matches your IP. Matches are limited to public experiences that are actively played and only apply to licenses with a perpetual duration.
+Matches are games that use a significant amount of content related to your IP library. Roblox uses the primary and secondary keywords and the media added to your IP family to find games that include content that matches your IP. Matches are limited to public games that are actively played and only apply to licenses with a perpetual duration.
 
-You can review the experiences matched to your IP and send them a license offer in order to enter an agreement with an experience's creator, earn a share of their revenue, and set guidelines for the creator to follow.
+You can review the games matched to your IP and send them a license offer in order to enter an agreement with a game's creator, earn a share of their revenue, and set guidelines for the creator to follow.
+
+To help you evaluate a match before sending an offer, each matched game's details page includes gameplay screenshots captured by Roblox, so you can quickly assess how your IP appears in the game without launching it. For a more in-depth review, you can also play the game yourself.
+
+When you send an offer, choose an **offer type**:
+
+- **Send offer** for a standard license offer. The agreement activates when the creator accepts it, or automatically after 14 days if the creator doesn't dispute it.
+- **Send conditional offer** when you want to partner with the creator, but their game doesn't yet meet your content standards. You provide free-form feedback describing what must change. The agreement activates only after the creator makes the changes and you review and approve them. Conditional offers do **not** auto-activate.
 
 To review your matches and send a creator a license offer:
 
 1. Go to **Intellectual Property** ⟩ **License Manager** ⟩ **Matches**.
-2. Select the experience you want to send an offer to.
+2. Select the game you want to send an offer to.
 3. Click **Offer license**.
 4. In the **New license offer** panel:
    1. Select an IP family and a license.
    2. Select the revenue share timing. You can choose to **Monetize on activation** and apply the revenue share rate of the license you selected the moment the creator accepts your offer, or **Monetize later** and activate the revenue share rate later.
-   3. Click **Send offer**.
+   3. Under **Offer type**, select **Send offer** or **Send conditional offer**.
+   4. If you selected **Send conditional offer**, under **Give feedback to the creator**, list the content standard the game is violating and the specific changes you want. This message is visible to the creator. Images and video are not supported in this feedback.
+   5. Click **Send offer**.
 
-If you believe an experience is using a significant amount of content related to your IP but you don't see that experience on your Matches page, you can send that experience a [match request](#request-a-match).
+If you believe a game is using a significant amount of content related to your IP but you don't see that game on your Matches page, you can send that game a [match request](#request-a-match).
 
 <Alert severity="warning">
-  You can't send an offer to an experience that is already associated with a pending license offer, accepted license agreement, or active license agreement.
+  You can't send an offer to a game that is already associated with a pending license offer, conditional offer, accepted license agreement, or active license agreement.
 </Alert>
 
 <Alert severity="warning">
-  After you send a license offer, the creator gets access to the license agreement details. The activation date for the license agreement is **14 days from when the creator has received the offer**.
+  After you send a **standard** license offer, the creator gets access to the license agreement details. The activation date for the license agreement is **14 days from when the creator has received the offer**.
 
 If the creator doesn't dispute the offer by the activation date, **the agreement automatically becomes active**.
 </Alert>
 
+<Alert severity="info">
+  After you send a **conditional** offer, the creator has **14 days** to make the requested changes and mark them as done, or to [dispute the offer](#review-an-offer-dispute-from-a-creator). If the creator doesn't respond within 14 days, the conditional offer expires and the agreement is unsuccessful. After the creator marks the changes as done, you must [review and approve the changes](#review-conditional-offer-changes) before the agreement becomes active.
+</Alert>
+
 ## Request a match
 
-If an experience using your IP doesn't appear on your **Matches** page, you can manually request to add it. You can submit up to 3 match requests per day.
+If a game using your IP doesn't appear on your **Matches** page, you can manually request to add it. You can submit up to 3 match requests per day.
 
 To request a match:
 
 1. Go to **Intellectual Property** ⟩ **License Manager** ⟩ **Matches**.
 2. Click **Request match**.
 3. Under **Request an experience as a match**:
-   1. Enter the URL for the experience using your IP.
+   1. Enter the URL for the game using your IP.
    2. Select an IP family and a license.
    3. Select the revenue share timing. You can choose to **Monetize on activation** and apply the revenue share rate of the license you selected the moment the creator accepts your offer, or **Monetize later** and activate the revenue share rate later.
    4. Click **Confirm**.
 
 <Alert severity="warning">
-  Roblox reviews the submitted experience to verify that it matches your IP. **If approved, a license offer is automatically sent to the creator of the experience.**
+  Roblox reviews the submitted game to verify that it matches your IP. **If approved, a license offer is automatically sent to the creator of the game.**
 </Alert>
 
 ## Review license requests from creators
 
-Creators can browse the **Licenses** catalog and directly request to use your IP in their experiences without first being matched to your IP. After receiving a license request, you can choose to accept or reject it.
+Creators can browse the **Licenses** catalog and directly request to use your IP in their games without first being matched to your IP. After receiving a license request, you can choose to accept it, reject it, or (for perpetual licenses) send a **conditional** approval that requires the creator to make changes first.
 
-Unlike [license matches](#review-matches-and-send-a-license-offer), creators can request licenses with either perpetual or time-limited durations.
+Unlike [license matches](#review-matches-and-send-a-license-offer), creators can request licenses with either perpetual or time-limited durations. Conditional approval is available only for perpetual license requests.
 
 <Alert severity="warning">
-  If early IP usage is detected in a creator's experience, the license request or accepted license agreement may be activated early.
+  If early IP usage is detected in a creator's game, the license request or accepted license agreement may be activated early.
 </Alert>
 
 To review a license request from a creator:
@@ -178,12 +209,17 @@ To review a license request from a creator:
 2. Select the **License agreements** tab.
 3. Filter by **Requests**.
 4. Select the license request you want to review.
-5. Accept or reject the license request.
+5. Choose one of the following:
    - To accept the license request and enter a license agreement with the creator, click **Accept**.
-   - To reject the license request, click **Reject**. You can also provide them with a reason for the rejection. This feedback can help the creator make any necessary changes to their experience and successfully request again in the future.
+   - To conditionally approve a perpetual license request, send a conditional approval with free-form feedback that lists the content standard the game is violating and the specific changes you want. The creator then has **14 days** to make the changes and mark them as done. After they do, you must [review and approve the changes](#review-conditional-offer-changes) before the agreement becomes active.
+   - To reject the license request, click **Reject**. You can also provide them with a reason for the rejection. This feedback can help the creator make any necessary changes to their game and successfully request again in the future.
 
 <Alert severity="info">
-  We recommend that you play the creator's experience before accepting or rejecting their license request.
+  We recommend that you play the creator's game before accepting, conditionally approving, or rejecting their license request.
+</Alert>
+
+<Alert severity="info">
+  Creators can cancel their own license request after you send a conditional approval. Dispute is not available for creator-initiated license requests, because the creator already intended to use the IP.
 </Alert>
 
 ## View license agreements
@@ -207,7 +243,7 @@ To view all of your offers and license agreements:
   </tr>
   <tr>
     <td>**Offers**</td>
-    <td>All license offers that you have sent to creators.</td>
+    <td>All license offers that you have sent to creators, including conditional offers waiting for creator action or your review.</td>
   </tr>
   <tr>
     <td>**Active**</td>
@@ -215,14 +251,29 @@ To view all of your offers and license agreements:
   </tr>
   <tr>
     <td>**Archived**</td>
-    <td>All archived offers or license agreements between you and creators.</td>
+    <td>All archived offers or license agreements between you and creators, including expired or unsuccessful conditional offers.</td>
   </tr>
 </tbody>
 </table>
 
+## Review conditional offer changes
+
+After you send a conditional offer (or conditionally approve a creator's perpetual license request), the creator has **14 days** to implement your feedback and mark the changes as done. Roblox does not automatically verify that the creator made the changes; you should review the game yourself before activating the agreement.
+
+When the creator marks the changes as done:
+
+1. Go to **Intellectual Property** ⟩ **License Manager** ⟩ **Licenses**.
+2. Select the **License agreements** tab and open the conditional offer or conditional request.
+3. Review the game to confirm that the creator addressed your feedback.
+4. Choose one of the following:
+   - Accept the changes to activate the license agreement.
+   - Reject the changes. The conditional offer or request becomes unsuccessful and the agreement does not activate.
+
+There is no deadline for you to review the creator's changes after they mark them as done. If the creator doesn't respond within the original 14-day window, the conditional offer or request expires and becomes unsuccessful.
+
 ## Review an offer dispute from a creator
 
-After you send a license offer to a creator, they can choose to dispute that offer. If a creator disputes your offer, you can either accept the dispute and archive the offer you sent, or reject the dispute and send the offer to the creator again.
+After you send a standard or conditional license offer to a creator, they can choose to dispute that offer. If a creator disputes your offer, you can either accept the dispute and archive the offer you sent, or reject the dispute and send the offer to the creator again.
 
 To review an offer dispute from a creator:
 
@@ -230,13 +281,19 @@ To review an offer dispute from a creator:
 2. Select the license agreement that the creator has disputed. The reason for the creator's dispute displays at the top of the page.
 3. Accept or reject the dispute.
    - To accept the dispute and archive the offer, click **Accept dispute**.
-   - To reject the dispute and send the license offer to the creator again, click **Reject dispute**.
+   - To reject the dispute and send the license offer to the creator again, click **Reject dispute**. For a conditional offer, rejecting the dispute re-sends the conditional offer with your original feedback and starts a new 14-day window for the creator.
 
 If the creator disputes the offer a second time, the offer is automatically archived and the agreement does not take place.
 
+<Alert severity="info">
+  Disputes are only available for offers that you initiate from Matches (or a match request). Creators cannot dispute a conditional approval of their own license request.
+</Alert>
+
 ## Make changes to active agreements
 
-If you have an active agreement with a creator and you believe their implementation of your IP has deviated from the defined scope of the license and its content standards, you can request that they make changes to their experience by clicking the **Change request** button and supplying details about which content standard this experience is violating and the specific change you want to request.
+If you have an active agreement with a creator and you believe their implementation of your IP has deviated from the defined scope of the license and its content standards, you can request that they make changes to their game by clicking the **Change request** button and supplying details about which content standard this game is violating and the specific change you want to request.
+
+To require changes **before** a license agreement becomes active, send a [conditional offer](#review-matches-and-send-a-license-offer) instead.
 
 ## Analytics
 
@@ -261,11 +318,11 @@ Use analytics to analyze the impact of your individual licenses. To view a licen
   </tr>
   <tr>
     <td>**Visits**</td>
-    <td>The number of lifetime visits to the experience.</td>
+    <td>The number of lifetime visits to the game.</td>
   </tr>
   <tr>
     <td>**Transactions**</td>
-    <td>The Robux you have earned from the experience. <br /><br /> Click **View transactions** and select **License payments** to see the revenue earned from agreements with creators.</td>
+    <td>The Robux you have earned from the game. <br /><br /> Click **View transactions** and select **License payments** to see the revenue earned from agreements with creators.</td>
   </tr>
 </tbody>
 </table>

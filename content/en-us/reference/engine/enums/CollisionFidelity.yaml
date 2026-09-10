@@ -46,3 +46,10 @@ items:
     value: 3
     tags: []
     deprecation_message: ''
+  - name: Tunable
+    summary: |
+      Collision model that supports precision tuning of convex decomposition
+      fidelity.
+    value: 4
+    tags: []
+    deprecation_message: ''

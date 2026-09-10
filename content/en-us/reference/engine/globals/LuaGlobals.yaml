@@ -19,7 +19,19 @@ properties:
     summary: |
       A table that is shared between all scripts of the same context level.
     description: |
-      A table that is shared between all scripts of the same context level.
+      A table that is shared between all scripts of the same context level. Any
+      value written to `_G` from one script is visible to every other script at
+      that same context level, which makes it a simple way to share state
+      between scripts.
+
+      ```lua
+      -- Script A (sets a value)
+      _G.mySharedValue = "hello from Script A"
+
+      Note that relying on `_G` for cross-script communication introduces
+      ordering dependencies and makes code harder to reason about. Prefer
+      `Class.ModuleScript` for shared state when possible.
+      ```
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -41,12 +53,6 @@ functions:
     description: |
       Throws an error if the provided `value` is `false` or `nil`. If the
       assertion passes, it returns all values passed to it.
-
-      ```lua
-      local product = 90 * 4
-      assert(product == 360, "Oh dear, multiplication is broken")
-      -- The line above does nothing, because 90 times 4 is 360
-      ```
     parameters:
       - name: value
         type: Variant
@@ -60,9 +66,11 @@ functions:
           The text that will be shown in the error if the assertion fails.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          All values originally passed to `assert` if the assertion succeeds.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-assert
     deprecation_message: ''
   - name: collectgarbage
     summary: |
@@ -82,7 +90,9 @@ functions:
           collector.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The result of the garbage collector operation; for the `count` option,
+          returns the total memory in use in kilobytes.
     tags:
       - Deprecated
     code_samples: []
@@ -129,7 +139,8 @@ functions:
     parameters: []
     returns:
       - type: number
-        summary: ''
+        summary: |
+          The total memory heap size in kilobytes.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -163,7 +174,8 @@ functions:
           function whose environment will be returned.
     returns:
       - type: table
-        summary: ''
+        summary: |
+          The environment table of the specified function or stack level.
     tags:
       - Deprecated
     code_samples: []
@@ -180,16 +192,6 @@ functions:
       Returns the metatable of the given table `t` if it has one, otherwise
       returns `nil`. If `t` does have a metatable, and the `__metatable`
       metamethod is set, it returns that value instead.
-
-      ```lua
-      -- Demonstrate getmetatable:
-      local meta = {}
-      local t = setmetatable({}, meta)
-      print(getmetatable(t) == meta) --> true
-      -- Make the original metatable unrecoverable by setting the __metatable metamethod:
-      meta.__metatable = "protected"
-      print(getmetatable(t)) --> protected
-      ```
     parameters:
       - name: t
         type: Variant
@@ -198,9 +200,12 @@ functions:
           The object to fetch the metatable of.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The metatable of `t`, the value of the `__metatable` metamethod if
+          set, or `nil` if no metatable exists.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-getmetatable
     deprecation_message: ''
   - name: ipairs
     summary: |
@@ -211,13 +216,6 @@ functions:
       numerical index-value pair in the table. When used in a generic for-loop,
       the return values can be used to iterate over each numerical index in the
       table:
-
-      ```lua
-      local fruits = {"apples", "oranges", "kiwi"}
-      for index, fruit in ipairs(fruits) do
-         print(index, fruit) --> 1 apples, 2 oranges, 3 kiwi, etc...
-      end
-      ```
     parameters:
       - name: t
         type: Array
@@ -226,13 +224,18 @@ functions:
           A table whose elements are to be iterated over.
     returns:
       - type: function
-        summary: ''
+        summary: |
+          An iterator function that returns the next index-value pair on each
+          call.
       - type: Array
-        summary: ''
+        summary: |
+          The table `t` passed as the invariant state.
       - type: int
-        summary: ''
+        summary: |
+          The initial control value `0`.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-ipairs
     deprecation_message: ''
   - name: loadstring
     summary: |
@@ -266,7 +269,9 @@ functions:
           unspecified, Luau uses the `contents` string.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The compiled function on success, or `nil` followed by an error
+          message string on failure.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -274,15 +279,41 @@ functions:
     summary: |
       Creates a blank `userdata`, with the option for it to have a metatable.
     description: |
-      Creates a blank `userdata`, with the option for it to have a metatable.
+      Creates a blank zero-size `userdata` with the option for it to have a
+      metatable. If `addMetatable` is `true`, an empty metatable is created and
+      assigned to the userdata; you can then retrieve it with
+      `Global.LuaGlobals.getmetatable()` and populate it with metamethods. If
+      `addMetatable` is `false` or omitted, the userdata has no metatable and
+      only serves as a unique identity token.
+
+      Unlike host-created userdata (Roblox instances), a `newproxy`-created
+      userdata always reports `"userdata"` from both `Global.LuaGlobals.type()`
+      and `typeof()`; setting a `__type` metamethod on it does not change the
+      `typeof()` result.
+
+      ```lua
+      -- Create a proxy with a metatable to implement custom tostring
+      local proxy = newproxy(true)
+      local mt = getmetatable(proxy)
+
+      mt.__tostring = function()
+      	return "MyProxy"
+      end
+
+      print(tostring(proxy)) --> MyProxy
+      print(type(proxy)) --> userdata
+      ```
     parameters:
       - name: addMetatable
         type: bool
         default: false
-        summary: ''
+        summary: |
+          Whether to attach an empty metatable to the new userdata.
     returns:
       - type: userdata
-        summary: ''
+        summary: |
+          A new blank userdata, with an empty metatable attached if
+          `addMetatable` is `true`.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -312,9 +343,11 @@ functions:
           The last key that was previously retrieved from a call to next.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The next key in the table, or `nil` if the traversal is complete.
       - type: Variant
-        summary: ''
+        summary: |
+          The value associated with the returned key.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -326,17 +359,6 @@ functions:
       Returns an iterator function, the passed table `t`, and `nil`, so that the
       construction will iterate over all key/value pairs of that table when used
       in a generic `for` loop:
-
-      ```lua
-      local scores = {
-          ["John"] = 5,
-          ["Sally"] = 10
-      }
-
-      for name, score in pairs(scores) do
-          print(name .. " has score: " .. score)
-      end
-      ```
     parameters:
       - name: t
         type: table
@@ -345,11 +367,17 @@ functions:
           An array or dictionary table to iterate over.
     returns:
       - type: function
-        summary: ''
+        summary: |
+          The `next` function as the iterator.
       - type: table
-        summary: ''
+        summary: |
+          The table `t` passed as the invariant state.
+      - type: Variant
+        summary: |
+          The initial control value `nil`.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-pairs
     deprecation_message: ''
   - name: pcall
     summary: |
@@ -363,20 +391,6 @@ functions:
       errors. In such case, `pcall()` also returns all results from the call,
       after this first result. In case of any error, `pcall()` returns false
       plus the error message.
-
-      ```lua
-      local function divideByFive(n: number): number
-      	return n / 5
-      end
-
-      local success, errorMessage = pcall(divideByFive, "notANumber")  -- Results in error...
-
-      if success then
-      	-- Handle successful response...
-      else
-      	warn("Error message:", errorMessage)
-      end
-      ```
     parameters:
       - name: func
         type: function
@@ -390,11 +404,15 @@ functions:
           The arguments to send to `func` when executing.
     returns:
       - type: bool
-        summary: ''
+        summary: |
+          `true` if `func` executed without errors, `false` otherwise.
       - type: Variant
-        summary: ''
+        summary: |
+          All return values of `func` on success, or the error message on
+          failure.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-pcall
     deprecation_message: ''
   - name: print
     summary: |
@@ -421,7 +439,24 @@ functions:
     summary: |
       Returns whether `v1` is equal to `v2`, bypassing their metamethods.
     description: |
-      Checks whether `v1` is equal to `v2`, without invoking any metamethods.
+      Checks whether `v1` is equal to `v2` without invoking the `__eq`
+      metamethod. The comparison uses primitive equality rules: values of
+      different types are never equal; `nil` equals only itself; numbers and
+      vectors are compared by value; booleans are compared by value; and all
+      reference types (tables, functions, threads, userdata) are compared by
+      identity (same object in memory).
+
+      This is useful when you need to compare two tables or userdata objects
+      that have an `__eq` metamethod and you want to test whether they are
+      literally the same object rather than semantically equal.
+
+      ```lua
+      local a = setmetatable({}, {__eq = function() return true end})
+      local b = setmetatable({}, {__eq = function() return true end})
+      print(a == b) --> true (metamethod fires)
+      print(rawequal(a, b)) --> false (different objects)
+      print(rawequal(a, a)) --> true (same object)
+      ```
     parameters:
       - name: v1
         type: Variant
@@ -435,7 +470,9 @@ functions:
           The second variable to compare.
     returns:
       - type: bool
-        summary: ''
+        summary: |
+          `true` if `v1` and `v2` are primitively equal without metamethod
+          invocation, `false` otherwise.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -443,7 +480,22 @@ functions:
     summary: |
       Gets the real value of `table[index]`, bypassing any metamethods.
     description: |
-      Gets the real value of `table[index]`, without invoking any metamethods.
+      Gets the real value of `table[index]` without invoking the `__index`
+      metamethod. The first argument must be a table; the second can be any
+      non-`nil` value. If the key does not exist in the table itself, `rawget()`
+      returns `nil` rather than walking up the metatable chain.
+
+      This is useful for inspecting a table's own stored fields when a
+      metatable-based lookup chain would otherwise intercept the access.
+
+      ```lua
+      local fallback = {x = 10}
+      local t = setmetatable({}, {__index = fallback})
+      print(t.x) --> 10 (found via __index)
+      print(rawget(t, "x")) --> nil (not in t itself)
+      t.y = 20
+      print(rawget(t, "y")) --> 20 (stored directly in t)
+      ```
     parameters:
       - name: t
         type: table
@@ -457,7 +509,9 @@ functions:
           The index to get from `t`.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The value stored at `t[index]`, or `nil` if the key does not exist in
+          the table itself.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -465,8 +519,19 @@ functions:
     summary: |
       Returns the length of the string or table, bypassing any metamethods.
     description: |
-      Returns the length of the string or table, without invoking any
-      metamethods.
+      Returns the length of a table or string without invoking the `__len`
+      metamethod. The argument must be a table or string; passing any other type
+      raises an argument error. For tables, the result is equivalent to what the
+      `#` operator would return before any metamethod fires; the length of the
+      array portion as determined by the boundary search. For strings, it
+      returns the byte count.
+
+      ```lua
+      local t = setmetatable({1, 2, 3}, {__len = function() return 999 end})
+      print(#t) --> 999 (metamethod fires)
+      print(rawlen(t)) --> 3 (actual array length)
+      print(rawlen("hello")) --> 5
+      ```
     parameters:
       - name: t
         type: table
@@ -474,8 +539,9 @@ functions:
         summary: |
           The table to be referenced.
     returns:
-      - type: table
-        summary: ''
+      - type: number
+        summary: |
+          The raw length of the table or string without metamethod invocation.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -483,8 +549,29 @@ functions:
     summary: |
       Sets the real value of `table[index]`, bypassing any metamethods.
     description: |
-      Sets the real value of `table[index]` to a given `value`, without invoking
-      any metamethod.
+      Sets `table[index]` to `value` without invoking the `__newindex`
+      metamethod. The first argument must be a table, the second is the key
+      (must not be `nil`), and the third is the value to assign. Returns the
+      table itself, which allows chained calls when building tables that have a
+      `__newindex` guard.
+
+      This is the complement of `Global.LuaGlobals.rawget()` for write
+      operations; use it when you need to bypass a proxy table's write
+      interception.
+
+      ```lua
+      local log = {}
+      local proxy = setmetatable({}, {
+          __newindex = function(_, k, v)
+              table.insert(log, k)
+              rawset(proxy, k, v) -- actually store the value
+          end
+      })
+      rawset(proxy, "x", 42) -- bypasses __newindex; no log entry
+      proxy.y = 7 -- triggers __newindex; log entry created
+      print(proxy.x, proxy.y) --> 42  7
+      print(#log) --> 1 (only "y" was logged)
+      ```
     parameters:
       - name: t
         type: table
@@ -504,7 +591,8 @@ functions:
           The value to be set to a specified `index` in table `t`.
     returns:
       - type: table
-        summary: ''
+        summary: |
+          The table `t` that was passed in, allowing chained calls.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -540,28 +628,6 @@ functions:
       in the example below contains two functionally equivalent calls. Redundant
       parentheses have been added to clarify exactly how each path component
       maps onto an instance.
-
-      ```lua
-      -- "./" prefix is equivalent to script.Parent
-      require("./MySibling")
-      require((script.Parent).(MySibling))
-
-      -- "../" prefix is equivalent to script.Parent.Parent
-      require("../SiblingOfMyParent")
-      require((script.Parent.Parent).(SiblingOfMyParent))
-
-      -- "../" can be chained to go up multiple levels
-      require("../../SiblingOfMyGrandparent")
-      require((script.Parent.Parent).(Parent).(SiblingOfMyGrandparent))
-
-      -- "@self" prefix corresponds to the script itself
-      require("@self/MyChild")
-      require((script).(MyChild))
-
-      -- "@game" prefix corresponds to the DataModel root
-      require("@game/ReplicatedStorage/Shared/MyModule")
-      require((game).(ReplicatedStorage).(Shared).(MyModule))
-      ```
 
       Once the return object is created by an **initial**
       `Global.LuaGlobals.require()` call of a `Class.ModuleScript`, future
@@ -601,7 +667,8 @@ functions:
           What the `Class.ModuleScript` returned (usually a table or a
           function).
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-require
     deprecation_message: ''
   - name: select
     summary: |
@@ -610,17 +677,8 @@ functions:
       Returns all arguments after argument number `index`. If negative, it will
       return from the end of the argument list.
 
-      ```lua
-      print(select(2, "A", "B", "C")) --> B C
-      print(select(-1, "A", "B", "C")) --> C
-      ```
-
       If the `index` argument is set to `"#"`, the number of arguments that were
       passed after it is returned.
-
-      ```lua
-      print(select("#", "A", "B", "C")) --> 3
-      ```
     parameters:
       - name: index
         type: Variant
@@ -636,9 +694,12 @@ functions:
           A tuple of arguments.
     returns:
       - type: Tuple
-        summary: ''
+        summary: |
+          All arguments after position `index`, or the count of arguments if
+          `index` is `"#"`.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-select
     deprecation_message: ''
   - name: setfenv
     summary: |
@@ -670,7 +731,8 @@ functions:
           The function environment table to set for the specified function.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The function whose environment was set, or no value if `f` is `0`.
     tags:
       - Deprecated
     code_samples: []
@@ -687,14 +749,6 @@ functions:
       `nil`, the metatable of `t` is removed. Finally, this function returns the
       table `t` which was passed to it. If `t` already has a metatable whose
       `__metatable` metamethod is set, calling this on `t` raises an error.
-
-      ```lua
-      local meta = {__metatable = "protected"}
-      local t = {}
-      setmetatable(t, meta) -- This sets the metatable of t
-      -- We now have a table, t, with a metatable. If we try to change it...
-      setmetatable(t, {}) --> Error: cannot change a protected metatable
-      ```
     parameters:
       - name: t
         type: table
@@ -709,9 +763,12 @@ functions:
           the metatable to set for the given table `t`.
     returns:
       - type: table
-        summary: ''
+        summary: |
+          The table `t` that was passed in, with its metatable now set to
+          `newMeta`.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-setmetatable
     deprecation_message: ''
   - name: tonumber
     summary: |
@@ -729,17 +786,6 @@ functions:
 
       If a string begins with `0x` and a base is not provided, the `0x` is
       trimmed and the base is assumed to be 16, or hexadecimal.
-
-      ```lua
-      print(tonumber("1337")) --> 1337 (assumes base 10, decimal)
-      print(tonumber("1.25")) --> 1.25 (base 10 may have decimal portions)
-      print(tonumber("3e2")) --> 300 (base 10 may have exponent portion, 3 &times; 10 ^ 2)
-      print(tonumber("25", 8)) --> 21 (base 8, octal)
-      print(tonumber("0x100")) --> 256 (assumes base 16, hexadecimal)
-      print(tonumber("roblox")) --> nil (does not raise an error)
-      -- Tip: use with assert if you would like unconvertable numbers to raise an error
-      print(assert(tonumber("roblox"))) --> Error: assertion failed
-      ```
     parameters:
       - name: arg
         type: Variant
@@ -753,9 +799,12 @@ functions:
           The numerical base to convert `arg` into.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The numeric value of `arg` in the given base, or `nil` if conversion
+          is not possible.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-tonumber
     deprecation_message: ''
   - name: tostring
     summary: |
@@ -766,12 +815,6 @@ functions:
       string.format. If the metatable of `e` has a `__tostring` metamethod, then
       it will be called with `e` as the only argument and will return the
       result.
-
-      ```lua
-      local isRobloxCool = true
-      -- Convert the boolean to a string then concatenate:
-      print("Roblox is cool: " .. tostring(isRobloxCool)) --> Roblox is cool: true
-      ```
     parameters:
       - name: e
         type: Variant
@@ -780,9 +823,12 @@ functions:
           The object to be converted into a string.
     returns:
       - type: string
-        summary: ''
+        summary: |
+          A string representation of `e`, using the `__tostring` metamethod if
+          available.
     tags: []
-    code_samples: []
+    code_samples:
+      - LuaGlobals-tostring
     deprecation_message: ''
   - name: type
     summary: |
@@ -801,7 +847,9 @@ functions:
           The object to return the type of.
     returns:
       - type: string
-        summary: ''
+        summary: |
+          The basic type name of `v` as a string (e.g. `"number"`, `"string"`,
+          `"table"`).
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -809,8 +857,21 @@ functions:
     summary: |
       Returns all elements from the given list as a tuple.
     description: |
-      Returns the elements from the given table. By default, `i` is 1 and `j` is
-      the length of `list`, as defined by the length operator.
+      Returns the elements from the given `list` as separate return values,
+      equivalent to `list[i], list[i+1], ..., list[j]`. By default, `i` is `1`
+      and `j` is the length of `list` (as defined by the `#` operator). If the
+      range is empty (`i > j`), no values are returned. An error is raised if
+      the requested range is too large to fit on the stack.
+
+      ```lua
+      local t = {10, 20, 30, 40, 50}
+      print(unpack(t)) --> 10  20  30  40  50
+      print(unpack(t, 2, 4)) --> 20  30  40
+
+      -- Common pattern: forwarding a stored argument list
+      local args = {1, "hello", true}
+      someFunction(unpack(args))
+      ```
     parameters:
       - name: list
         type: table
@@ -829,7 +890,8 @@ functions:
           The index of the last element to unpack.
     returns:
       - type: Variant
-        summary: ''
+        summary: |
+          The elements `list[i]` through `list[j]` as separate return values.
     tags: []
     code_samples: []
     deprecation_message: ''
@@ -867,12 +929,16 @@ functions:
       - name: args
         type: Tuple
         default:
-        summary: ''
+        summary: |
+          Additional arguments passed to `f` when it is called.
     returns:
       - type: bool
-        summary: ''
+        summary: |
+          `true` if `f` executed without errors, `false` otherwise.
       - type: Variant
-        summary: ''
+        summary: |
+          All return values of `f` on success, or the result of
+          `err(errorObject)` on failure.
     tags: []
     code_samples: []
     deprecation_message: ''

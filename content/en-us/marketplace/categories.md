@@ -11,7 +11,7 @@ To ensure a consistent and high-quality experience for all users, creators must 
 
 ## Rigid accessories
 
-See [Rigid accessories](../art/accessories/).
+See [Rigid accessories](../avatar/rigid-accessories/index.md).
 
 <table>
   <thead>
@@ -66,7 +66,7 @@ See [Rigid accessories](../art/accessories/).
 
 ## Layered accessories
 
-See [Clothing](../art/accessories/layered-clothing.md).
+See [Layered accessories](../avatar/layered-accessories/index.md).
 
 <table>
   <thead>
@@ -117,7 +117,7 @@ See [Clothing](../art/accessories/layered-clothing.md).
 
 ## Bodies and heads
 
-See [Bodies](../art/characters/).
+See [Bodies](../avatar/character-bodies/index.md).
 
 <table>
   <thead>
@@ -133,14 +133,14 @@ See [Bodies](../art/characters/).
     </tr>
     <tr>
       <td>Head</td>
-      <td>A 3D component that replaces the character's default head, including support for [facial animations](../art/characters/facial-animation/).</td>
+      <td>A 3D component that replaces the character's default head, including support for [facial animations](../avatar/dynamic-heads/index.md).</td>
     </tr>
   </tbody>
 </table>
 
 ## Animations
 
-See [Emotes](../art/emotes/).
+See [Animation packs](../avatar/animation-packs.md) and [Emotes](../avatar/emotes/index.md).
 
 <table>
   <thead>
@@ -151,6 +151,10 @@ See [Emotes](../art/emotes/).
   </thead>
   <tbody>
     <tr>
+      <td>Animation packs</td>
+      <td>A coordinated set of avatar locomotion animations for states such as idling, walking, running, jumping, falling, climbing, and swimming.</td>
+    </tr>
+    <tr>
       <td>Emotes</td>
       <td>A triggered animation sequence that performs a specific social action or gesture, such as waving or dancing.</td>
     </tr>
@@ -159,7 +163,7 @@ See [Emotes](../art/emotes/).
 
 ## Classic clothing
 
-See [Classic clothing](../art/classic-clothing.md).
+See [Classic clothing](../avatar/classic-clothing.md).
 
 <table>
   <thead>

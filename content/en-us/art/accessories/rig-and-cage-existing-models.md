@@ -3,7 +3,7 @@ title: Rigging and caging models (Blender)
 description: Convert a 3D model into a layered 3D model in Blender before importing and converting the model into Studio as an Accessory.
 ---
 
-You can use a third party modeling tool, such as [Blender](https://www.blender.org) or [Maya](https://www.autodesk.com/products/maya/overview), to modify an existing 3D object into a layerable 3D model that you can [import and convert](../../art/accessories/accessory-fitting-tool.md) into Studio as an `Class.Accessory`. To create a layered model, you must **parent** (Blender) or **bind** (Maya) a 3D model to a mannequin armature and then modify two additional meshes to fit around the inner and outer surface of the accessory model.
+You can use a third party modeling tool, such as [Blender](https://www.blender.org) or [Maya](https://www.autodesk.com/products/maya/overview), to modify an existing 3D object into a layerable 3D model that you can [import and convert](../../avatar/accessory-fitting-tool.md) into Studio as an `Class.Accessory`. To create a layered model, you must **parent** (Blender) or **bind** (Maya) a 3D model to a mannequin armature and then modify two additional meshes to fit around the inner and outer surface of the accessory model.
 
 This guide covers the basic workflow for converting a 3D model into a layerable model in Blender using the following steps:
 
@@ -12,7 +12,7 @@ This guide covers the basic workflow for converting a 3D model into a layerable 
    1. Manual skinning is not covered, see [Skin a simple mesh](../modeling/skin-a-simple-mesh.md) for an overview of manual skinning.
 3. [Editing](#edit-inner-and-outer-cage-meshes) the Inner and Outer Cage meshes to represent the inner and outer surface of the model.
 
-A full list of asset requirements for a layered model can be found in [Layered model specifications](../../art/accessories/specifications.md).
+A full list of asset requirements for a layered model can be found in [Layered model specifications](../../avatar/rigid-accessories/specifications.md).
 
 <Alert severity="info">
 This guide uses <a href="https://www.blender.org/download/releases/3-0/">Blender version 3.0</a>. If you are
@@ -26,7 +26,7 @@ Set up the project by opening the [rig template project](../../assets/modeling/m
 
 To import and parent the accessory model:
 
-1. In Blender, open the [rig template project](../../assets/modeling/meshes/reference-files/Rig_and_Attachments_Templates.zip). This file contains the default armature required for layered clothing.
+1. In Blender, open the [rig template project](../../assets/modeling/meshes/reference-files/Rig_and_Attachments_Templates.zip). This file contains the default armature required for layered accessories.
 
    <img
    alt="Blender Mannequin Template Project"
@@ -116,13 +116,13 @@ To modify cages for your accessory model:
    <video controls width="80%" src="../../assets/accessories/6_lc-blender-adjusting-outer-cage-vertices.mp4">
    </video>
 
-A finished outer cage should completely cover the accessory with minimal extra space. For comparison, you can download a completed caged version of the Tshirt model [here](../../assets/accessories/reference-files/Tshirt-caged.fbx).
+A finished outer cage should completely cover the accessory with minimal extra space. For comparison, you can download a [completed caged version](../../assets/accessories/reference-files/Tshirt-caged.fbx) of the Tshirt model.
 
 <video controls width="80%" src="../../assets/accessories/8_lc-blender-finished-outer-cage.mp4"></video>
 
 When finished with the caging and modeling of your asset, see [Exporting requirements](../../art/modeling/export-requirements.md#blender) for details on exporting the model from Blender.
 
-After exporting, see [Accessory Fitting Tool](../../art/accessories/accessory-fitting-tool.md) and [Converting clothing accessories tutorial](../accessories/creating/converting.md) for instructions on importing and converting the model into a usable accessory.
+After exporting, see [Accessory Fitting Tool](../../avatar/accessory-fitting-tool.md) and [Converting clothing accessories tutorial](../accessories/creating/converting.md) for instructions on importing and converting the model into a usable accessory.
 
 ## Tips for editing cages
 

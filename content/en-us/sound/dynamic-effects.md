@@ -1,13 +1,13 @@
 ---
 title: Dynamic effects
-description: Legacy effects that modify or enhance Sound objects in your experiences.
+description: Legacy effects that modify or enhance Sound objects in your games.
 ---
 
 <Alert severity = 'warning'>
 There is a newer set of audio effects that offer more control and address robust use cases. For more information, see [Audio effects](../audio/effects.md).
 </Alert>
 
-Dynamic effects modify or enhance the audio of individual `Class.Sound` objects or an entire `Class.SoundGroup`. You can apply these effects to make your audio more immersive within your experience, such as using `Class.ReverbSoundEffect` in large rooms to make them feel massive.
+Dynamic effects modify or enhance the audio of individual `Class.Sound` objects or an entire `Class.SoundGroup`. You can apply these effects to make your audio more immersive within your game, such as using `Class.ReverbSoundEffect` in large rooms to make them feel massive.
 
 ## Apply dynamic effects
 
@@ -22,7 +22,7 @@ To apply a dynamic effect:
 
       <img src="../assets/studio/explorer/SoundService-SoundGroup-ReverbSoundEffect.png" width="320" />
 
-2. **(Optional)** In the **Properties** window, select the new dynamic effect and adjust its properties.
+2. <Chip label="OPTIONAL" size="small" variant="outlined" /> In the **Properties** window, select the new dynamic effect and adjust its properties.
 
    <img src="../assets/audio/sound-groups/Dynamic-Effect-Properties.png" width="320" />
 
@@ -30,7 +30,7 @@ To apply a dynamic effect:
 
 ### Equalizer
 
-The `Class.EqualizerSoundEffect` allows for control of the volume of various frequency ranges. This dynamic effect is useful to highlight or minimize particular elements of audio, such as muffling all audio in your experience when a user goes underwater.
+The `Class.EqualizerSoundEffect` allows for control of the volume of various frequency ranges. This dynamic effect is useful to highlight or minimize particular elements of audio, such as muffling all audio in your game when a player goes underwater.
 
 <table>
 <tbody>

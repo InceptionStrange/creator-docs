@@ -14,6 +14,10 @@ description: |
   `Class.MarketplaceService:PromptPurchase()|PromptPurchase`, as well as the
   callback `Class.MarketplaceService.ProcessReceipt|ProcessReceipt` which must
   be defined so that developer product transactions do not fail.
+  `Class.MarketplaceService:BindReceiptHandler()|BindReceiptHandler` is a newer
+  alternative that processes developer product receipts (and Robux transfer
+  receipts) through one or more bound handlers instead of the single
+  `ProcessReceipt` callback.
 
   `Class.MarketplaceService` also has methods that fetch information about
   [developer products](../../../production/monetization/developer-products.md)
@@ -44,9 +48,26 @@ methods:
       Registers a callback to process receipts of a specific type.
     description: |
       `BindReceiptHandler` registers a callback to process receipts of a
-      specific `Enum.ReceiptType`. You can use it to handle Robux transfer
-      receipts (`Enum.ReceiptType.RobuxTransferSender` and
+      specific `Enum.ReceiptType`. You can use it to handle developer product
+      receipts (`Enum.ReceiptType.DeveloperProduct`) and Robux transfer receipts
+      (`Enum.ReceiptType.RobuxTransferSender` and
       `Enum.ReceiptType.RobuxTransferReceiver`).
+
+      For `Enum.ReceiptType.DeveloperProduct`, you can register handlers in two
+      ways:
+
+      - **Filtered** &mdash; Pass a `filter` array of developer product IDs so
+        the handler only fires for receipts whose `ProductId` is in that array.
+        Use this to route specific products to dedicated handlers.
+      - **Catch-all** &mdash; Omit `filter` so the handler fires for any
+        developer product receipt not already claimed by a filtered handler.
+
+      For developer products, `BindReceiptHandler` is an alternative to the
+      legacy `Class.MarketplaceService.ProcessReceipt|ProcessReceipt` callback.
+      A bound handler takes precedence; if no bound handler matches a developer
+      product receipt, it falls through to `ProcessReceipt`. This lets you adopt
+      `BindReceiptHandler` incrementally without removing an existing
+      `ProcessReceipt` callback.
 
       The `handler` callback receives a receipt info dictionary and must return
       an `Enum.ReceiptDecision` value:
@@ -94,9 +115,23 @@ methods:
         <td>The type of this receipt.</td>
       </tr>
       <tr>
+        <td><code>ProductId</code></td>
+        <td>number</td>
+        <td>The developer product ID. Only present for
+        <code>Enum.ReceiptType.DeveloperProduct</code> receipts.</td>
+      </tr>
+      <tr>
+        <td><code>CurrencyType</code></td>
+        <td><code>Enum.CurrencyType</code></td>
+        <td>The currency used for the purchase. Only present for
+        <code>Enum.ReceiptType.DeveloperProduct</code> receipts.</td>
+      </tr>
+      <tr>
         <td><code>CurrencySpent</code></td>
         <td>number</td>
         <td>The amount of Robux involved in the transaction. For
+        <code>Enum.ReceiptType.DeveloperProduct</code> receipts, this is the
+        product's price. For
         <code>Enum.ReceiptType.RobuxTransferSender</code> receipts, this is
         the amount sent. For
         <code>Enum.ReceiptType.RobuxTransferReceiver</code> receipts, this is
@@ -129,6 +164,12 @@ methods:
         receiver accepts, to whichever server the sender is currently in or on
         their next join if they are offline.
 
+      For developer product receipts, `handler` is invoked when the purchase
+      completes while the buyer is on a server. If the handler returns
+      `Enum.ReceiptDecision.NotProcessedYet`, or the buyer is not reachable, the
+      receipt remains unresolved and is redelivered on a later opportunity or
+      the next time the buyer joins a server.
+
       The user must be on a server for `handler` to fire.
 
       #### Errors
@@ -141,6 +182,7 @@ methods:
         `Enum.ReceiptType`.
     code_samples:
       - MarketplaceService-BindReceiptHandler1
+      - MarketplaceService-BindReceiptHandler2
     parameters:
       - name: transactionType
         type: ReceiptType
@@ -184,7 +226,9 @@ methods:
     parameters: []
     returns:
       - type: Instance
-        summary: ''
+        summary: |
+          A `Class.Pages` object whose entries describe the current experience's
+          developer products.
     tags:
       - Yields
     deprecation_message: ''
@@ -510,9 +554,47 @@ methods:
         </tr>
         </tbody>
       </table>
+
+      #### Timed Options
+
+      <table size="small">
+        <thead>
+      	  <tr>
+      	    <th>Key</th>
+      	    <th>Type</th>
+      	    <th>Description</th>
+      	  </tr>
+      	</thead>
+        <tbody>
+        <tr>
+      	  <td><code>TimedOptions</code></td>
+      	  <td>array</td>
+      	  <td>Optional. An array of available timed options with durations and prices. Only present for assets that support timed ownership. Do not hardcode duration values; always retrieve them from this API as they may change. Each entry contains:</td>
+        </tr>
+        <tr>
+      	  <td colspan="2"></td>
+      	  <td><code>Duration</code>: number — The duration in seconds (e.g. 259200 for 3 days, 604800 for 7 days).</td>
+        </tr>
+        <tr>
+      	  <td colspan="2"></td>
+      	  <td><code>Price</code>: number — The price in Robux for this duration.</td>
+        </tr>
+        </tbody>
+      </table>
+
+      #### Batching behavior
+
+      This method is **Transparent Batching capable**. If you spawn multiple
+      calls concurrently using `task.spawn`, the engine automatically combines
+      them into fewer HTTP requests behind the scenes. This is faster and helps
+      you avoid rate limits. See
+      [Transparent Batching](../../../scripting/transparent-batching.md) for
+      details and a code example.
     code_samples:
       - MarketplaceService-GetProductInfo1
       - MarketplaceService-GetProductInfo2
+      - MarketplaceService-GetProductInfo-TimedOptions
+      - MarketplaceService-GetProductInfo-TransparentBatching
     parameters:
       - name: assetId
         type: int64
@@ -674,7 +756,9 @@ methods:
           The ID of the subscription to check.
     returns:
       - type: Dictionary
-        summary: ''
+        summary: |
+          A dictionary containing the subscription product information described
+          in the following table.
     tags:
       - Yields
     deprecation_message: ''
@@ -789,7 +873,9 @@ methods:
           The ID of the subscription to check.
     returns:
       - type: Dictionary
-        summary: ''
+        summary: |
+          A dictionary containing the user's subscription details described in
+          the following table.
     tags:
       - Yields
     deprecation_message: ''
@@ -921,14 +1007,19 @@ methods:
       - name: user
         type: Player
         default:
-        summary: ''
+        summary: |
+          The `Class.Player` whose subscription payment history you want to
+          retrieve.
       - name: subscriptionId
         type: string
         default:
-        summary: ''
+        summary: |
+          The ID of the subscription whose payment history you want to retrieve.
     returns:
       - type: Array
-        summary: ''
+        summary: |
+          An array of payment-history entries, ordered from most recent to least
+          recent, as described in the following table.
     tags:
       - Yields
     deprecation_message: ''
@@ -988,7 +1079,9 @@ methods:
           The ID of the subscription to check for.
     returns:
       - type: Dictionary
-        summary: ''
+        summary: |
+          A dictionary containing the user's subscription status described in
+          the following table.
     tags:
       - Yields
     deprecation_message: ''
@@ -1153,9 +1246,53 @@ methods:
       prompted.
 
       A maximum of 20 items can be added to a single bulk purchase prompt.
+
+      #### PurchaseOptions
+
+      Each line item can optionally include a `PurchaseOptions` array to control
+      which purchase option appears in the prompt. If omitted, the user is
+      prompted for a permanent purchase only (default behavior).
+
+      `PurchaseOptions` currently supports only one entry. If more than one
+      option is provided, the API throws an error.
+
+      Each entry in `PurchaseOptions` contains:
+
+      <table size="small">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><code>Type</code></td>
+          <td>Enum</td>
+          <td><code>Enum.PurchaseOption.TimedOption</code> for a timed option, or <code>Enum.PurchaseOption.Permanent</code> for standard purchase.</td>
+        </tr>
+        <tr>
+          <td><code>Value</code></td>
+          <td>number</td>
+          <td>Required for <code>TimedOption</code>. The duration in seconds.</td>
+        </tr>
+        </tbody>
+      </table>
+
+      **Do not hardcode duration values.** Available durations and prices are
+      determined by the backend and may change at any time. Always retrieve them
+      from one of the following APIs and pass the values through to
+      `PurchaseOptions`:
+
+      - `Class.MarketplaceService:GetProductInfoAsync()`
+      - `Class.AvatarEditorService:GetItemDetailsAsync()`
+      - `Class.AvatarEditorService:GetBatchItemDetailsAsync()`
+      - `Class.AvatarEditorService:SearchCatalogAsync()`
     code_samples:
       - Prompt-Bulk-Purchase-Local
       - Prompt-Bulk-Purchase-Server
+      - MarketplaceService-PromptBulkPurchase-TimedOptions
     parameters:
       - name: player
         type: Player
@@ -1173,7 +1310,8 @@ methods:
           ```lua
           {
             Type: MarketplaceProductType,
-            Id: string
+            Id: string,
+            PurchaseOptions: { {Type: PurchaseOption, Value: number?} }?
           }
           ```
 
@@ -1181,6 +1319,9 @@ methods:
 
           - `Type`: The corresponding `Enum.MarketplaceProductType` (Enum).
           - `Id`: The ID of the asset or bundle.
+          - `PurchaseOptions`: Optional. An array containing a single purchase
+            option to display in the prompt. If omitted, the permanent purchase
+            is prompted. See the PurchaseOptions section below for details.
       - name: options
         type: Dictionary
         default:
@@ -1205,11 +1346,13 @@ methods:
       - name: player
         type: Instance
         default:
-        summary: ''
+        summary: |
+          The `Class.Player` to prompt.
       - name: bundleId
         type: int64
         default:
-        summary: ''
+        summary: |
+          The ID of the bundle to purchase.
     returns:
       - type: ()
         summary: ''
@@ -1231,11 +1374,13 @@ methods:
       - name: user
         type: Player
         default:
-        summary: ''
+        summary: |
+          The `Class.Player` to prompt.
       - name: subscriptionId
         type: string
         default:
-        summary: ''
+        summary: |
+          The ID of the subscription to cancel.
     returns:
       - type: ()
         summary: ''
@@ -1257,11 +1402,16 @@ methods:
       - name: player
         type: Instance
         default:
-        summary: ''
+        summary: |
+          The `Class.Player` to prompt.
       - name: gamePassId
         type: int64
         default:
-        summary: ''
+        summary: |
+          The pass ID to purchase. This is the `TargetId` returned by
+          `Class.MarketplaceService:GetProductInfo()|GetProductInfo()` when
+          `Enum.InfoType` is `GamePass`. It is not the pass's asset ID and not
+          its `ProductId`.
     returns:
       - type: ()
         summary: ''
@@ -1320,19 +1470,23 @@ methods:
       - name: player
         type: Instance
         default:
-        summary: ''
+        summary: |
+          The `Class.Player` to prompt.
       - name: productId
         type: int64
         default:
-        summary: ''
+        summary: |
+          The ID of the developer product to purchase.
       - name: equipIfPurchased
         type: boolean
         default: true
-        summary: ''
+        summary: |
+          Ignored.
       - name: currencyType
         type: CurrencyType
         default: Default
-        summary: ''
+        summary: |
+          Ignored.
     returns:
       - type: ()
         summary: ''
@@ -1370,15 +1524,18 @@ methods:
       - name: player
         type: Instance
         default:
-        summary: ''
+        summary: |
+          The `Class.Player` to prompt.
       - name: assetId
         type: int64
         default:
-        summary: ''
+        summary: |
+          The ID of the asset to purchase.
       - name: equipIfPurchased
         type: boolean
         default: true
-        summary: ''
+        summary: |
+          Ignored.
       - name: currencyType
         type: CurrencyType
         default: Default
@@ -1646,7 +1803,17 @@ methods:
 
       When a user first enters a server after purchasing a game pass, this
       functions always returns true.
-    code_samples: []
+
+      #### Batching behavior
+
+      This method is **Transparent Batching capable**. If you spawn multiple
+      calls concurrently using `task.spawn`, the engine automatically combines
+      them into fewer HTTP requests behind the scenes. This is faster and helps
+      you avoid rate limits. See
+      [Transparent Batching](../../../scripting/transparent-batching.md) for
+      details.
+    code_samples:
+      - MarketplaceService-UserOwnsGamePassAsync-TransparentBatching
     parameters:
       - name: userId
         type: User
@@ -1662,7 +1829,8 @@ methods:
           ID.
     returns:
       - type: boolean
-        summary: ''
+        summary: |
+          Whether the user owns the pass.
     tags:
       - Yields
     deprecation_message: ''
@@ -1729,22 +1897,29 @@ events:
     capabilities:
       - PromptExternalPurchase
   - name: MarketplaceService.PromptBundlePurchaseFinished
-    summary: ''
-    description: ''
+    summary: |
+      Fires when a bundle purchase prompt closes.
+    description: |
+      This event fires when a purchase prompt for a bundle closes. Use
+      `Class.MarketplaceService:PlayerOwnsBundleAsync()|PlayerOwnsBundleAsync()`
+      to verify ownership instead of trusting this client-originated event.
     code_samples: []
     parameters:
       - name: player
         type: Instance
         default:
-        summary: ''
+        summary: |
+          The `Class.Player` who received the prompt.
       - name: bundleId
         type: int64
         default:
-        summary: ''
+        summary: |
+          The ID of the bundle shown in the prompt.
       - name: wasPurchased
         type: boolean
         default:
-        summary: ''
+        summary: |
+          Whether the bundle was purchased.
     tags: []
     deprecation_message: ''
     security: None

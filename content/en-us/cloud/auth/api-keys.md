@@ -1,11 +1,11 @@
 ---
 title: Manage API keys
-description: Explains how to create API keys and add permissions to use Open Cloud web APIs for your experience.
+description: Explains how to create API keys and add permissions to use Open Cloud web APIs for your gamee.
 ---
 
 Open Cloud authenticates and authorizes API access with the use of API keys,
 which allow you to add granular permissions and security control for accessing
-and utilizing certain resources in your experience, such as data stores and
+and utilizing certain resources in your game, such as data stores and
 places.
 
 All Open Cloud APIs require you to create an API key with valid permissions and
@@ -18,7 +18,7 @@ authenticate to Open Cloud on your behalf.
 All references to API keys in the text below refer to user-owned keys.
 </Alert>
 
-You can create and configure API keys to access your resources. An API key's access is determined by the permissions of the user who owns it. This means it can generally access any resource the user has permissions for, including their individual experiences and any [group-owned](../../projects/groups.md) experiences where they have the appropriate role. Some scopes can be restricted to specific experiences, but not all.
+You can create and configure API keys to access your resources. An API key's access is determined by the permissions of the user who owns it. This means it can generally access any resource the user has permissions for, including their individual games and any [group-owned](../../projects/groups.md) games where they have the appropriate role. Some scopes can be restricted to specific games, but not all.
 
 For details on how to create API keys for managing group resources, see the [Create API keys for managing group-owned resources](#create-api-keys-for-managing-group-owned-resources) section below.
 
@@ -28,14 +28,14 @@ To create an API key:
 1. Click the **Create API Key** button.
 1. Enter a unique name for your API key. Use a name that can help you recall the
    purpose later, such as `PLACE_PUBLISHING_KEY` for publishing places to your
-   experience.
+   game.
 1. In the **Access Permissions** section, select an API from the **Select API
    System** menu. Repeat this step if
    you need to add multiple APIs to the key.
 
-1. If applicable, select the experience that you want to access with the API key.
+1. If applicable, select the game that you want to access with the API key.
 
-   You can optionally disable **Restrict by Experience**. When disabled, your API key has access to all of your user-owned experiences and any group-owned experiences where you have the appropriate permissions, including any experiences you create in the future.
+   You can optionally disable **Restrict by Experience**. When disabled, your API key has access to all of your user-owned games and any group-owned games where you have the appropriate permissions, including any games you create in the future.
 
 1. From the **Select Operations** dropdown, select the operations that you
    want to enable for the API key.
@@ -44,14 +44,14 @@ To create an API key:
 
    For a list of all scopes and the APIs they support, see [Scopes](../reference/scopes.md).
 
-1. **(Optional)** In the **Security** section, explicitly restrict IP access to the key using [CIDR
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> In the **Security** section, explicitly restrict IP access to the key using [CIDR
    notation](#cidr-format). You can find
    the IP address of your local machine and add it to the **Accepted IP
    Addresses** section along with additional IP addresses for those that need
    access. If you don't have a fixed IP, or you are using the API key only in a
    local environment, you can leave the `Restrict IP addresses` toggle unchecked to allow any IP to use your API key.
 
-1. **(Optional)**: To add additional protection for your resources, set an expiration date for your key.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> To add additional protection for your resources, set an expiration date for your key.
 1. Click the **Save & Generate key** button.
 1. Copy and save the API key string to a secure location, **not** a public repository for your code.
 1. Verify the status of your API key on the
@@ -64,13 +64,13 @@ The API key string is equivalent to a password for your application. Never share
 
 ## Create API keys for managing group-owned resources
 
-An API key grants access to all resources the user account has permissions for, including personal experiences outside of the group. If you use your personal account's API key for group automation and that key is compromised, other resources you have access to are also at risk.
+An API key grants access to all resources the user account has permissions for, including personal games outside of the group. If you use your personal account's API key for group automation and that key is compromised, other resources you have access to are also at risk.
 
 To prevent this, we **strongly recommend** creating a separate API key on a dedicated alternate account with access strictly limited to the target group. This new account dedicated for automation purposes should only be given access to the target group and granted the minimal permissions required for its task.
 
 1. Create a new, dedicated Roblox account for your automation.
 1. Invite the new account to your group.
-1. Assign it a group role with the minimum permissions required for its task (e.g., only "Create and edit group experiences").
+1. Assign it a group role with only the permissions required for its task.
 1. Log in to the new account and follow the steps in the section above to [create an API key](#create-api-keys).
 1. Use the generated API key for group resource automation.
 
@@ -80,7 +80,7 @@ API keys are sensitive credentials that should be kept secure to prevent unautho
 
 - **Create separate keys for each application**: Create separate API keys for each application or use case to isolate access and reduce the impact if a key is compromised.
 
-- **Select the minimum permissions needed**: When configuring scopes, select the minimum permissions necessary for the key's intended use. For those scopes that allow you to restrict scope access by experience, limit access to only the specific experiences that are needed.
+- **Select the minimum permissions needed**: When configuring scopes, select the minimum permissions necessary for the key's intended use. For those scopes that allow you to restrict scope access by game, limit access to only the specific games that are needed.
 
 - **Use IP address restrictions**: Restrict API key access to specific IP addresses or CIDR ranges to prevent unauthorized usage from unknown locations. Do not use IP address restrictions when using your API key in Roblox places to ensure your key can be used with Roblox servers.
 
@@ -179,9 +179,9 @@ Retrieve information about an API key. Verifies whether the key can be used from
 
 `(application/json)`
 
-| Key            | Value                  |
-| -------------- | ---------------------- |
-| apiKey  | `<api_key>`     |
+| Key | Value |
+| :--- | :--- |
+| apiKey | `<api_key>` |
 
 ```bash title="Example Introspect API Key Request"
 curl --location --request POST 'https://apis.roblox.com/api-keys/v1/introspect' \

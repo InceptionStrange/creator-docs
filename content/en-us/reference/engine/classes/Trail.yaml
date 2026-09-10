@@ -276,8 +276,23 @@ properties:
     capabilities:
       - Basic
   - name: Trail.LocalTransparencyModifier
-    summary: ''
-    description: ''
+    summary: |
+      Determines a multiplier for `Class.Trail.Transparency` that is only
+      visible to the local client.
+    description: |
+      The `LocalTransparencyModifier` property is a multiplier applied to the
+      trail's `Class.Trail.Transparency|Transparency` that is only visible to
+      the local client. It does not replicate from client to server and is
+      useful for when a trail should not render for a specific client.
+
+      Uses the same formula as `Class.BasePart.LocalTransparencyModifier`:
+
+      `1` - ((`1` - `Class.Trail.Transparency|Transparency`) &times; (`1` -
+      `LocalTransparencyModifier`))
+
+      A value of `0` (default) has no effect on the trail's transparency. A
+      value of `1` makes the trail completely invisible to the local client
+      regardless of its `Class.Trail.Transparency|Transparency` value.
     code_samples: []
     type: float
     tags:
@@ -371,6 +386,42 @@ properties:
     code_samples:
       - creating-a-trail-with-a-pawprint-texture
     type: ContentId
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Appearance
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - Basic
+  - name: Trail.TextureContent
+    summary: |
+      The texture displayed on the trail. Supports
+      [asset URIs](../../../projects/assets/index.md#asset-uris).
+    description: |
+      The texture displayed on the trail. Supports
+      [asset URIs](../../../projects/assets/index.md#asset-uris).
+
+      This property is the `Datatype.Content` equivalent of
+      `Class.Trail.Texture|Texture`. Assigning `TextureContent` updates
+      `Texture`.
+
+      If this property is set to `Datatype.Content.none`, the trail displays as
+      a solid plane colored by its `Class.Trail.Color|Color` property. The
+      appearance of the texture can be further modified by
+      `Class.Trail.Color|Color` and `Class.Trail.Transparency|Transparency`.
+      Scaling of the texture is determined by the distance between
+      `Class.Trail.Attachment0|Attachment0` and
+      `Class.Trail.Attachment1|Attachment1`, as well as
+      `Class.Trail.TextureMode|TextureMode`,
+      `Class.Trail.TextureLength|TextureLength`, and
+      `Class.Trail.WidthScale|WidthScale`.
+    code_samples: []
+    type: Content
     tags: []
     deprecation_message: ''
     security:

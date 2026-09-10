@@ -67,6 +67,31 @@ properties:
       can_save: true
     capabilities:
       - AvatarAppearance
+  - name: Pants.PantsTemplateContent
+    summary: |
+      Specifies the asset URI of the pants texture.
+    description: |
+      Specifies the pants texture using an
+      [asset URI](../../../projects/assets/index.md#asset-uris). Although this
+      property uses Datatype.Content, it does not support `Class.EditableImage`
+      objects.
+
+      Setting either `PantsTemplateContent` or `Class.Pants.PantsTemplate`
+      updates the other; both reflect the same texture.
+    code_samples: []
+    type: Content
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Appearance
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - AvatarAppearance
 methods: []
 events: []
 callbacks: []

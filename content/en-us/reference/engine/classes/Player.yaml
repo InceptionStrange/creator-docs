@@ -60,6 +60,31 @@ properties:
       can_save: false
     capabilities:
       - Players
+  - name: Player.AgeChecked
+    summary: |
+      Indicates whether the player has completed an age verification check.
+    description: |
+      This read-only property holds an `Enum.AgeCheckStatus` value indicating
+      whether the player has completed age verification. The default value is
+      `Enum.AgeCheckStatus.Unchecked`. It transitions to
+      `Enum.AgeCheckStatus.Checked` when the player passes age verification
+      through the `Class.Player:PromptAgeCheck()` flow.
+
+      This property is set by the server and cannot be changed by scripts.
+    code_samples: []
+    type: AgeCheckStatus
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: RobloxEngineSecurity
+    thread_safety: ReadSafe
+    category: Data
+    serialization:
+      can_load: false
+      can_save: false
+    capabilities:
+      - Players
   - name: Player.AutoJumpEnabled
     summary: |
       Determines whether the character of a player using a mobile device will
@@ -247,17 +272,8 @@ properties:
       Therefore, in a `Class.LocalScript` under `Class.StarterGui` or
       `Class.StarterPack`, it is advisable to make sure the parent of
       `Character` is not `nil` before using it, for example:
-
-      ```lua
-      local Players = game:GetService("Players")
-      local player = Players.LocalPlayer
-
-      local character = player.Character
-      if not character or character.Parent == nil then
-      	character = player.CharacterAdded:Wait()
-      end
-      ```
-    code_samples: []
+    code_samples:
+      - Player-Character
     type: Model
     tags: []
     deprecation_message: ''
@@ -746,8 +762,11 @@ properties:
     capabilities:
       - Players
   - name: Player.InputLatency
-    summary: ''
-    description: ''
+    summary: |
+      Latency used by the Server Authority netcode system.
+    description: |
+      Latency used by the Server Authority netcode system. This property is not
+      accessible through scripts.
     code_samples: []
     type: int
     tags: []
@@ -772,8 +791,8 @@ properties:
       `en-us`.
 
       See also `Class.LocalizationService.RobloxLocaleId`, the locale ID used
-      for localizing internal content. This will be a different value when
-      Roblox does not yet internally support the local player's set locale.
+      for localizing internal content. This can be a different value when the
+      player's account locale isn't supported for internal content localization.
     code_samples: []
     type: string
     tags:
@@ -969,8 +988,11 @@ properties:
     capabilities:
       - Players
   - name: Player.StepIdOffset
-    summary: ''
-    description: ''
+    summary: |
+      Offset between client and server used by the Server Authority system.
+    description: |
+      Offset between client and server used by the Server Authority system. This
+      property is not accessible through scripts.
     code_samples: []
     type: int
     tags: []
@@ -1040,8 +1062,16 @@ properties:
     capabilities:
       - Players
   - name: Player.ThirdPartyTextChatRestrictionStatus
-    summary: ''
-    description: ''
+    summary: |
+      A read-only value reflecting the player's text-chat restriction status as
+      reported by a third-party platform.
+    description: |
+      This read-only property holds the `Enum.ChatRestrictionStatus` that a
+      third-party platform (for example, a console platform's parental or
+      communication settings) reports for the player's text chat. The default
+      value is `Enum.ChatRestrictionStatus.Unknown`.
+
+      This property cannot be set from scripts.
     code_samples: []
     type: ChatRestrictionStatus
     tags:
@@ -1071,18 +1101,8 @@ properties:
       Use this property as the standard way to identify users in new code.
       Engine APIs that accept user ID parameters also accept `Datatype.User`
       values directly.
-
-      ```lua
-      local Players = game:GetService("Players")
-
-      Players.PlayerAdded:Connect(function(player)
-          local user = player.User
-          print("Domain user ID:", user.Id)
-          print("Domain type:", user.DomainType)
-          print("Domain ID:", user.DomainId)
-      end)
-      ```
-    code_samples: []
+    code_samples:
+      - Player-User
     type: User
     tags: []
     deprecation_message: ''
@@ -1176,6 +1196,34 @@ methods:
     thread_safety: Unsafe
     capabilities:
       - Players
+  - name: Player:ClearCachedAvatarAppearance
+    summary: |
+      Clears the cached avatar appearance for the player, forcing a fresh fetch
+      from the backend on the next respawn.
+    description: |
+      This method clears the cached avatar appearance for the player. The next
+      time `Class.Player:LoadCharacterAsync()|LoadCharacterAsync()` is called
+      with the player's default platform appearance, a fresh version will be
+      fetched from the backend instead of using the cached version.
+
+      Avatar appearance is cached after the first load to improve respawn
+      latency and reduce backend load; most players do not change their avatar
+      mid-session. Call this method when you want to reflect a change the player
+      has made to their avatar outside of the experience, for example to
+      implement a custom refresh button that mirrors the behavior of the default
+      in-experience menu.
+    code_samples: []
+    parameters: []
+    returns:
+      - type: ()
+        summary: ''
+    tags: []
+    deprecation_message: ''
+    security: None
+    thread_safety: Unsafe
+    capabilities:
+      - AvatarAppearance
+      - Players
   - name: Player:ClearCharacterAppearance
     summary: |
       Removes all accessories and other character appearance objects from a
@@ -1199,32 +1247,6 @@ methods:
     thread_safety: Unsafe
     capabilities:
       - Players
-  - name: Player:ClearCachedAvatarAppearance
-    summary: |
-      Clears the cached avatar appearance for the player, forcing a fresh fetch
-      from the backend on the next respawn.
-    description: |
-      This method clears the cached avatar appearance for the player. The next
-      time `Class.Player:LoadCharacterAsync()|LoadCharacterAsync()` is called
-      with the player's default platform appearance, a fresh version will be
-      fetched from the backend instead of using the cached version.
-
-      This is useful when you want to allow a player to reset their character
-      after they have updated their appearance outside of the experience. For
-      example, you can use this to implement a custom reset button that mirrors
-      the cache-busting behavior of the default in-experience menu.
-    code_samples: []
-    parameters: []
-    returns:
-      - type: ()
-        summary: ''
-    tags: []
-    deprecation_message: ''
-    security: None
-    thread_safety: Unsafe
-    capabilities:
-      - AvatarAppearance
-      - Players
   - name: Player:DistanceFromCharacter
     summary: |
       Returns the distance between the character's head and the given
@@ -1239,12 +1261,9 @@ methods:
 
       If you would like to determine the distance between two non-player
       instances or positions, you can use the following:
-
-      ```lua
-      local distance = (position1 - position2).Magnitude
-      ```
     code_samples:
       - Player-DistanceFromCharacter1
+      - Player-DistanceFromCharacter
     parameters:
       - name: point
         type: Vector3
@@ -1261,11 +1280,85 @@ methods:
     thread_safety: Unsafe
     capabilities:
       - Players
+  - name: Player:GetCameraState
+    summary: |
+      Returns a dictionary containing the player's current camera state.
+    description: |
+      Returns a dictionary containing information about the player's current
+      camera state. This method requires
+      [Server Authority](../../../projects/server-authority/) to be enabled in
+      the game. The dictionary contains the following fields:
+
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Value Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>CFrame</code></td>
+            <td><code>Datatype.CFrame</code></td>
+            <td>The current <code>Class.Camera.CFrame|CFrame</code> of the player's camera.</td>
+          </tr>
+          <tr>
+            <td><code>FieldOfView</code></td>
+            <td>number</td>
+            <td>The current <code>Class.Camera.FieldOfView|FieldOfView</code> of the player's camera in degrees.</td>
+          </tr>
+          <tr>
+            <td><code>ViewportSize</code></td>
+            <td><code>Datatype.Vector2</code></td>
+            <td>The current <code>Class.Camera.ViewportSize|ViewportSize</code> of the player's camera in pixels.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      On the client, this method can only be called on the
+      `Class.Players.LocalPlayer`. On the server, it can be called on any
+      `Class.Player` object to retrieve their replicated camera state. Typical
+      server-side uses include aim and look-direction logic in
+      server-authoritative gameplay, and camera-aware content streaming.
+
+      The `CFrame` field is replicated as part of the player's input stream,
+      meaning it is synchronized with other inputs such as movement and actions.
+      The `FieldOfView` and `ViewportSize` fields use standard client-to-server
+      property replication which is not synchronized with input and may update
+      at a different cadence.
+    code_samples:
+      - Player-GetCameraState
+    parameters: []
+    returns:
+      - type: CameraState
+        summary: |
+          A dictionary containing `Class.Camera.CFrame|CFrame`,
+          `Class.Camera.FieldOfView|FieldOfView`, and
+          `Class.Camera.ViewportSize|ViewportSize` values.
+    tags:
+      - CustomLuaState
+    deprecation_message: ''
+    security: None
+    thread_safety: Safe
+    capabilities:
+      - Players
+    simulationAccess: true
   - name: Player:GetFriendsOnline
     summary: |
-      Returns a dictionary of online friends. Returns the product information of
-      an asset using its asset ID.
-    description: ''
+      Returns a dictionary of online friends.
+    description: |
+      This method returns an array describing the
+      `Class.Players.LocalPlayer|LocalPlayer`'s currently online friends, up to
+      a maximum of `maxFriends` entries. It can only be called on the
+      `Class.Players.LocalPlayer`; calling it on any other `Class.Player` raises
+      an error. No more than 200 friends are ever returned, and requesting more
+      logs a warning.
+
+      This method has been superseded by
+      `Class.Player:GetFriendsOnlineAsync()|GetFriendsOnlineAsync()`, which
+      shares the same behavior and return format. See that method for the full
+      description of the returned dictionary array.
     code_samples:
       - how-to-get-a-list-of-online-friends
     parameters:
@@ -1375,12 +1468,19 @@ methods:
       - Players
       - Social
   - name: Player:GetFriendsWhoPlayedAsync
-    summary: ''
+    summary: |
+      Returns the user IDs of friends who have previously joined this
+      experience.
     description: |
       Returns an array of user IDs of any friends who have previously played
       this game. For example, if a player has had two friends play the game, the
       method might return `{1111111111, 2222222222}`. If no friends have played
       this game, the method returns an empty array (`{}`).
+
+      This is particularly useful for friend leaderboards: by narrowing
+      DataStore lookups to only friends who have actually played the experience,
+      you avoid fetching scores for the entire friends list and reduce the risk
+      of hitting DataStore rate limits.
     code_samples: []
     parameters: []
     returns:
@@ -1515,7 +1615,8 @@ methods:
     parameters: []
     returns:
       - type: Mouse
-        summary: ''
+        summary: |
+          The player's `Class.Mouse` instance.
     tags: []
     deprecation_message: ''
     security: None
@@ -1541,7 +1642,8 @@ methods:
     parameters: []
     returns:
       - type: float
-        summary: ''
+        summary: |
+          The round-trip network latency of the player in seconds.
     tags: []
     deprecation_message: ''
     security: None
@@ -1568,7 +1670,9 @@ methods:
     tags:
       - Yields
       - Deprecated
-    deprecation_message: ''
+    deprecation_message: |
+      This method has been superseded by
+      `Class.Player:GetRankInGroupAsync()|GetRankInGroupAsync()`.
     security: None
     thread_safety: Unsafe
     capabilities:
@@ -1610,10 +1714,9 @@ methods:
       - Yields
       - Deprecated
     deprecation_message: |
-      This method only returns a single role rank and may produce arbitrary
-      results when a user holds multiple roles. Use
-      `Class.GroupService:GetRolesInGroupAsync()` instead, which returns all
-      roles.
+      This method returns only the rank value of the member's highest public
+      role. Use `Class.GroupService:GetRolesInGroupAsync()` instead, which
+      returns all public roles.
     security: None
     thread_safety: Unsafe
     capabilities:
@@ -1686,10 +1789,9 @@ methods:
       - Yields
       - Deprecated
     deprecation_message: |
-      This method only returns a single role name and may produce arbitrary
-      results when a user holds multiple roles. Use
+      This method returns only the member's highest public role. Use
       `Class.GroupService:GetRolesInGroupAsync()` instead, which returns all
-      roles.
+      public roles.
     security: None
     thread_safety: Unsafe
     capabilities:
@@ -1733,10 +1835,13 @@ methods:
       - name: userId
         type: User
         default:
-        summary: ''
+        summary: |
+          The `Class.Player.UserId` of the user to check friendship with.
     returns:
       - type: boolean
-        summary: ''
+        summary: |
+          A boolean indicating whether the player is friends with the specified
+          user.
     tags:
       - Yields
       - Deprecated
@@ -1750,9 +1855,17 @@ methods:
   - name: Player:IsFriendsWith
     summary: |
       Checks whether a player is a friend of the user with the given
-      `Class.Player.UserId`.
-    description: ''
-    code_samples: []
+    description: |
+      This method sends a request to Roblox asking whether the player is a
+      friend of the user with the given `Class.Player.UserId|UserId`. Results
+      are cached, so multiple calls on the same player with the same `userId`
+      may not reflect the most up-to-date friendship status.
+
+      This method has been superseded by
+      `Class.Player:IsFriendsWithAsync()|IsFriendsWithAsync()`, which shares the
+      same behavior and should be used for new work.
+    code_samples:
+      - Player-IsFriendsWith1
     parameters:
       - name: userId
         type: User
@@ -1829,7 +1942,14 @@ methods:
   - name: Player:IsInGroup
     summary: |
       Checks whether a player is a member of a group with the given ID.
-    description: ''
+    description: |
+      This method sends a request to Roblox asking whether the player is a
+      member of the group with the given ID.
+
+      This method has been superseded by
+      `Class.Player:IsInGroupAsync()|IsInGroupAsync()`, which shares the same
+      behavior (including its per-peer result caching) and should be used for
+      new work.
     code_samples: []
     parameters:
       - name: groupId
@@ -1892,11 +2012,15 @@ methods:
       - Groups
   - name: Player:IsVerified
     summary: |
-      Returns whether the player is verified with concrete, real-world signals.
+      Returns whether the player meets the specified verification level.
     description: |
-      Returns a boolean value indicating that player's verification status. When
-      `true`, the player is verified. Verification includes, but isn't limited
-      to, non-VOIP phone number or government ID verification.
+      Returns a boolean value indicating whether the player meets the specified
+      `Enum.VerifiedLevel`. When `level` is omitted, this method defaults to
+      `Enum.VerifiedLevel.Low`. Note that this is a distinct check from the
+      verified badge.
+
+      Verification uses concrete, real-world signals, including, but not limited
+      to, phone number or government ID verification.
 
       When implementing `IsVerified`, exercise caution to ensure that the
       implementation does not inadvertently block all unverified users.
@@ -1906,11 +2030,17 @@ methods:
       return `false` in Studio.
     code_samples:
       - Player-IsVerified
-    parameters: []
+    parameters:
+      - name: level
+        type: VerifiedLevel
+        default: Low
+        summary: |
+          The verification level to check. Defaults to `Enum.VerifiedLevel.Low`.
     returns:
       - type: boolean
         summary: |
-          A boolean indicating whether the player is verified.
+          A boolean indicating whether the player meets the specified
+          verification level.
     tags: []
     deprecation_message: ''
     security: None
@@ -1964,10 +2094,12 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key under which the boolean was previously saved.
     returns:
       - type: boolean
-        summary: ''
+        summary: |
+          The saved boolean value, or `false` if the key does not exist.
     tags:
       - Deprecated
     deprecation_message: |
@@ -2004,7 +2136,15 @@ methods:
     summary: |
       Creates a new character for the player, removing the old one. Also clears
       the player's `Class.Backpack` and `Class.PlayerGui`.
-    description: ''
+    description: |
+      This method creates a new `Class.Player.Character|Character` for the
+      player, removing the old one, and also clears the player's
+      `Class.Backpack` and `Class.PlayerGui`. It can only be called on the
+      server.
+
+      This method has been superseded by
+      `Class.Player:LoadCharacterAsync()|LoadCharacterAsync()`, which shares the
+      same character-loading behavior and should be used for new work.
     code_samples:
       - Player-LoadCharacter1
     parameters: []
@@ -2060,7 +2200,8 @@ methods:
         summary: ''
     tags:
       - Deprecated
-    deprecation_message: ''
+    deprecation_message: |
+      This method is deprecated. Do not use it for new work.
     security: None
     thread_safety: Unsafe
     capabilities:
@@ -2123,7 +2264,16 @@ methods:
     summary: |
       Spawns a player character with everything equipped in the passed in
       `Class.HumanoidDescription`.
-    description: ''
+    description: |
+      This method spawns a player character with everything equipped in the
+      passed-in `Class.HumanoidDescription`, such as body parts, colors, body
+      scaling, accessories, clothing, and animations. A `nil` description raises
+      an error, and a description that contains duplicate costume assets or
+      duplicate body parts logs a warning before the character loads.
+
+      This method has been superseded by
+      `Class.Player:LoadCharacterWithHumanoidDescriptionAsync()|LoadCharacterWithHumanoidDescriptionAsync()`,
+      which shares the same behavior and should be used for new work.
     code_samples:
       - spawn-characters-with-humanoiddescription
     parameters:
@@ -2208,10 +2358,12 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key under which the instance was previously saved.
     returns:
       - type: Instance
-        summary: ''
+        summary: |
+          The saved `Class.Instance`, or `nil` if the key does not exist.
     tags:
       - Deprecated
     deprecation_message: |
@@ -2258,10 +2410,12 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key under which the number was previously saved.
     returns:
       - type: double
-        summary: ''
+        summary: |
+          The saved number value, or `0` if the key does not exist.
     tags:
       - Deprecated
     deprecation_message: |
@@ -2306,10 +2460,12 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key under which the string was previously saved.
     returns:
       - type: string
-        summary: ''
+        summary: |
+          The saved string value, or an empty string if the key does not exist.
     tags:
       - Deprecated
     deprecation_message: |
@@ -2369,6 +2525,31 @@ methods:
         summary: |
           A boolean indicating whether the player should move relative to the
           player's camera.
+    returns:
+      - type: ()
+        summary: ''
+    tags: []
+    deprecation_message: ''
+    security: None
+    thread_safety: Unsafe
+    capabilities:
+      - Players
+  - name: Player:PromptAgeCheck
+    summary: |
+      Prompts the player to complete age verification.
+    description: |
+      This method requests that the player be shown the age verification prompt.
+      When called from a `Class.LocalScript`, it must target the
+      `Class.Players.LocalPlayer`; when called from a server `Class.Script`, it
+      can target any `Class.Player`. Repeated calls for the same player within a
+      short cooldown window are silently ignored.
+
+      On success, the `PromptAgeCheckRequested` event fires on the target
+      player's client. When the player passes verification, their
+      `Class.Player.AgeChecked` property transitions to
+      `Enum.AgeCheckStatus.Checked`.
+    code_samples: []
+    parameters: []
     returns:
       - type: ()
         summary: ''
@@ -2463,11 +2644,13 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key to associate with the saved boolean value.
       - name: value
         type: boolean
         default:
-        summary: ''
+        summary: |
+          The boolean value to save.
     returns:
       - type: ()
         summary: ''
@@ -2520,11 +2703,13 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key to associate with the saved instance.
       - name: value
         type: Instance
         default:
-        summary: ''
+        summary: |
+          The `Class.Instance` to save.
     returns:
       - type: ()
         summary: ''
@@ -2577,11 +2762,13 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key to associate with the saved number value.
       - name: value
         type: double
         default:
-        summary: ''
+        summary: |
+          The number value to save.
     returns:
       - type: ()
         summary: ''
@@ -2633,11 +2820,13 @@ methods:
       - name: key
         type: string
         default:
-        summary: ''
+        summary: |
+          The string key to associate with the saved string value.
       - name: value
         type: string
         default:
-        summary: ''
+        summary: |
+          The string value to save.
     returns:
       - type: ()
         summary: ''
@@ -2748,7 +2937,8 @@ methods:
     parameters: []
     returns:
       - type: boolean
-        summary: ''
+        summary: |
+          A boolean indicating whether the player's data loaded successfully.
     tags:
       - Yields
       - Deprecated

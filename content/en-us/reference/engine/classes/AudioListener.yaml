@@ -131,6 +131,56 @@ properties:
       can_save: true
     capabilities:
       - Audio
+  - name: AudioListener.PositionInstance
+    summary: |
+      The `Class.Instance` whose position and orientation is used as the
+      listener's position if `Class.AudioListener.PositionType|PositionType` is
+      set to `Enum.ListenerPositionType.Instance`.
+    description: |
+      This property is only functional when
+      `Class.AudioListener.PositionType|PositionType` is set to
+      `Enum.ListenerPositionType.Instance`. In that scenario, this property
+      determines which `Class.Instance` will be used to determine the position
+      of the `Class.AudioListener` when hearing spatial audio from
+      `Class.AudioEmitter|AudioEmitters`.
+
+      If set to an instance without a position or `nil`, the
+      `Class.AudioListener` will not hear anything.
+    code_samples: []
+    type: Instance
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Listening
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - Audio
+  - name: AudioListener.PositionType
+    summary: |
+      Determines how the `Class.AudioListener` determines its 3D location.
+    description: |
+      The method by which the `Class.AudioListener` determines its 3D location
+      (the point from which any nearby `Class.AudioEmitter|AudioEmitters` can be
+      heard). Defaults to `Enum.ListenerPositionType.Parent`.
+    code_samples: []
+    type: ListenerPositionType
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Listening
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - Audio
   - name: AudioListener.SimulationFidelity
     summary: |
       Controls how detailed the audio simulation should be for this
@@ -188,16 +238,22 @@ methods:
     description: |
       Calculates how audible an `Class.AudioEmitter` is for this listener. The
       resulting volume, ranging from `0` to `1`, accounts for distance and angle
-      attenuation on both the emitter and listener.
+      attenuation on both the emitter and listener. Use this to drive game logic
+      that depends on perceived loudness, such as proximity UI indicators or
+      mechanics that scale with how clearly a sound source is heard.
     code_samples: []
     parameters:
       - name: emitter
         type: AudioEmitter
         default:
-        summary: ''
+        summary: |
+          The `Class.AudioEmitter` whose audibility should be calculated
+          relative to this listener.
     returns:
       - type: float
-        summary: ''
+        summary: |
+          A number between 0 and 1 representing the combined volume after
+          distance and angle attenuation from both the emitter and listener.
     tags: []
     deprecation_message: ''
     security: None
@@ -241,7 +297,9 @@ methods:
     parameters: []
     returns:
       - type: Dictionary
-        summary: ''
+        summary: |
+          A table mapping distance keys to volume values, or an empty table if
+          the default curve is being used.
     tags:
       - CustomLuaState
     deprecation_message: ''
@@ -282,7 +340,10 @@ methods:
     parameters: []
     returns:
       - type: List<AudioEmitter>
-        summary: ''
+        summary: |
+          An array of `Class.AudioEmitter|AudioEmitters` that share an
+          `Class.AudioListener.AudioInteractionGroup|AudioInteractionGroup` with
+          this listener.
     tags: []
     deprecation_message: ''
     security: None
@@ -346,7 +407,9 @@ methods:
       - name: curve
         type: Dictionary
         default:
-        summary: ''
+        summary: |
+          A table mapping angle keys (0 to 180) to volume values (0 to 1), or an
+          empty/nil table to use the default constant volume of 1.
     returns:
       - type: ()
         summary: ''
@@ -364,7 +427,11 @@ methods:
     description: |
       Sets a volume-over-distance curve that affects how loudly the
       `Class.AudioListener` will hear any `Class.AudioEmitter|AudioEmitters`,
-      based on the distance between them.
+      based on the distance between them. This is useful when you want a
+      particular listener to have an extended or shortened hearing range — for
+      example, a character with enhanced hearing — without modifying the
+      emitting `Class.AudioEmitter` or separating emitters and listeners into
+      different interaction groups.
 
       The curve is represented by a table mapping distance keys to volume
       values. Keys are expected to be unique numbers greater than or equal to 0,
@@ -391,7 +458,10 @@ methods:
       - name: curve
         type: Dictionary
         default:
-        summary: ''
+        summary: |
+          A table mapping distance keys (greater than or equal to 0) to volume
+          values (0 to 1), or an empty/nil table to use the default constant
+          volume of 1 everywhere.
     returns:
       - type: ()
         summary: ''

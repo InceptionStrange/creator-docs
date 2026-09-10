@@ -5,7 +5,7 @@ description: Explains how to configure and assemble reusable assets that seamles
 
 A **modular environment** is a 3D space made up of reusable assets that seamlessly snap together in numerous configurations to create variations of a larger complex object. For example, Studio's [Modern City template](https://www.roblox.com/games/13165709401/Modern-City) is a modular environment that utilizes reusable walls, windows, and doors from both a [modular building kit](https://create.roblox.com/store/asset/13168370735/Modular-Building-Kit-Modern-City) and [materials pack](https://create.roblox.com/store/asset/13168345645/Modern-City-Materials-Pack) to create building variations that comprise an entire downtown area.
 
-Assembling modular environments is useful because it means you don't need to manually create each individual asset in your experience. Instead, you only need to create a few assets that you can reuse and customize to create variety throughout the scene. Not only does this process significantly speed up how quickly you can build large environments, but it can also help each distinct object feel cohesive within your experience.
+Assembling modular environments is useful because it means you don't need to manually create each individual asset in your game. Instead, you only need to create a few assets that you can reuse and customize to create variety throughout the scene. Not only does this process significantly speed up how quickly you can build large environments, but it can also help each distinct object feel cohesive within your game.
 
 <GridContainer numColumns="2">
   <figure>
@@ -82,7 +82,7 @@ When you start to assemble modular assets into a larger complex object, it's hel
 To snap modular assets together to create a building using the sample modular building kit:
 
 1. Select one of the bottom modular meshes. This example uses a door.
-1. In the viewport, position this mesh in a location within your experience where you want to create a building.
+1. In the viewport, position this mesh in a location within your game where you want to create a building.
 
    <img src="../../../assets/tutorials/assembling-modular-environments/Combining-Core-Mesh.jpg" width="50%"/>
 
@@ -126,7 +126,7 @@ To use alternative custom materials for wall meshes:
 
    <img src="../../../assets/tutorials/assembling-modular-environments/Customizing-NewCustomMaterial.jpg" width="50%"/>
 
-1. **(Optional)** To further customize the new custom material, select a new tint color.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> To further customize the new custom material, select a new tint color.
 
    1. In the **Properties** window, click either **BrickColor** or **Color**. The hexagon map or colors popup display, respectively.
    1. Select a new color. All active wall meshes update their tint color in the viewport.
@@ -135,7 +135,7 @@ To use alternative custom materials for wall meshes:
 
 ### Use SurfaceAppearance objects
 
-Every mesh with a trim in the sample modular building kit includes a `Class.SurfaceAppearance` object that utilizes custom textures to make each building's adornments feel more realistic. To make each building in your experience feel unique, you can swap any `Class.SurfaceAppearance` object for another in the **SurfaceAppearance** folder in the workspace, including materials like concrete, plaster, and wood, then set a distinct tint color to the trim for additional variety.
+Every mesh with a trim in the sample modular building kit includes a `Class.SurfaceAppearance` object that utilizes custom textures to make each building's adornments feel more realistic. To make each building in your game feel unique, you can swap any `Class.SurfaceAppearance` object for another in the **SurfaceAppearance** folder in the workspace, including materials like concrete, plaster, and wood, then set a distinct tint color to the trim for additional variety.
 
 To swap `Class.SurfaceAppearance` objects for trim meshes:
 
@@ -170,7 +170,7 @@ To swap `Class.SurfaceAppearance` objects for trim meshes:
 
    <img src="../../../assets/tutorials/assembling-modular-environments/SurfaceAppearance-Final.jpg" width="50%"/>
 
-1. **(Optional)** To further customize the new `Class.SurfaceAppearance` object, select a new tint color.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> To further customize the new `Class.SurfaceAppearance` object, select a new tint color.
 
    1. In the viewport, hold down <kbd>Alt</kbd><kbd>Shift</kbd> (<kbd>⌥</kbd><kbd>Shift</kbd>) then click on any mesh of your building with a trim.
    1. In the **Properties** window, click either **BrickColor** or **Color**. The hexagon map or colors popup display, respectively.

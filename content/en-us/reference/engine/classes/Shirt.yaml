@@ -66,6 +66,32 @@ properties:
       can_save: true
     capabilities:
       - AvatarAppearance
+  - name: Shirt.ShirtTemplateContent
+    summary: |
+      Specifies the asset URI of the shirt texture.
+    description: |
+      Specifies the shirt texture using an
+      [asset URI](../../../projects/assets/index.md#asset-uris). Although this
+      property uses Datatype.Content, it does not support `Class.EditableImage`
+      objects.
+
+      Setting `ShirtTemplateContent` updates `Class.Shirt.ShirtTemplate`;
+      likewise, setting `ShirtTemplate` updates this property. Both share the
+      same clothing texture data.
+    code_samples: []
+    type: Content
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Appearance
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - AvatarAppearance
 methods: []
 events: []
 callbacks: []

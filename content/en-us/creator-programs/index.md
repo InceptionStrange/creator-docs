@@ -12,6 +12,28 @@ Roblox offers various programs for creators on the platform to provide additiona
 <Card variant="filled" style={{height: "100%"}}>
 <CardContent>
 
+<h4>Android TV Pilot Program</h4>
+<figure>
+<Chip
+        color="success"
+        label="Status: Open"
+        size="medium"
+        variant="filled"/>
+</figure>
+<Typography variant='body1'>Helps a curated cohort of creators optimize or create experiences for TV remote play on Android TV</Typography>
+</CardContent>
+<CardActions>
+<Button href="/creator-programs/android-tv-pilot" variant="contained" color="secondary" size='large'>Learn More</Button>
+</CardActions>
+</Card>
+</Grid>
+</Grid>
+
+<Grid item container Medium={12} Large={4} direction="row" style={{gap: 24, marginBottom: 12}}>
+<Grid item container wrap="nowrap" direction="column">
+<Card variant="filled" style={{height: "100%"}}>
+<CardContent>
+
 <h4>Brand Developer Directory and Roblox Partner Program</h4>
 <figure>
 <Chip
@@ -108,7 +130,7 @@ Roblox offers various programs for creators on the platform to provide additiona
         size="medium"
         variant="filled"/>
 </figure>
-<Typography variant='body1'>Rewards creators for building engaging experiences on Roblox</Typography>
+<Typography variant='body1'>Rewards creators for building engaging games on Roblox</Typography>
 </CardContent>
 <CardActions>
 <Button href="/creator-rewards" variant="contained" color="secondary" size='large'>Learn More</Button>
@@ -152,7 +174,7 @@ Roblox offers various programs for creators on the platform to provide additiona
         size="medium"
         variant="filled"/>
 </figure>
-<Typography variant='body1'>A data-driven program designed to reward developers for reaching significant milestones in their experiences</Typography>
+<Typography variant='body1'>A data-driven program designed to reward developers for reaching significant milestones in their games</Typography>
 </CardContent>
 <CardActions>
 <Button href="/creator-programs/developer-awards" variant="contained" color="secondary" size='large'>Learn More</Button>
@@ -169,8 +191,8 @@ Roblox offers various programs for creators on the platform to provide additiona
 <h4>Inspire</h4>
 <figure>
 <Chip
-        color="error"
-        label="Status: Closed"
+        color="success"
+        label="Status: Open"
         size="medium"
         variant="filled"/>
 </figure>
@@ -196,7 +218,7 @@ Roblox offers various programs for creators on the platform to provide additiona
         size="medium"
         variant="filled"/>
 </figure>
-<Typography variant='body1'>Highlights experiences that let users learn educational topics in an engaging way<br /><br /></Typography>
+<Typography variant='body1'>Highlights games that let users learn educational topics in an engaging way<br /><br /></Typography>
 </CardContent>
 <CardActions>
 <Button href="/creator-programs/learn-explore-sort" variant="contained" color="secondary" size='large'>Learn More</Button>
@@ -284,7 +306,7 @@ Roblox offers various programs for creators on the platform to provide additiona
         size="medium"
         variant="filled"/>
 </figure>
-<Typography variant='body1'>Roblox Innovation Awards is an annual event celebrating the most innovative creators, video stars, and experiences<br /><br /></Typography>
+<Typography variant='body1'>Roblox Innovation Awards is an annual event celebrating the most innovative creators, video stars, and games<br /><br /></Typography>
 </CardContent>
 <CardActions>
 <Button href="/creator-programs/innovation-awards" variant="contained" color="secondary" size='large'>Learn More</Button>

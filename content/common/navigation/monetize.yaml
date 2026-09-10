@@ -10,6 +10,10 @@ navigation:
         section:
           - title: U.S. 18+ exchange rate
             path: /production/monetization/18-plus-devex-rate
+          - title: DevEx Portal
+            path: /production/monetization/devex-portal
+          - title: Tax information
+            path: /production/monetization/tax-information
       - title: Creator Rewards
         path: /creator-rewards
       - title: Roblox Plus
@@ -26,14 +30,21 @@ navigation:
         path: /production/monetization/developer-products
       - title: Commerce products
         path: /production/monetization/commerce-products
+      - title: Shop
+        path: /production/monetization/shop        
       - title: Paid access in Robux
         path: /production/monetization/paid-access-robux
       - title: Paid access in local currency
         path: /production/monetization/paid-access-local-currency
-      - title: Price optimization
-        path: /production/monetization/price-optimization
-      - title: Regional Pricing
-        path: /production/monetization/regional-pricing
+      - title: Managed pricing
+        path: /production/monetization/managed-pricing
+        section:
+          - title: Overview
+            path: /production/monetization/managed-pricing
+          - title: Price optimization
+            path: /production/monetization/price-optimization
+          - title: Regional pricing
+            path: /production/monetization/regional-pricing
 
   - title: License
     path: /ip-licensing/

@@ -13,6 +13,8 @@ navigation:
     path: /production/analytics/error-report
   - title: Crashes
     path: /production/analytics/crashes
+  - title: Alerts
+    path: /production/analytics/alerts
 
   - heading: Adjust and experiment
   - title: Configs
@@ -23,6 +25,8 @@ navigation:
   - heading: Dashboards
   - title: Overview
     path: /production/analytics/analytics-dashboard
+  - title: Custom dashboards
+    path: /production/analytics/custom-dashboards
   - title: Performance
     path: /production/analytics/performance
   - title: Retention

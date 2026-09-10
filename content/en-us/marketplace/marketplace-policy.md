@@ -9,84 +9,31 @@ If you are ready to sell an item and the item meets the requirements below, see 
 
 ## Creator requirements
 
-To upload, publish, and maintain existing content on-sale, Roblox requires users and groups to have [ID verification](https://en.help.roblox.com/hc/en-us/articles/4407282410644), and/or a [Roblox Plus](../production/monetization/roblox-plus.md) or [Premium membership](https://www.roblox.com/premium/membership), depending on if the asset is a 2D or 3D item. If you're a Premium user, you must have an active Premium 1000/2200 membership to keep your 3D Marketplace items on sale after uploading and publishing.
+To upload, publish, and keep existing content on-sale, Roblox requires users and groups to have [government ID verification](../production/publishing/account-verification.md#verify-through-government-id) or a linked [parental account](https://about.roblox.com/parental-controls). In addition, to publish and keep existing content on-sale, Roblox requires a [Roblox Plus](../production/monetization/roblox-plus.md) or [Premium 1000/2200](https://en.help.roblox.com/hc/en-us/articles/360024256251-Roblox-Premium-Membership) membership.
 
-See the following breakdown of the user and group requirements:
+See the following requirements for an individual creator or group:
 
 <table>
 <thead>
   <tr>
-    <th>For 2D items:</th>
-    <th>Creator is able to</th>
-    <th width="40%">Requirements</th>
+    <th>**Creator or group is able to:**</th>
+    <th>**Requirements**</th>
   </tr>
 </thead>
 <tbody>
   <tr>
-    <td rowspan="3">Individually</td>
-    <td>Upload content from Creator Dashboard</td>
-    <td>10 Robux upload fee</td>
+    <td>Upload content from Studio or Creator Dashboard</td>
+    <td><ul><li>ID verification or linked parental account</li><li>80 Robux upload fee</li></ul></td>
   </tr>
   <tr>
     <td>Publish content to the Marketplace</td>
-    <td><ul><li>Roblox Plus or Premium 1000/2200</li><li>10 Robux publishing advance</li></ul></td>
+    <td><ul><li>ID verification or linked parental account</li><li>2-step verification</li><li>10-2500 Robux publishing advance</li><li>Individual creator or group owner needs Roblox Plus or Premium 1000/2200</li></ul></td>
   </tr>
   <tr>
     <td>Keep existing content on-sale</td>
-    <td>Roblox Plus or Premium 1000/2200</td>
-  </tr>
-  <tr>
-    <td rowspan="3">As a Group</td>
-    <td>Upload content from Creator Dashboard</td>
-    <td>10 Robux upload fee</td>
-  </tr>
-  <tr>
-    <td>Publish content to the Marketplace</td>
-    <td>Publishing user needs:<br /><br /><ul><li>Roblox Plus or Premium 1000/2200</li><li>10 Robux publishing advance</li></ul><br /><br />Group owner needs Roblox Plus or Premium 1000/2200</td>
-  </tr>
-  <tr>
-    <td>Keep existing content on-sale</td>
-    <td>Group owner needs Roblox Plus or Premium 1000/2200</td>
+    <td>Individual creator or group owner needs Roblox Plus or Premium 1000/2200</td>
   </tr>
   </tbody>
-</table>
-
-<table>
-<thead>
-  <tr>
-    <th>For 3D items:</th>
-    <th>Creator is able to</th>
-    <th width="40%">Requirements</th>
-  </tr>
-</thead>
-<tbody>
-  <tr>
-    <td rowspan="3">Individually</td>
-    <td>Upload content from Studio</td>
-    <td><ul><li>ID verification</li><li>300 Robux upload fee</li></ul></td>
-  </tr>
-  <tr>
-    <td>Publish content to the Marketplace</td>
-    <td><ul><li>ID verification</li><li>Roblox Plus or Premium 1000/2200</li><li>600-2500 Robux publishing advance</li></ul></td>
-  </tr>
-  <tr>
-    <td>Keep existing content on-sale</td>
-    <td><ul><li>ID verification</li><li>Roblox Plus or Premium 1000/2200</li></ul></td>
-  </tr>
-  <tr>
-    <td rowspan="3">As a Group</td>
-    <td>Upload content from Studio</td>
-    <td>Uploading user needs:<br /><br /><ul><li>ID verification</li><li>Roblox Plus or Premium 1000/2200</li><li>300 Robux upload fee</li></ul></td>
-  </tr>
-  <tr>
-    <td>Publish content to the Marketplace</td>
-    <td>Publishing user needs:<br /><br /><ul><li>ID verification</li><li>Roblox Plus or Premium 1000/2200</li><li>600-2500 Robux publishing advance</li></ul><br /><br />Group owner needs Roblox Plus or Premium 1000/2200</td>
-  </tr>
-  <tr>
-    <td>Keep existing content on-sale</td>
-    <td>Group owner needs Roblox Plus or Premium 1000/2200</td>
-  </tr>
-</tbody>
 </table>
 
 ## General creation guidelines
@@ -103,10 +50,10 @@ Whether or not you are the original creator of the asset, you must ensure that y
   - Creators who copy another creator's item or Roblox's item.
 - Only sell items that you have permission to sell. If you are not the original creator or owner of the IP, you must have permission from the IP owner to sell their content or inspired content.
 - Be especially careful when submitting items in or near the mouth or waist of the avatar. Make sure to frequently test your assets on multiple types of characters to avoid design issues.
-- Do not create items that intentionally disrupt a user's experience, such as:
+- Do not create items that intentionally disrupt a user's game, such as:
   - Obscuring the majority of the user's avatar.
-  - Obscuring the user's in-experience UI.
-  - Obscuring other users' avatars or in-experience view.
+  - Obscuring the user's in-game UI.
+  - Obscuring other users' avatars or in-game view.
   - Making a user's avatar disappear (completely or partially).
 - Do not create items that depend on issues or glitches on the Roblox platform.
 - Do not include excessive text on items.
@@ -114,7 +61,7 @@ Whether or not you are the original creator of the asset, you must ensure that y
 
 ## Accessory and clothing guidelines
 
-Submissions of accessory and clothing items to the Marketplace must follow additional guidelines, along with the [general guidelines](#general-creation-guidelines), [Community Standards](https://en.help.roblox.com/hc/en-us/articles/203313410-Roblox-Community-Standards), and respective technical specifications for [Accessory](../art/accessories/specifications.md) or [Clothing](../art/accessories/clothing-specifications.md) items.
+Submissions of accessory and clothing items to the Marketplace must follow additional guidelines, along with the [general guidelines](#general-creation-guidelines), [Community Standards](https://en.help.roblox.com/hc/en-us/articles/203313410-Roblox-Community-Standards), and respective technical specifications for [rigid accessories](../avatar/rigid-accessories/specifications.md) or [layered accessories](../avatar/layered-accessories/specifications.md) items.
 
 ### Miscategorization
 
@@ -137,7 +84,7 @@ Additional categorization information:
 
 ## Avatar body guidelines
 
-Submissions of avatar bodies to the Marketplace must follow additional guidelines, along with the [general guidelines](#general-creation-guidelines), [Community Standards](https://en.help.roblox.com/hc/en-us/articles/203313410-Roblox-Community-Standards), and [Avatar technical specifications](../art/characters/specifications.md).
+Submissions of avatar bodies to the Marketplace must follow additional guidelines, along with the [general guidelines](#general-creation-guidelines), [Community Standards](https://en.help.roblox.com/hc/en-us/articles/203313410-Roblox-Community-Standards), and [Avatar technical specifications](../avatar/character-bodies/specifications.md).
 
 ### Body part requirements
 
@@ -151,7 +98,7 @@ Each body can only include the following parts, and cannot have additional appen
   - 1 left leg, comprising of an upper leg, a lower leg, and a foot.
 - Heads
   - Head model
-    - All heads must be [caged](../art/characters/head-specifications.md#head-cage)
+    - All heads must be [caged](../avatar/dynamic-heads/specifications.md#head-cage)
       - The cage mesh must envelope the head model
     - All heads must have one mouth region
       - The mouth region on the head is determined by the projection of the cage mouth region onto the head model
@@ -162,13 +109,13 @@ Each body can only include the following parts, and cannot have additional appen
       - A one-eyed head has both the left and right eye regions on the cage projected onto the same region on the head model
       - The cage eye region is defined by the cage vertices forming the outline of the cage eyes
       - The head eye region does not need to have an eyeball or eyelid; it must deform in response to eye blink animations
-    - All heads must include the [17 minimum FACS controls](../art/characters/head-specifications.md#facs-animation)
+    - All heads must include the [17 minimum FACS controls](../avatar/dynamic-heads/specifications.md#facs-animation)
       - Specifically we require the head to deform in response to happiness and sadness expressions
       - It's recommended to include more poses to increase facial animation quality and fidelity
   - Eyebrows (optional)
   - Eyelashes (optional)
 
-Avatars must adhere to the [appropriate size requirements](../art/characters/specifications.md#body-scale) and cannot have any invisible or non-rendering body parts. See [Avatar character specifications](../art/characters/specifications.md) for more information.
+Avatars must adhere to the [appropriate size requirements](../avatar/character-bodies/specifications.md#body-scale) and cannot have any invisible or non-rendering body parts. See [Avatar character specifications](../avatar/character-bodies/specifications.md) for more information.
 
 Roblox moderates avatars that do not follow the body part requirements under the [Misusing Roblox Systems Community Standard](https://en.help.roblox.com/hc/en-us/articles/203313410-Roblox-Community-Rules).
 
@@ -192,8 +139,8 @@ Modesty layers are **required** if your avatar character:
 <table>
 <thead>
   <tr>
-    <th><center>Requires modesty layer</center></th>
-    <th><center>Does not require modesty layer</center></th>
+    <th><center>**Requires modesty layer**</center></th>
+    <th><center>**Does not require modesty layer**</center></th>
   </tr>
 </thead>
 <tbody>
@@ -222,8 +169,8 @@ Modesty layers are **required** if your avatar character:
 <table>
 <thead>
   <tr>
-    <th><center>Requires modesty layer</center></th>
-    <th><center>Does not require modesty layer</center></th>
+    <th><center>**Requires modesty layer**</center></th>
+    <th><center>**Does not require modesty layer**</center></th>
   </tr>
 </thead>
 <tbody>
@@ -563,8 +510,8 @@ Your avatar head cannot include any additional color, shading, or outlining not 
 <table>
 <thead>
   <tr>
-    <th><center>Facial shadowing and detail are permitted</center></th>
-    <th><center>Face painting and multi-color features are not permitted</center></th>
+    <th><center>**Facial shadowing and detail are permitted**</center></th>
+    <th><center>**Face painting and multi-color features are not permitted**</center></th>
   </tr>
 </thead>
 <tbody>
@@ -606,4 +553,4 @@ Your avatar head cannot include any additional color, shading, or outlining not 
 
 ### Customizable skin tones
 
-Roblox recommends including customizable skin tones, or skin tone mutability, for avatars that resemble humans. Skin tone mutability is optional. Similarly, for avatars created through formal brand partnerships, skin tone mutability is optional. For more information on creating customizable skin tone textures, see [Custom Skin Tone](../art/characters/specifications.md#custom-skin-tone).
+Roblox recommends including customizable skin tones, or skin tone mutability, for avatars that resemble humans. Skin tone mutability is optional. Similarly, for avatars created through formal brand partnerships, skin tone mutability is optional. For more information on creating customizable skin tone textures, see [Custom Skin Tone](../avatar/character-bodies/specifications.md#custom-skin-tone).

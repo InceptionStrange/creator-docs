@@ -90,7 +90,7 @@ Another symptom of degraded server heartbeat is increased latency (commonly know
 
 The default client frame rate cap is 60 FPS. However, users can raise their frame rate cap up to 240 FPS on Windows.
 
-Frame rate differs wildly between devices. For example, a high-end PC might be able to "brute force" a computational issue and only experience an imperceptible frame rate dip. If you test on lower-end devices, problems tend to be more severe and thus easier to notice.
+Frame rate differs wildly between devices. For example, a high-end PC might be able to "brute force" a computational issue and only experience an imperceptible frame rate dip. If you [test on lower-end devices](./test-on-hardware.md), problems tend to be more severe and thus easier to notice.
 
 To check the frame rate of your game:
 
@@ -119,7 +119,7 @@ These numbers use powers of 2, so 1 GiB refers to 2^30 bytes and 1 MiB to 2^20 b
 
 For example, a server with 30 connected players has approximately 9.18 GiB of total memory. Servers gain memory when players connect, but **don't** lose it when players disconnect. If 10 players leave, the server still has 9.18 GiB of memory rather than shrinking to 8.2 GiB.
 
-When servers shut down (for example, when they are empty or as part of the [update process](../projects/update-experiences.md)), their replacements start with the base amount of memory and begin scaling up as players connect.
+When servers shut down (for example, when they are empty or as part of the [update process](../projects/update-games.md)), their replacements start with the base amount of memory and begin scaling up as players connect.
 
 ## Client memory
 

@@ -29,7 +29,6 @@ descendants:
   - AnimationClip
   - AnimationClipProvider
   - AnimationController
-  - AnimationFromVideoCreatorService
   - AnimationNodeDefinition
   - AnimationRigData
   - AnimationTrack
@@ -38,7 +37,6 @@ descendants:
   - AssetPatchSettings
   - AssetService
   - Atmosphere
-  - Attachment
   - AudioAnalyzer
   - AudioChannelMixer
   - AudioChannelSplitter
@@ -75,7 +73,6 @@ descendants:
   - Beam
   - BindableEvent
   - BindableFunction
-  - BodyMover
   - BodyPartDescription
   - BrowserService
   - CacheableContentProvider
@@ -90,12 +87,9 @@ descendants:
   - CompositeValueCurve
   - ConfigService
   - Configuration
-  - Constraint
   - ContentProvider
   - ContextActionService
   - Controller
-  - ControllerBase
-  - ControllerManager
   - ControllerService
   - CookiesService
   - CoreGuiConfiguration
@@ -103,7 +97,6 @@ descendants:
   - CustomEventReceiver
   - CustomLog
   - DataModelMesh
-  - DataModelSession
   - DataStoreGetOptions
   - DataStoreIncrementOptions
   - DataStoreInfo
@@ -123,23 +116,17 @@ descendants:
   - EulerRotationCurve
   - ExperienceInviteOptions
   - ExperienceNotificationService
-  - Explosion
   - FaceControls
-  - FaceInstance
-  - Feature
-  - FeatureRestrictionManager
   - Fire
   - FlagStandService
   - FloatCurve
   - Folder
-  - ForceField
   - FriendService
   - FunctionalTest
   - GamePassService
   - GameSettings
   - GamepadService
   - GenerationService
-  - GenericChallengeService
   - Geometry
   - GeometryService
   - GlobalDataStore
@@ -154,7 +141,6 @@ descendants:
   - HiddenSurfaceRemovalAsset
   - Highlight
   - Hopper
-  - HttpRbxApiService
   - HttpService
   - Humanoid
   - HumanoidDescription
@@ -164,8 +150,6 @@ descendants:
   - IncrementalPatchBuilder
   - InputObject
   - InsertService
-  - JointInstance
-  - JointsService
   - KeyboardService
   - Keyframe
   - KeyframeMarker
@@ -187,37 +171,26 @@ descendants:
   - MaterialService
   - MaterialVariant
   - MemStorageConnection
-  - MemStorageService
   - MemoryStoreHashMap
   - MemoryStoreQueue
   - MemoryStoreService
   - MemoryStoreSortedMap
   - Message
   - MessagingService
-  - MicroProfilerService
   - ModerationService
   - Mouse
   - MouseService
-  - MultipleDocumentInterfaceInstance
   - NetworkSettings
-  - NoCollisionConstraint
-  - NotificationService
   - OpenCloudApiV1
   - OpenCloudService
-  - PVInstance
   - PackageLink
   - PackageService
   - Pages
-  - PartOperationAsset
   - ParticleEmitter
-  - PatchMapping
   - Path
   - PathfindingLink
   - PathfindingModifier
   - PathfindingService
-  - PermissionsService
-  - PhysicsService
-  - PhysicsSettings
   - Player
   - PlayerScripts
   - PlayerViewService
@@ -237,35 +210,30 @@ descendants:
   - PolicyService
   - PoseBase
   - PostEffect
-  - ProcessInstancePhysicsService
   - ProximityPrompt
   - ProximityPromptService
   - PublishService
   - ReflectionService
   - RemoteDebuggerServer
   - RemoteFunction
-  - RenderingTest
   - ReplicatedFirst
   - ReplicatedStorage
   - RotationCurve
   - RunService
   - SceneAnalysisService
   - ScreenshotHud
-  - ScriptBuilder
   - ScriptContext
+  - ScriptDebuggerService
   - ScriptProfilerService
   - ScriptService
   - Selection
-  - SensorBase
   - SerializationService
   - ServerScriptService
   - ServerStorage
   - ServiceProvider
-  - SessionCheckService
   - SharedTableRegistry
   - Sky
   - Smoke
-  - SmoothVoxelsUpgraderService
   - SocialService
   - Sound
   - SoundEffect
@@ -284,7 +252,6 @@ descendants:
   - SurfaceAppearance
   - TaskScheduler
   - Team
-  - TeamCreateData
   - Teams
   - TeleportAsyncResult
   - TeleportOptions
@@ -311,7 +278,6 @@ descendants:
   - Translator
   - TweenBase
   - TweenService
-  - UGCValidationService
   - UIBase
   - UserGameSettings
   - UserInputService
@@ -326,18 +292,12 @@ descendants:
   - VirtualUser
   - VisibilityCheckDispatcher
   - Visit
-  - VisualizationMode
-  - VisualizationModeCategory
-  - VisualizationModeService
   - VoiceChatService
-  - WeldConstraint
   - Wire
   - WrapTextureTransfer
   - RenderSettings
-  - StartupMessageService
   - StopWatchReporter
   - VirtualInputManager
-  - PatchBundlerFileWatch
   - CreatorStoreService
   - InputAction
   - InputBinding
@@ -347,13 +307,30 @@ descendants:
   - NetworkMarker
   - NetworkPeer
   - NetworkReplicator
+  - PVInstance
+  - Attachment
+  - Constraint
+  - ControllerBase
+  - ControllerManager
+  - NoCollisionConstraint
+  - WeldConstraint
+  - BodyMover
+  - Explosion
+  - FaceInstance
+  - Feature
+  - ForceField
+  - JointInstance
+  - JointsService
+  - PartOperationAsset
+  - PhysicsService
+  - PhysicsSettings
+  - ProcessInstancePhysicsService
+  - SensorBase
   - RecommendationService
-  - CoreScriptDebuggingManagerHelper
   - DraftsService
   - DraggerService
   - File
   - InstanceFileSyncService
-  - PlacesService
   - PluginConnectionService
   - PluginManagementService
   - ReflectionMetadata
@@ -374,15 +351,11 @@ descendants:
   - StudioScreenshotCapture
   - StudioTestService
   - StudioTheme
-  - TeamCreateService
-  - VRStatusService
   - StudioService
   - StyleBase
   - StyleDerive
   - StyleLink
-  - Annotation
   - RemoteCommandService
-  - ServiceVisibilityService
   - UniqueIdLookupService
   - GetTextBoundsParams
 tags:
@@ -405,14 +378,8 @@ properties:
       options will ignore its own `Class.Instance.Archivable|Archivable`
       property and set `Class.Instance.Archivable|Archivable` to `true` for the
       copy.
-
-      ```
-      local part = Instance.new("Part")
-      print(part:Clone())  --> Part
-      part.Archivable = false
-      print(part:Clone())  --> nil
-      ```
-    code_samples: []
+    code_samples:
+      - Instance-Archivable
     type: boolean
     tags: []
     deprecation_message: ''
@@ -472,6 +439,34 @@ properties:
       can_save: true
     capabilities:
       - CapabilityControl
+  - name: Instance.IsInSandbox
+    summary: |
+      Indicates whether the instance is inside a sandboxed container.
+    description: |
+      This read-only property returns `true` if the instance is contained within
+      a sandboxed container — that is, if the instance itself or any of its
+      ancestors has `Class.Instance.Sandboxed` enabled. Otherwise it returns
+      `false`.
+
+      This property is not scriptable and is only visible in Studio's Properties
+      window. See [script capabilities](../../../scripting/capabilities.md) for
+      further details.
+    code_samples: []
+    type: boolean
+    tags:
+      - ReadOnly
+      - NotReplicated
+      - NotScriptable
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Permissions
+    serialization:
+      can_load: false
+      can_save: false
+    capabilities: []
   - name: Instance.Name
     summary: |
       A non-unique identifier of the `Class.Instance`.
@@ -590,8 +585,33 @@ properties:
       can_save: false
     capabilities: []
   - name: Instance.PredictionMode
-    summary: ''
-    description: ''
+    summary: |
+      Reflects the client-side prediction mode applied to the instance under
+      server-authoritative physics.
+    description: |
+      This property reflects the `Enum.PredictionMode` currently applied to the
+      instance, which determines whether the instance's state is predicted on
+      the client ahead of the authoritative server state under
+      server-authoritative physics. It defaults to
+      `Enum.PredictionMode|Automatic`.
+
+      This property is read-only and cannot be assigned directly from a script;
+      the prediction mode is set through `Class.RunService:SetPredictionMode()`.
+      The property is shown in Studio's Properties window only when the
+      experience uses server-authoritative physics.
+
+      - `Enum.PredictionMode|Automatic` (default) — the engine automatically
+        decides whether to predict the instance. Currently, only
+        `Class.BasePart|BaseParts` near the local player character's
+        `Class.Humanoid` are predicted, within a dynamic radius that grows and
+        shrinks based on the device's capacity to handle the simulation load.
+      - `Enum.PredictionMode|On` — the instance is always predicted. If it is a
+        `Class.BasePart`, its physics properties are predicted ahead of the
+        replicated authoritative server state, and mismatches in the instance's
+        attributes between the client and server cause a rollback and
+        resimulation.
+      - `Enum.PredictionMode|Off` — the instance is not predicted, and regular
+        network ownership semantics apply.
     code_samples: []
     type: PredictionMode
     tags:
@@ -660,7 +680,8 @@ properties:
       A unique identifier for the instance.
     description: |
       A unique identifier for the instance, distinct from `Class.Instance.Name`
-      which is not necessarily unique.
+      which is not necessarily unique. This property is visible in the
+      Properties window in Studio but is not readable or writable from scripts.
     code_samples: []
     type: UniqueId
     tags:
@@ -702,7 +723,8 @@ methods:
       - name: tag
         type: string
         default:
-        summary: ''
+        summary: |
+          The tag to apply to the instance.
     returns:
       - type: ()
         summary: ''
@@ -808,7 +830,9 @@ methods:
     parameters: []
     returns:
       - type: Instance
-        summary: ''
+        summary: |
+          A copy of the instance, or `nil` if the instance is not
+          `Class.Instance.Archivable|Archivable`.
     tags: []
     deprecation_message: ''
     security: None
@@ -1568,38 +1592,8 @@ methods:
       styled/modified. This differs slightly from accessing the property value
       directly, such as `[GuiObject].Rotation`, which returns the default or
       modified value of the property.
-
-      ```lua
-      local Players = game:GetService("Players")
-      local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
-      local player = Players.LocalPlayer
-      local playerGui = player.PlayerGui
-      local HUDContainer = playerGui:WaitForChild("HUDContainer")
-
-      local coreSheet = ReplicatedStorage:FindFirstChild("CoreSheet")
-      local rule = coreSheet:FindFirstChildWhichIsA("StyleRule")
-      rule.Selector = "TextButton"
-
-      -- Reference to a button
-      local button = HUDContainer:FindFirstChildWhichIsA("TextButton")
-
-      print(button:GetStyled("Rotation")) --> 0 (default value)
-      print(button.Rotation) --> 0 (default value)
-
-      -- Apply rotation through style rule property
-      rule:SetProperty("Rotation", 30)
-
-      print(button:GetStyled("Rotation")) --> 30 (styled value based on rule)
-      print(button.Rotation) --> 0 (default value)
-
-      -- Explicitly modify/override styled property
-      button.Rotation = 45
-
-      print(button:GetStyled("Rotation")) --> 45 (modified value)
-      print(button.Rotation) --> 45 (modified value)
-      ```
-    code_samples: []
+    code_samples:
+      - Instance-GetStyled
     parameters:
       - name: name
         type: string
@@ -1623,7 +1617,9 @@ methods:
     thread_safety: Unsafe
     capabilities: []
   - name: Instance:GetStyledPropertyChangedSignal
-    summary: ''
+    summary: |
+      Returns an event that fires when the given style property changes on the
+      instance.
     description: |
       This method returns an event that behaves exactly like the
       `Class.Instance.StyledPropertiesChanged|StyledPropertiesChanged` event,
@@ -1636,22 +1632,8 @@ methods:
       Note that this event will not pass any arguments to a connected function,
       so the value of the changed property must be read directly within a
       script.
-
-      ```lua
-      local Players = game:GetService("Players")
-
-      local player = Players.LocalPlayer
-      local playerGui = player.PlayerGui
-      local HUDContainer = playerGui:WaitForChild("HUDContainer")
-      local meterBar = HUDContainer.MeterBar
-
-      local function stylePropertyChanged()
-      	print("Style property changed!")
-      end
-
-      meterBar:GetStyledPropertyChangedSignal("AnchorPoint"):Connect(stylePropertyChanged)
-      ```
-    code_samples: []
+    code_samples:
+      - Instance-GetStyledPropertyChangedSignal
     parameters:
       - name: property
         type: string
@@ -1684,7 +1666,8 @@ methods:
     parameters: []
     returns:
       - type: Array
-        summary: ''
+        summary: |
+          An array of strings, each representing a tag applied to the instance.
     tags: []
     deprecation_message: ''
     security: None
@@ -1704,10 +1687,12 @@ methods:
       - name: tag
         type: string
         default:
-        summary: ''
+        summary: |
+          The tag to check for on the instance.
     returns:
       - type: boolean
-        summary: ''
+        summary: |
+          `true` if the instance has the given tag, `false` otherwise.
     tags: []
     deprecation_message: ''
     security: None
@@ -1844,14 +1829,16 @@ methods:
     capabilities: []
     simulationAccess: true
   - name: Instance:QueryDescendants
-    summary: ''
+    summary: |
+      Returns an array containing all descendants of the instance that match the
+      `selector` string.
     description: |
-      This object method returns an array which contains the descendants of that
-      object matching the provided `selector` string. The `selector` string can
-      include multiple selectors and combinators to match characteristics such
-      as the class name, instance name, hierarchy relationships, as well as
+      This object method returns an array that contains all descendants of the
+      object that match the provided `selector` string. `selector` can include
+      multiple selectors and combinators to match characteristics such as the
+      class name, instance name, and hierarchy relationships, as well as
       specific values of instance properties and attributes. The `selector`
-      grammar is similar to the one used in `Class.StyleRule` with only a few
+      grammar is similar to the one used in `Class.StyleRule`, with only a few
       differences regarding which parts of the grammar are supported or not.
 
       #### Selectors
@@ -2040,7 +2027,8 @@ methods:
       - name: tag
         type: string
         default:
-        summary: ''
+        summary: |
+          The tag to remove from the instance.
     returns:
       - type: ()
         summary: ''
@@ -2459,22 +2447,8 @@ events:
     description: |
       This event fires whenever any style property is changed on the instance,
       including when a property is set to `nil`.
-
-      ```lua
-      local Players = game:GetService("Players")
-
-      local player = Players.LocalPlayer
-      local playerGui = player.PlayerGui
-      local HUDContainer = playerGui:WaitForChild("HUDContainer")
-      local meterBar = HUDContainer.MeterBar
-
-      local function stylePropertyChanged()
-      	print("Styled properties changed")
-      end
-
-      meterBar:StyledPropertiesChanged():Connect(stylePropertyChanged)
-      ```
-    code_samples: []
+    code_samples:
+      - Instance-StyledPropertiesChanged
     parameters: []
     tags: []
     deprecation_message: ''

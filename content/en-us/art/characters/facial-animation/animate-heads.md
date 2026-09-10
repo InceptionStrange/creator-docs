@@ -91,16 +91,16 @@ To create an animation for your head using the **Face Animation Editor**:
    - To redo a step on a slider, press <kbd>Ctrl</kbd><kbd>Y</kbd> (<kbd>⌘</kbd><kbd>Y</kbd>).
    - To reset a slider to its default value, right click on the slider. A contextual menu displays. Select **Reset Selected**.
 
-3. (Optional) Adjust the scrubber to a new position further along the timeline, then navigate back to the **Face Animation Editor** and adjust sliders to create a new facial expression. When you play the animation, the first facial expression will ease into the second facial expression.
+3. <Chip label="OPTIONAL" size="small" variant="outlined" /> Adjust the scrubber to a new position further along the timeline, then navigate back to the **Face Animation Editor** and adjust sliders to create a new facial expression. When you play the animation, the first facial expression will ease into the second facial expression.
 4. When you are finished creating your animation, navigate to the **Media and Playback Controls** and click the **…** button. A pop-up menu displays.
 5. Select **Save** or **Save As** to save the animation. The animation displays in the **Explorer** window as a child of the **AnimSaves** object (itself a child of the rig).
 
 ## Export animations
 
-When you export a head that supports animation to Studio, it becomes available for use in all of your experiences. This means that you only need to create a head animation once, then you can reuse it as many times for as many characters as you want as long as the character has an [animatable head](../../../art/characters/facial-animation/use-heads-in-studio.md).
+When you export a head that supports animation to Studio, it becomes available for use in all of your games. This means that you only need to create a head animation once, then you can reuse it as many times for as many characters as you want as long as the character has an [animatable head](../../../avatar/dynamic-heads/index.md).
 
 You can export head animations using the same workflow outlined for [exporting animations](../../../animation/editor.md#export-an-animation).
 
 ## Script animations
 
-Once you have created an animation, you need to use a script to play it in your experience. Like generic animations, you can either play animations for heads manually from your scripts or automatically by replacing default animations for player characters. For more information, see [Use animations](../../../animation/using.md).
+Once you have created an animation, you need to use a script to play it in your game. Like generic animations, you can either play animations for heads manually from your scripts or automatically by replacing default animations for player characters. For more information, see [Use animations](../../../animation/using.md).

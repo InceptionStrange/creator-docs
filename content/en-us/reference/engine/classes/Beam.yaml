@@ -182,11 +182,8 @@ properties:
       [Beams](../../../effects/beams.md#curve) for more details.
 
       The position of this point can be determined by the following equation:
-
-      ```lua
-      local controlPoint2 = Beam.Attachment0.WorldPosition + (Beam.Attachment0.CFrame.RightVector * Beam.CurveSize0)
-      ```
-    code_samples: []
+    code_samples:
+      - Beam-CurveSize0
     type: float
     tags: []
     deprecation_message: ''
@@ -210,11 +207,8 @@ properties:
       [Beams](../../../effects/beams.md#curve) for more details.
 
       The position of this point can be determined by the following equation:
-
-      ```lua
-      local controlPoint3 = Beam.Attachment1.WorldPosition - (Beam.Attachment1.CFrame.RightVector * Beam.CurveSize1)
-      ```
-    code_samples: []
+    code_samples:
+      - Beam-CurveSize1
     type: float
     tags: []
     deprecation_message: ''
@@ -329,8 +323,20 @@ properties:
     capabilities:
       - Basic
   - name: Beam.LocalTransparencyModifier
-    summary: ''
-    description: ''
+    summary: |
+      Determines a multiplier for `Class.Beam.Transparency` that is only visible
+      to the local client.
+    description: |
+      The `LocalTransparencyModifier` property is a multiplier applied to the
+      beam's `Class.Beam.Transparency|Transparency` that is only visible to the
+      local client. It does not replicate from client to server and is useful
+      for when a beam should not render for a specific client.
+
+      Uses the same formula as `Class.BasePart.LocalTransparencyModifier`.
+
+      A value of `0` (default) has no effect on the beam's transparency. A value
+      of `1` makes the beam completely invisible to the local client regardless
+      of its `Class.Beam.Transparency|Transparency` value.
     code_samples: []
     type: float
     tags:
@@ -396,6 +402,35 @@ properties:
       `Class.Beam.Width1|Width1` properties.
     code_samples: []
     type: ContentId
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Appearance
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - Basic
+  - name: Beam.TextureContent
+    summary: |
+      The texture displayed on the beam. Supports
+      [asset URIs](../../../projects/assets/index.md#asset-uris).
+    description: |
+      The texture displayed on the beam. Supports
+      [asset URIs](../../../projects/assets/index.md#asset-uris).
+
+      If this property is set to `Datatype.Content.none`, the beam displays as a
+      solid line colored by its `Class.Beam.Color|Color` property. The
+      appearance of the texture can be further modified by
+      `Class.Beam.Color|Color`, `Class.Beam.Transparency|Transparency`, and
+      scaling is determined by `Class.Beam.TextureMode|TextureMode`,
+      `Class.Beam.TextureLength|TextureLength`, `Class.Beam.Width0|Width0`, and
+      `Class.Beam.Width1|Width1`.
+    code_samples: []
+    type: Content
     tags: []
     deprecation_message: ''
     security:

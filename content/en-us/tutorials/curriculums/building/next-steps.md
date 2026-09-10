@@ -9,23 +9,11 @@ Congratulations on building your first obby with Roblox Studio! Now that you hav
 
 ## Share with others
 
-When you first publish an experience, it's automatically set to **private** so that you are the only one who can play it. However, creating on Roblox is always more fun when you can share what you make with others, so let's set up your experience so that they can play too.
-
-To make your experience public:
-
-1. Using the steps from the last chapter, publish your experience so others can see your latest changes.
-
-1. In the top-left corner of your computer, click **File** &rang; **Experience Settings**.
-
-1. In the settings window:
-   1. Go to the left bar and select the **Permissions** tab. New settings display.
-   1. Set **Playability** to **Public**.
-
-1. Click the **Save** button. Now everyone on Roblox can play your experience!
+When you first publish a game, it's automatically set to **private** so that you're the only one who can play it. However, creating on Roblox is always more fun when you can share what you make with others. See [making games public](../../../production/publishing/publish-games-and-places.md#make-game-public) for steps on how to make your game public.
 
 ## Continue learning
 
-Basic parts are an excellent start for building in the 3D space, but Studio offers many additional features to create environments in your experiences, including:
+Basic parts are an excellent start for building in the 3D space, but Studio offers many additional features to create environments in your games, including:
 
 - [Materials](../../../parts/materials.md) that change the visual appearance and physical properties of parts.
 - [Terrain Editor](../../../parts/terrain.md) that generates realistic terrain environments, such as mountains, grass-covered hills, or a flat desert.

@@ -394,8 +394,6 @@ end)
 
 ## Style transitions
 
-<BetaAlert betaName="Styling Transitions" leadIn="This feature is currently in beta. Enable it through " leadOut="." components={props.components} />
-
 UI objects can also be animated through **style transitions**, comparable to [CSS transitions](./styling/css-comparisons.md#transitions), where one or more UI properties are tweened through `Class.StyleRule` definitions. See the [Style Editor](./styling/editor.md#style-transitions) guide for details.
 
 <img src="../assets/ui/ui-styling/SE-Transition-Rule-Result.png" width="840" alt="Final styled state rule in the Style Editor." />
@@ -575,7 +573,7 @@ You can easily enhance text-based UI, such as cutscene banners, player instructi
    ```
 
    <Alert severity="info">
-   If your experience's **source language** is not English (`"en"`), change the locale code for `SOURCE_LOCALE` to match the source language in [localization settings](../production/localization/index.md#localization-settings).
+   If your game's **source language** is not English (`"en"`), change the locale code for `SOURCE_LOCALE` to match the source language in [localization settings](../production/localization/index.md#localization-settings).
    </Alert>
 
 1. Create a `Class.TextLabel` in a suitable location, such as within a `Class.ScreenGui` parented to `Class.StarterGui`.
@@ -588,7 +586,7 @@ You can easily enhance text-based UI, such as cutscene banners, player instructi
 
    local label = script.Parent
 
-   -- Load translator if experience is localized
+   -- Load translator if game is localized
    --AnimateUI.loadTranslator()
 
    local message1 = [[Beyond this door is the<br /><font size="46" color="rgb(255,50,25)">Great Zorgoth...</font> <font size="40">🗡</font>]]

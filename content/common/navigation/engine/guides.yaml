@@ -3,6 +3,15 @@ navigation:
   - heading: Overview
   - title: Get started
     path: /experiences
+  - title: AI accelerated workflows
+    path: /ai/accelerated-workflows
+    section:
+      - title: Build on the Roblox App
+        path: /ai/build
+      - title: Build with Assistant
+        path: /ai/build-with-assistant
+      - title: Build with a coding harness
+        path: /ai/coding-harness
   - heading: Create
   - title: Overview
     path: /creation
@@ -11,17 +20,17 @@ navigation:
     section:
       - title: Overview
         path: /projects/
-      - title: Experiences and places
-        path: /production/publishing/publish-experiences-and-places
+      - title: Games and places
+        path: /production/publishing/publish-games-and-places
         section:
           - title: Create and publish
-            path: /production/publishing/publish-experiences-and-places
+            path: /production/publishing/publish-games-and-places
           - title: Configure
-            path: /projects/configure-experiences
+            path: /projects/configure-games
           - title: Release updates
-            path: /projects/update-experiences
+            path: /projects/update-games
           - title: Ownership transfer
-            path: /projects/experience-ownership-transfer
+            path: /projects/game-ownership-transfer
           - title: Place files
             path: /projects/place-files
       - title: Cross-platform development
@@ -40,6 +49,8 @@ navigation:
                 path: /workspace/streaming/
               - title: Techniques
                 path: /workspace/streaming/techniques
+              - title: SLIM
+                path: /workspace/streaming/slim
           - title: Server authority
             path: /projects/server-authority/
             section:
@@ -174,7 +185,12 @@ navigation:
           - title: Highlighting
             path: /effects/highlighting
       - title: Camera
-        path: /workspace/camera
+        path: /workspace/camera/
+        section:
+          - title: Overview
+            path: /workspace/camera/
+          - title: Free camera mode
+            path: /workspace/camera/free-camera
       - title: Spatial data
         section:
           #- title: Object World Space
@@ -217,6 +233,8 @@ navigation:
             path: /scripting/scheduler
           - title: Multi-threading
             path: /scripting/multithreading
+          - title: Transparent batching
+            path: /scripting/transparent-batching
           - title: Native code generation
             path: /luau/native-code-gen
           - title: Script capabilities
@@ -371,6 +389,8 @@ navigation:
         path: /input/mobile
       - title: Gamepad
         path: /input/gamepad
+      - title: Micro gamepad
+        path: /input/micro-gamepad
   - title: Audio
     path: /audio/
     section:
@@ -535,6 +555,8 @@ navigation:
         path: /performance-optimization/
       - title: Design for performance
         path: /performance-optimization/design
+      - title: Test on hardware
+        path: /performance-optimization/test-on-hardware
       - title: Identify issues
         path: /performance-optimization/identify
       - title: MicroProfiler
@@ -605,6 +627,8 @@ navigation:
         path: /cloud-services/http-service
       - title: Extended Services
         path: /cloud-services/extended-services
+      - title: Video playback
+        path: /cloud-services/video-service
       - title: Cross-server communication
         path: /cloud-services/cross-server-messaging
   - title: Roblox for Unity developers

@@ -3,7 +3,7 @@ title: Blender
 description: Learn about Blender tools.
 ---
 
-Blender is a free, open-source 3D creation suite with a broad range of modeling, sculpting, texturing, and animation tools. Running on Linux, macOS, and Windows systems, this cross-platform application is a popular choice for creators who want to make avatars, accessories, and 3D objects for Roblox experiences.
+Blender is a free, open-source 3D creation suite with a broad range of modeling, sculpting, texturing, and animation tools. Running on Linux, macOS, and Windows systems, this cross-platform application is a popular choice for creators who want to make avatars, accessories, and 3D objects for Roblox games.
 
 While this is by no means an exhaustive list, the following guide offers high-level information on essential Blender tools and features for 3D creation, as well as best practice guidance on designing 3D art between Blender and Studio.
 
@@ -99,9 +99,9 @@ Similar to the previous file setup section, it's important to consider Blender a
 Avatar items, or other assets using specialized components, require unique export settings. See the following links for additional information:
 
 <ul>
-<li>For rigid accessories, see [accessory specifications](../art/accessories/specifications.md) and [accessory export settings](../art/accessories/export-settings.md).</li> <br />
-<li>For layered accessories, see [layered accessory specifications](../art/accessories/clothing-specifications.md) and [layered export settings](../art/accessories/clothing-export-settings.md).</li> <br />
-<li>For avatar characters, see [avatar specifications](../art/characters/specifications.md) and [avatar export settings](../art/characters/export-settings.md).</li>
+<li>For rigid accessories, see [accessory specifications](../avatar/rigid-accessories/specifications.md) and [accessory export settings](../avatar/rigid-accessories/export.md).</li> <br />
+<li>For layered accessories, see [layered accessory specifications](../avatar/layered-accessories/index.md) and [layered export settings](../avatar/layered-accessories/export.md).</li> <br />
+<li>For avatar characters, see [avatar specifications](../avatar/character-bodies/specifications.md) and [avatar export settings](../avatar/character-bodies/export.md).</li>
 </ul>
 </Alert>
 
@@ -232,7 +232,7 @@ The default layout of this workspace includes the following UI for UV mapping yo
 - [Outliner](https://docs.blender.org/manual/en/latest/editors/outliner/introduction.html) - Displays all objects in the scene, comparable to Studio's **Explorer** window.
 - [Properties Editor](https://docs.blender.org/manual/en/latest/editors/properties_editor.html) - Displays editable data for the active object, comparable to Studio's **Properties** window.
 
-The most common Roblox creator use case for this workspace is to create and use trim sheets that you can apply to multiple 3D objects at once. This allows you to add significantly more visual complexity to your experiences without having to import additional textures, saving you a negative impact on memory. For more information on this process, see [Develop polished assets - Trim sheets](../tutorials/curriculums/environmental-art/develop-polished-assets.md#trim-sheets) in the Environmental art curriculum.
+The most common Roblox creator use case for this workspace is to create and use trim sheets that you can apply to multiple 3D objects at once. This allows you to add significantly more visual complexity to your games without having to import additional textures, saving you a negative impact on memory. For more information on this process, see [Develop polished assets - Trim sheets](../tutorials/curriculums/environmental-art/develop-polished-assets.md#trim-sheets) in the Environmental art curriculum.
 
 <Alert severity="info">
 For more information on UV unwrapping, see Blender's official [Unwrapping Introduction](https://docs.blender.org/manual/en/latest/modeling/meshes/uv/unwrapping/introduction.html) documentation.
@@ -252,7 +252,7 @@ The default layout of this workspace includes the following UI for texture paint
 - [Outliner](https://docs.blender.org/manual/en/latest/editors/outliner/introduction.html) - Displays all objects in the scene, comparable to Studio's **Explorer** window.
 - [Properties Editor](https://docs.blender.org/manual/en/latest/editors/properties_editor.html) - Displays editable data for the active object, comparable to Studio's **Properties** window.
 
-The most common Roblox creator use case for this workspace is to create a unique texture for characters, accessories, or important 3D objects that players regualarly interact with in experiences.
+The most common Roblox creator use case for this workspace is to create a unique texture for characters, accessories, or important 3D objects that players regualarly interact with in games.
 
 <Alert severity="info">
 For more information on texture painting, see Blender's official [Texture Paint Introduction](https://docs.blender.org/manual/en/latest/sculpt_paint/texture_paint/introduction.html) documentation.
@@ -517,7 +517,7 @@ To use the Bridge Edge Loops tool:
 1. In **Edit** mode, select two or more edge loops that you want to connect.
 1. Press <kbd>Ctrl</kbd><kbd>E</kbd>/<kbd>⌘</kbd><kbd>E</kbd> to display a contextual menu for your active edge loops, then select **Bridge Edge Loops** to activate the tool.The **Bridge Edge Loops** panel displays.
 1. Set **Number of Cuts** to the number of subdivisions you want for your new bridge.
-1. **(Optional)** For further precision for curved bridges, increase **Smoothness** to create a more rounded bridge.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> For further precision for curved bridges, increase **Smoothness** to create a more rounded bridge.
 1. Left-click to confirm your bridge.
 
 <Alert severity="info">
@@ -534,7 +534,7 @@ To use the Fill tool:
 
 1. In **Edit** mode, select at least three vertices or two or more edges that form at least one complete perimeter.
 1. Press <kbd>Alt</kbd><kbd>F</kbd>/<kbd>⌥</kbd><kbd>F</kbd> to activate the tool.
-1. **(Optional)** In the **Fill** panel, enable **Beauty** to arrange the triangles nicely.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> In the **Fill** panel, enable **Beauty** to arrange the triangles nicely.
 1. Left-click to confirm your new face.
 
 <Alert severity="info">
@@ -615,7 +615,7 @@ To use the Mirror modifier:
 
 ## Texturing tools
 
-After you finish modeling your 3D object, it's time to apply a texture to your mesh so that it has additional visual characteristics, such as color, depth, and roughness through a [texture map](../art/modeling/surface-appearance.md). These are details that modeling alone can't provide, transforming your object from a blank shape to something that looks either realistic or stylized according to your experience's art requirements.
+After you finish modeling your 3D object, it's time to apply a texture to your mesh so that it has additional visual characteristics, such as color, depth, and roughness through a [texture map](../art/modeling/surface-appearance.md). These are details that modeling alone can't provide, transforming your object from a blank shape to something that looks either realistic or stylized according to your game's art requirements.
 
 <GridContainer numColumns="2">
   <figure>
@@ -740,7 +740,7 @@ For more information on this tool, see Blender's official [UV Operators - Unwrap
 
 The **Follow Active Quads** tool lets you generate clean and organized UV islands according to the UV coordinates of a previously unwrapped active face. This is particularly useful for grid-like topology, such as when you're unwrapping walls, floors, or mechanical parts using trim sheets.
 
-Many Roblox creators use this tool to apply a consistent texture to curved 3D objects, such as sidewalks for experiences or belts for accessories.
+Many Roblox creators use this tool to apply a consistent texture to curved 3D objects, such as sidewalks for games or belts for accessories.
 
 <video controls src="../assets/art/3p-software/blender/FollowActiveQuads.mp4" width="80%"></video>
 
@@ -748,7 +748,7 @@ To use the Follow Active Quads tool:
 
 1. Open the **UV Editing** workspace. The UV Editor displays on the lefthand side of the screen, and the 3D viewport displays on the righthand side of the screen in Edit mode.
 1. In the **3D Viewport**, navigate to your 3D object, then unwrap every face you want to texture using an active face.
-1. **(Optional)** Configure your active face.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> Configure your active face.
    1. In the **UV Editor**, select the face you want to be your active face, then press <kbd>Alt</kbd><kbd>M</kbd>/<kbd>⌥</kbd><kbd>M</kbd> to open the **Split** contextual menu.
    1. Select **Selection**. The active face separates from the UV island.
    1. Move, scale, or rotate your active face to the appropriate position, orientation, and scale that you want other faces in the UV map to follow.
@@ -806,7 +806,7 @@ For more information, see the following official Blender documentation:
 
 Vertex painting is the process of storing color information directly on the vertices of your 3D object rather than through traditional textures or materials. In this approach, each vertex holds color data that Blender interpolates across the faces of a mesh, creating either smooth gradients or solid blocks of color without the need for UV mapping or image textures.
 
-Vertex painting is useful for adding color variation to your assets in a lightweight, efficient way, especially in stylized workflows or experiences where performance is a concern, as it can reduce texture memory usage and draw calls. Many Roblox creators use vertex painting in conjunction with Studio's default materials, `Class.MaterialVariant` objects, and `Class.SurfaceAppearance` objects to create visual complexity on otherwise simple 3D objects.
+Vertex painting is useful for adding color variation to your assets in a lightweight, efficient way, especially in stylized workflows or games where performance is a concern, as it can reduce texture memory usage and draw calls. Many Roblox creators use vertex painting in conjunction with Studio's default materials, `Class.MaterialVariant` objects, and `Class.SurfaceAppearance` objects to create visual complexity on otherwise simple 3D objects.
 
 <GridContainer numColumns="3">
   <figure>

@@ -108,9 +108,9 @@ Within a script, you can access a place's `Class.Workspace` in three different w
 - `game.Workspace`
 
 From there, you can carry out a large set of use cases to script logic for your
-experiences and create dynamic worlds and interactions. For example:
+games and create dynamic worlds and interactions. For example:
 
 - Obtain a reference to any object in the workspace to change its properties during runtime.
-- Obtain a reference to a user's `Class.Camera` object to [manipulate their view](../workspace/camera.md) of the workspace.
+- Obtain a reference to a user's `Class.Camera` object to [manipulate their view](../workspace/camera/index.md) of the workspace.
 - Listen for events on objects in the workspace to carry out
   logic at specific times, such as when a user's playable character [touches an object](../workspace/collisions.md).

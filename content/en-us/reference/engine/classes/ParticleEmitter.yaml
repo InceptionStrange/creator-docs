@@ -500,8 +500,25 @@ properties:
     capabilities:
       - Basic
   - name: ParticleEmitter.LocalTransparencyModifier
-    summary: ''
-    description: ''
+    summary: |
+      Determines a multiplier for `Class.ParticleEmitter.Transparency` that is
+      only visible to the local client.
+    description: |
+      The `LocalTransparencyModifier` property is a multiplier applied to the
+      particle emitter's `Class.ParticleEmitter.Transparency|Transparency` that
+      is only visible to the local client. It does not replicate from client to
+      server and is useful for when particles should not render for a specific
+      client.
+
+      Uses the same formula as `Class.BasePart.LocalTransparencyModifier`:
+
+      `1` - ((`1` - `Class.ParticleEmitter.Transparency|Transparency`) &times;
+      (`1` - `LocalTransparencyModifier`))
+
+      A value of `0` (default) has no effect on the particle transparency. A
+      value of `1` makes all particles completely invisible to the local client
+      regardless of their `Class.ParticleEmitter.Transparency|Transparency`
+      value.
     code_samples: []
     type: float
     tags:
@@ -901,6 +918,35 @@ properties:
       transparent backgrounds work best for particles.
     code_samples: []
     type: ContentId
+    tags: []
+    deprecation_message: ''
+    security:
+      read: None
+      write: None
+    thread_safety: ReadSafe
+    category: Appearance
+    serialization:
+      can_load: true
+      can_save: true
+    capabilities:
+      - Basic
+  - name: ParticleEmitter.TextureContent
+    summary: |
+      The image rendered on particles. Supports
+      [asset URIs](../../../projects/assets/index.md#asset-uris).
+    description: |
+      The image rendered on particles. Supports
+      [asset URIs](../../../projects/assets/index.md#asset-uris).
+
+      This property is the `Datatype.Content` equivalent of
+      `Class.ParticleEmitter.Texture|Texture`. Assigning `TextureContent`
+      updates `Texture`. The appearance of the texture is influenced by
+      `Class.ParticleEmitter.Color|Color`,
+      `Class.ParticleEmitter.Transparency|Transparency`,
+      `Class.ParticleEmitter.LightInfluence|LightInfluence`, and
+      `Class.ParticleEmitter.LightEmission|LightEmission`.
+    code_samples: []
+    type: Content
     tags: []
     deprecation_message: ''
     security:

@@ -9,20 +9,18 @@ The **Ads Manager** offers you control over your ad campaigns, empowering you to
 
 <iframe width="800" height="450" src="https://www.youtube-nocookie.com/embed/5HcH-9E7USc?si=IDla-YBxiO_E-O0q" title="YouTube video player" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-## Set up an ad account
+## Getting started
 
-To access the Ads Manager, you must set up an ad account with a verified email on a Roblox account registered for users aged 13 years or older.
+To access the Ads Manager, you must be aged 13 years or older and use a Roblox account with a verified email address.
 
-When setting up an account, you can choose between creating a personal or a business ads account. A personal account is for individuals who want to advertise on Roblox, while a business account manages a company's ad presence on Roblox.
-
-To set up an ad account:
+To get started:
 
 1. Create an ad account.
-   1. Go to the [Ads Manager](https://ads.roblox.com) portal while signed into your Roblox account and click **Create ad account**.
-   2. Choose a personal account or a business account.
-   3. Check the box to confirm your information and click **Create ad account**.
+   1. Go to the [Ads Manager](https://create.roblox.com/advertise) portal while signed into your Roblox account and click **Start creating**.
+   2. Click **Create campaign**.
+   3. Choose a time zone for your personal ad account, review the [Roblox advertising terms](https://en.help.roblox.com/hc/articles/15494846263060), and click **Save**.
 2. Add a payment method to your ad account.
-   1. Go to **Bills & Payments** > **Payment Settings**.
+   1. Go to **Billing & payments** > **Payment settings**.
    2. Click **Add Payment Method**.
    3. Attach a credit or debit card to your account or buy ad credits.
       - To add a card to your account, select the **Card** tab, enter your information, and click **Save and Authenticate**. This option is available for users 18 and above. A temporary $1.00 USD hold will be placed on the card and refunded after verification is complete within 7 business days.
@@ -38,20 +36,47 @@ Any Roblox user aged 13 and above can convert Robux to ad credits and use it for
 
 When converting Robux to ad credits, consider the following:
 
-- 1 ad credit is equivalent to 263 Robux.
+- Robux earned at the U.S. 18+ exchange rate are converted first. You will see a preview of the exact conversion details.
 - 1 ad credit is the minimum conversion requirement.
 
 This minimum conversion requirement streamlines the conversion process, prevents inaccuracies, and makes sure that you have enough ad credits to support meaningful advertising campaigns.
 
-<img src="../../assets/promotion/ads-manager/Ad-Credits.png" width="780" />
+<img src="../../assets/promotion/ads-manager/Ad-Credits-2026.png" width="780" />
 
 ## Manage your ads
 
-Use the Ads Manager to create and manage ad campaigns for your experiences. With this tool, you can set budgets, select creatives, and control delivery settings while monitoring and adjusting your campaigns over time.
+Use the Ads Manager to create and manage ad campaigns for your games. With this tool, you can set budgets, select creatives, and control delivery settings while monitoring and adjusting your campaigns over time.
+
+Ads Manager supports group-owned games. Use the Creator Hub group switcher to select a group, then choose a time zone for the group's ad account after reviewing the [Roblox advertising terms](https://en.help.roblox.com/hc/articles/15494846263060). Review the Ads Manager [permissions guide](#group-permissions) to learn more about giving users in your group access to Ads Manager.
 
 ### Ad campaign components
 
 Ad campaigns are made up of a few core components that control how your ads are delivered, how much you spend, and what players see.
+
+<h5 style={{marginTop: '36px'}}>Goals</h5>
+
+Each ad campaign has a single goal that determines who Roblox shows the campaign to and how its performance is measured. Choose the goal that matches what you're trying to achieve with the campaign.
+
+- **Plays**
+
+  The **Plays** objective reaches players who are most likely to start a session in your game. Use it when you want broad distribution, are testing new ideas with a wide audience, or want initial traffic to help recommendation systems learn what's working and qualify your game for Recommended For You.
+
+- **Earnings** (Limited)
+
+  The Earnings objective reaches players who are most likely to spend Robux in your game. Use it to increase earnings by acquiring new high-value players, especially if your game has a well-developed in-game economy.
+
+- **Engagement**
+
+  The Engagement objective reaches age-checked highly engaged players whose sessions count toward your highly engaged player threshold for [Roblox Kids and Select](../publishing/kids-and-select.md). Use it if you want a more direct path toward meeting the threshold.
+
+  Many games reach the threshold organically over time, so using the Engagement objective is optional.
+
+  When using the Engagement objective, keep the following in mind:
+
+  - **Expect a higher cost per play (CPP).** The highly engaged player audience is smaller than the Plays audience, which typically results in a higher CPP.
+  - **Use a dedicated budget.** Consider Engagement as a separate investment if your goal is to make progress toward the Roblox Kids and Select threshold, instead of shifting spend from Plays campaigns.
+  - **Track your progress.** Engagement campaigns do not automatically pause when you reach your Highly Engaged Player threshold. Track your progress and pause the campaign when you reach your goal.
+  - **Allow time for results.** Most campaigns require several days to produce meaningful results. If you don't see progress after 3–5 days, consider improving your game's onboarding and first-time user experience before continuing.
 
 <h5 style={{marginTop: '36px'}}>Automated bidding</h5>
 
@@ -64,15 +89,23 @@ When you create an ad campaign, you must set budgeting parameters to control cam
 - A **daily budget** is the maximum amount you pay for your ads per day.
 - A **lifetime budget** is the maximum amount you pay for your ads for the entire duration of the campaign.
 
-You can pay for campaign budgets using either your debit or credit card on file, or your existing ad credit balance. If you fund a campaign with ad credits, you can't modify it after it's published. If you have unused ad credits after your campaign ends, those credits are refunded to your account.
+You can pay for campaign budgets using either your debit or credit card on file, or your personal ad credit balance. For group-owned games, you can also select the group's ad credit balance. If you have unused ad credits after your campaign ends, those credits are refunded to your account.
+
+<Alert severity='warning'>
+The payment method cannot be changed after a campaign is published.
+</Alert>
 
 During campaign creation, you can enable **auto-reload** to automatically purchase ad credits when your account runs out. When auto-reload is triggered, Roblox reloads one day's worth of ad credits, and continues to reload daily as needed to keep your campaign running.
 
+Converting group earnings to ad credit and enabling auto-reload on group-funded campaigns require the "Configure and spend group revenue" permission. Group roles and permissions can be configured in [Creator Hub](https://create.roblox.com/dashboard/group/roles).
+
 <h5 style={{marginTop: '36px'}}>Creatives</h5>
 
-An ad creative is the thumbnail that shows up on a player's Home page when you sponsor an experience. You can select up to 10 thumbnails for your ad campaign, which are then evenly distributed across players' Home pages. After you create a campaign, you can edit the campaign to turn specific thumbnails on and off.
+An ad creative is the thumbnail that appears on a player's Home page when you sponsor a game. You can include up to 10 thumbnails in a campaign, which are evenly distributed across players. After creating a campaign, you can enable or disable individual thumbnails at any time.
 
-You can use existing thumbnail images you have previously uploaded to the Creator Hub, or upload new ad-specific images with the Ads Manager. Any image you use as a thumbnail is resized to a ratio of 16:9 when displayed on the Home page.
+You can use existing thumbnails you've already uploaded to Creator Hub, upload new images specifically for the campaign, or create new thumbnails with the **AI generate** option. AI generate creates three thumbnail variations from a text description that you provide.
+
+All thumbnails are displayed on the Home page with a 16:9 aspect ratio. Images that don't match this aspect ratio are automatically resized.
 
 ### Create an ad campaign
 
@@ -81,29 +114,33 @@ Your ad campaign is automatically shown in both the Home page and search results
 </Alert>
 
 <Alert severity="warning">
-Ad campaigns for experiences that are not unique can result in **no ad spend** and **no conversions**.
+Ad campaigns for games that are not unique can result in **no ad spend** and **no conversions**.
 
-Experiences with metadata and place files that closely resemble existing experiences on Roblox are not prioritized for recommendations and might rank lower in search results. Campaigns for these experiences might not be effective.
+Games with metadata and place files that closely resemble existing games on Roblox are not prioritized for recommendations and might rank lower in search results. Campaigns for these games might not be effective.
 </Alert>
 
 To create an ad campaign:
 
 1. Go to **Manage Ads** and click **Create Campaign**.
 2. Under **Experience**:
-   1. Select the experience you want players to join when they click on your ad.
+   1. Select the game you want players to join when they click on your ad.
    2. Enter a name for the campaign.
-   3. <Chip label="OPTIONAL" size="small" variant="outlined" /> Select **Advanced options** to send players to a specific place in your experience when they click your ad. For more information, see [Advanced join options](#advanced-join-options).
-3. Under **Goal**, select a goal for the ad campaign:
+   3. <Chip label="OPTIONAL" size="small" variant="outlined" /> Select **Advanced options** to send players to a specific place in your game when they click your ad. For more information, see [Advanced join options](#advanced-join-options).
+3. Under **Goal**, select an objective for the ad campaign:
 
    <table>
    <tbody>
    <tr>
       <td>**Plays**</td>
-      <td>Reach the players most likely to stay engaged with your experience.</td>
+      <td>Find the most players for your game.</td>
    </tr>
    <tr>
-      <td>(Coming soon) **Earnings**</td>
-      <td>Reach the players most likely to spend money inside your experience.</td>
+      <td>(Limited) **Earnings**</td>
+      <td>Reach the players most likely to spend money inside your game.</td>
+   </tr>
+   <tr>
+      <td>**Engagement**</td>
+      <td>Grow the number of highly engaged players in your game.</td>
    </tr>
    </tbody>
    </table>
@@ -120,15 +157,15 @@ To create an ad campaign:
       </tr>
       <tr>
          <td>**New Players**</td>
-         <td>Show ad to players who have never played your experience, or who haven’t played it in 180+ days.</td>
+         <td>Show ad to players who have never played your game, or who haven’t played it in 180+ days.</td>
       </tr>
       <tr>
          <td>**Recent Players**</td>
-         <td>Show ad to players who have played your experience in the last 30 days. Only available for experiences with 10,000 recent players or more.</td>
+         <td>Show ad to players who have played your game in the last 30 days. Only available for games with 10,000 recent players or more.</td>
       </tr>
       <tr>
          <td>**Lapsed Players**</td>
-         <td>Show ad to players who played your experience 30 to 180 days ago but haven’t returned. Only available for experiences with 20,000 lapsed players or more.</td>
+         <td>Show ad to players who played your game 30 to 180 days ago but haven’t returned. Only available for games with 20,000 lapsed players or more.</td>
       </tr>
       </tbody>
       </table>
@@ -141,7 +178,7 @@ To create an ad campaign:
    3. Set a **Start Date** and a **Start Time** for your campaign.
    4. Set a **Duration** for your campaign.
    5. <Chip label="OPTIONAL" size="small" variant="outlined" />If you're using ad credits, enable **auto-reload** to automatically add ad credits to the campaign when your budget runs out.
-6. Under **Creatives**, choose up to 10 thumbnails to show players.
+6. Under **Creatives**, choose up to 10 thumbnails to show players. You can click **Add creative** to upload your own thumbnails or click **AI generate** to generate thumbnails from a description.
 7. Click **Publish** and confirm submission. Your ad campaign will go live after it's approved by the moderation team.
 
 <Alert severity="info">
@@ -187,10 +224,10 @@ Cancelling a campaign automatically cancels any associated ads, returns any ad c
 
 ### Advanced join options
 
-Advanced join options let you control where users land in your experience when they click your ad. You can also include launch data to identify which players joined through a specific ad campaign, allowing you to personalize a player's experience or trigger custom effects when they join.
+Advanced join options let you control where users land in your game when they click your ad. You can also include launch data to identify which players joined through a specific ad campaign, allowing you to personalize a player's experience or trigger custom effects when they join.
 
 <Alert severity="info">
-  Launch data appears in the join URL and isn’t hidden. Users can share the URL and join your experience with the same launch data, so joins using your campaign’s launch data might not exactly match your experience’s sponsored tile play metrics.
+  Launch data appears in the join URL and isn’t hidden. Users can share the URL and join your game with the same launch data, so joins using your campaign’s launch data might not exactly match your game’s sponsored tile play metrics.
 </Alert>
 
 By identifying which players joined through a specific ad, you can:
@@ -202,7 +239,7 @@ By identifying which players joined through a specific ad, you can:
 To customize your campaign's join options:
 
 1. During campaign creation, click **Advanced options** to open the **Advanced join options** panel.
-2. Select the start place you want to send players to when they click your ad. If you don't select a start place, players are sent to your experience's default spawn location.
+2. Select the start place you want to send players to when they click your ad. If you don't select a start place, players are sent to your game's default spawn location.
 3. Set launch data parameters.
 4. Use the launch URL to test the join implementation before launching the campaign.
 
@@ -210,7 +247,7 @@ To customize your campaign's join options:
   Both selecting a start place and setting launch data parameters are optional and independent of each other. You can customize a player's start place without using launch data, or use launch data to run custom logic while sending players to the default start place.
 </Alert>
 
-If you set launch data parameters, you must open Roblox Studio and update `Class.Player.GetJoinData|GetJoinData` in your experience's `onPlayerAdded` function to retrieve the launch data. You can then check whether a player joined through the specific ad campaign associated with those parameters and run custom logic, such as granting rewards or triggering other in-game effects.
+If you set launch data parameters, you must open Roblox Studio and update `Class.Player.GetJoinData|GetJoinData` in your game's `onPlayerAdded` function to retrieve the launch data. You can then check whether a player joined through the specific ad campaign associated with those parameters and run custom logic, such as granting rewards or triggering other in-game effects.
 
 The following example updates the `onPlayerAdded` function to retrieve and check the launch data parameters you defined when creating the campaign.
 
@@ -232,6 +269,35 @@ end
 Players.PlayerAdded:Connect(onPlayerAdded)
 ```
 
+## Asset library
+
+The **asset library** is a centralized hub for uploading, storing, and reusing creative assets across multiple campaigns. Instead of re-uploading the same images or videos every time you create a campaign, you can build a portfolio of pre-moderated assets that are ready to use at any time.
+
+You can add assets to the asset library by manually uploading files or by generating thumbnails with AI.
+
+To upload assets manually:
+
+1. In the **Asset library**, click **Add asset**.
+2. (Optional) Select a game from the dropdown to associate the assets with.
+3. Click **Select media** and select one or more files to upload. You can upload up to 10 files at once.
+4. Click **Add assets**.
+
+To generate assets with AI:
+
+1. In the **Asset library**, click **Generate**.
+2. Select a game from the dropdown to associate the assets with.
+3. Enter a description. AI generates three images based on the game you selected and the description you entered.
+4. Select one or more of the generated images.
+5. Click **Save creatives**.
+
+All assets are automatically submitted for moderation when uploaded. Moderation is typically completed within 48 hours. If your asset is rejected, you can appeal that status by clicking **Appeal**.
+
+To archive an asset you no longer need, click **&vellip;** > **Archive**. Archived assets aren't available during campaign creation, but their performance history is retained.
+
+<Alert severity="warning">
+You cannot archive assets that are currently tied to a live or processing campaign.
+</Alert>
+
 ## Reporting
 
 Reports provide insights into the overall effectiveness of your ad campaigns. You can use reporting data to compare performance across campaigns and identify opportunities to optimize.
@@ -239,6 +305,8 @@ Reports provide insights into the overall effectiveness of your ad campaigns. Yo
 To view your reports, go to **Manage Ads** and select the date range and game you want to analyze.
 
 Impressions and clicks are reported in real time. Reporting on plays and earnings, however, relies on **attribution** and can include events that occur up to 30 days after an ad is served.
+
+Data can also take up to 48 hours to appear in reports. This delay is most noticeable for post-click metrics such as plays and earnings, which require additional processing and verification before credit can be assigned to the correct events.
 
 The goal of attribution is to assign credits to Ads Manager based on the role advertising plays in acquiring users and driving conversions. This helps you understand how your ad spend contributes to your growth and earnings.
 
@@ -288,7 +356,7 @@ The reporting views include:
 The following examples show you how attribution works across different user types and reporting views:
 
 - If a user last played less than 7 days ago from another source, the ad is only credited for that play and any Robux generated during that session.
-- If a user joins your experience for the first time through an ad, their plays and Robux spend are credited to that ad for the next 30 days.
+- If a user joins your game for the first time through an ad, their plays and Robux spend are credited to that ad for the next 30 days.
 - If a user comes back through an ad after not playing for at least 7 days, they're considered resurrected by the ad. Their plays and Robux spend are then credited to that ad for the next 7 days.
 
 <Alert severity='warning'>
@@ -366,7 +434,7 @@ The reporting table includes:
   </tr>
   <tr>
     <td>**Plays**</td>
-    <td>The number of times players entered and started playing your experience as a result of your campaign.</td>
+    <td>The number of times players entered and started playing your game as a result of your campaign.</td>
   </tr>
   <tr>
     <td>**CPP (Cost-per-play)**</td>
@@ -378,7 +446,7 @@ The reporting table includes:
   </tr>
   <tr>
     <td>**Robux Earnings**</td>
-    <td>Cumulative Robux earnings as a result of your campaign. Excludes subscriptions, engagement payouts, and immesive ads.</td>
+    <td>Cumulative Robux earnings as a result of your campaign. Excludes subscriptions, but includes ad revenue and Creator Rewards, as well as in-game purchases.</td>
   </tr>
 </tbody>
 </table>
@@ -442,13 +510,25 @@ The reporting table includes:
 </tbody>
 </table>
 
+## Group permissions
+
+Group roles and permissions are managed in [Creator Hub](https://create.roblox.com/dashboard/group/roles).
+
+To grant a user in your group access to Ads Manager, add the "Create Ad campaigns for the group" permission to a role, then add that role to the desired user.
+
+### Group ad credit
+
+The "Configure and spend group revenue" permission allows the user to convert group-earned Robux to group ad credit. Once group ad credit is available, it can be used to fund campaigns by any user with the "Create Ad campaigns for the group" permission. The only exception is enabling auto-reload on a group-funded campaign; enabling auto-reload also requires the "spend group revenue" permission.
+
+<img src="../../assets/promotion/ads-manager/group-permissions.png" width="780" />
+
 ## Billing
 
-The ads billing tool charges you for ad placements on Roblox using the payment method you have on file. To view billing information, go to **Billing & Payments** > **Payment Activity**.
+The ads billing tool charges you for ad placements on Roblox using the payment method you have on file. To view billing information, go to **Billing & payments** > **Payment activity**.
 
 <h5 style={{marginTop: '36px'}}>Credit and debit cards</h5>
 
-<Alert severity = 'warning'>
+<Alert severity='warning'>
 For first-time credit card users, \$5 USD will be charged upon campaign submission and used toward your first bill. Any unused balance will be refunded.
 </Alert>
 

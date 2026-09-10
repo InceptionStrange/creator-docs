@@ -83,18 +83,9 @@ properties:
       `Class.Instance.Parent` is set to `nil`, this property is useful in
       allowing existing particles the opportunity to expire before destroying
       the Fire object altogether. See the function below.
-
-      ```
-      local Debris = game:GetService("Debris")
-      local part = script.Parent
-      function stopSparkling(sparkles)
-      	sparkles.Enabled = false -- No more new particles
-      	Debris:AddItem(sparkles, 4) -- Remove the object after a delay (after existing particles have expired)
-      end
-      stopSparkling(part.Sparkles)
-      ```
     code_samples:
       - Give-Sparkles
+      - Sparkles-Enabled
     type: boolean
     tags: []
     deprecation_message: ''
@@ -106,25 +97,6 @@ properties:
     serialization:
       can_load: true
       can_save: true
-    capabilities:
-      - Basic
-  - name: Sparkles.LocalTransparencyModifier
-    summary: ''
-    description: ''
-    code_samples: []
-    type: float
-    tags:
-      - Hidden
-      - NotReplicated
-    deprecation_message: ''
-    security:
-      read: None
-      write: None
-    thread_safety: ReadSafe
-    category: Data
-    serialization:
-      can_load: false
-      can_save: false
     capabilities:
       - Basic
   - name: Sparkles.SparkleColor
@@ -159,8 +131,12 @@ properties:
     capabilities:
       - Basic
   - name: Sparkles.TimeScale
-    summary: ''
-    description: ''
+    summary: |
+      Controls the speed of the sparkle effect.
+    description: |
+      A value from 0 to 1 that controls the speed of the sparkle effect. A value
+      of 1 runs the effect at normal speed, 0.5 runs it at half speed, and 0
+      freezes the effect.
     code_samples: []
     type: float
     tags: []

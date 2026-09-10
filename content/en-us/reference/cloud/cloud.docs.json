@@ -235,7 +235,7 @@
       "get": {
         "tags": ["Cloud"],
         "summary": "List Group Forum Categories",
-        "description": "Lists forum categories in the group.",
+        "description": "Lists forum categories in the group. Supports filtering.",
         "operationId": "Cloud_ListGroupForumCategories",
         "parameters": [
           {
@@ -316,7 +316,7 @@
       "get": {
         "tags": ["Cloud"],
         "summary": "List Group Forum Posts",
-        "description": "Lists forum posts in the group's forum category.",
+        "description": "Lists forum posts in the group's forum category. Supports filtering.",
         "operationId": "Cloud_ListGroupForumPosts",
         "parameters": [
           {
@@ -417,7 +417,7 @@
       "get": {
         "tags": ["Cloud"],
         "summary": "List Group Forum Comments",
-        "description": "Lists forum comments on a group's forum post.",
+        "description": "Lists forum comments on a group's forum post. Supports filtering.",
         "operationId": "Cloud_ListGroupForumComments",
         "parameters": [
           {
@@ -516,7 +516,7 @@
       "get": {
         "tags": ["Cloud"],
         "summary": "List Group Join Requests",
-        "description": "List join requests under a group.",
+        "description": "List join requests under a group. Supports filtering.",
         "operationId": "Cloud_ListGroupJoinRequests",
         "parameters": [
           {
@@ -723,7 +723,7 @@
       "get": {
         "tags": ["Cloud"],
         "summary": "List Group Memberships",
-        "description": "List group members in a group.",
+        "description": "List group members in a group. Supports filtering.",
         "operationId": "Cloud_ListGroupMemberships",
         "parameters": [
           {
@@ -799,7 +799,7 @@
       "patch": {
         "tags": ["Cloud"],
         "summary": "Update Group Membership",
-        "description": "**Deprecated.** Use AssignGroupRole and UnassignGroupRole instead.\nUpdates the group membership for a particular group member. This action\nrequires the requester to be able to manage lower ranked members. Guest or\nOwner ranks cannot be assigned, and a requester cannot change their own\nrank.",
+        "description": "**Deprecated.** Use AssignGroupRole and UnassignGroupRole instead.\nUpdates the group membership for a particular group member. This action\nrequires the requester to be able to assign or remove roles below their\nhighest role. The requester cannot change their own roles.",
         "operationId": "Cloud_UpdateGroupMembership",
         "parameters": [
           {
@@ -1006,7 +1006,7 @@
       "get": {
         "tags": ["Cloud"],
         "summary": "List Group Roles",
-        "description": "List roles in a group.\n\nThe permissions field for roles is viewable based on the requester's access\nand scopes.\n\nPermissions for the guest role are always visible - a scope is not needed.\n\nIf the requester is a member of the group and has the `group:read` scope,\npermissions in their role are visible.\n\nIf the requester is the owner of the group and has the `group:read` scope,\npermissions in all roles are visible.",
+        "description": "List roles in a group.\n\nRoles can be public or private. The response includes private roles and\ntheir fields only when the acting user is permitted to view them. The\nendpoint does not provide a public-roles-only view.\n\nThe permissions field for roles is viewable based on the requester's access\nand scopes.\n\nPermissions for the guest role are always visible - a scope is not needed.\n\nIf the requester is a member of the group and has the `group:read` scope,\npermissions in their role are visible.\n\nIf the requester is the owner of the group and has the `group:read` scope,\npermissions in all roles are visible.",
         "operationId": "Cloud_ListGroupRoles",
         "parameters": [
           {
@@ -3470,7 +3470,7 @@
       "post": {
         "tags": ["Cloud"],
         "summary": "Flush Memory Store",
-        "description": "Asynchronously flush all data structures in the universe.",
+        "description": "Asynchronously flush all data structures in the universe.\n\nUnlike some other endpoints, the flush response `path` already\nincludes the `cloud/v2` prefix. Poll the operation at\n`https://apis.roblox.com/{path}` without adding another prefix.",
         "operationId": "Cloud_FlushMemoryStore",
         "parameters": [
           {
@@ -3481,18 +3481,19 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "The scope of the memory store to flush.\n\nPossible values:\n\n  | Value | Description |\n  | --- | --- |\n  | LIVE |  Flush the live memory store scope. This is the default. |\n  | TEST | Flush the test memory store scope. |",
+            "schema": {
+              "example": "LIVE",
+              "enum": ["LIVE", "TEST"],
+              "type": "string",
+              "format": "enum"
+            }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/FlushMemoryStoreRequest"
-              }
-            }
-          },
-          "required": true
-        },
         "responses": {
           "200": {
             "description": "OK",
@@ -4132,7 +4133,7 @@
       "patch": {
         "tags": ["Cloud"],
         "summary": "Update Place",
-        "description": "Updates the specified place.",
+        "description": "Updates the specified place. To avoid overwriting changes, this endpoint\nresponds with an HTTP 409 Conflict error if the place is open in an\nactive Team Create session.",
         "operationId": "Cloud_UpdatePlace",
         "parameters": [
           {
@@ -5770,61 +5771,6 @@
         }
       }
     },
-    "/cloud/v2/users/{user_id}": {
-      "get": {
-        "tags": ["Cloud"],
-        "summary": "Get User",
-        "description": "Gets a user's basic and advanced information.\n\nTo access a user's public information, no additional scopes are required.\n\nTo access a user's verification status, you need the following scopes:\n* user.advanced:read\n\nTo access a user's social account information, you need the following\nscopes:\n* user.social:read",
-        "operationId": "Cloud_GetUser",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "description": "The user ID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        },
-        "x-visibility": "BETA",
-        "x-roblox-engine-usability": {
-          "apiKeyWithHttpService": false
-        },
-        "x-roblox-scopes": [
-          {
-            "description": "Grants access to read a user&#x27;s verification status.",
-            "name": "user.advanced:read"
-          },
-          {
-            "description": "Grants access to read a user&#x27;s social account information.",
-            "name": "user.social:read"
-          }
-        ],
-        "x-roblox-docs": {
-          "category": "Users and groups",
-          "methodProperties": {
-            "scopes": []
-          },
-          "resource": {
-            "$ref": "#/components/schemas/User",
-            "name": "User"
-          }
-        }
-      }
-    },
     "/cloud/v2/users/{user_id}/asset-quotas": {
       "get": {
         "tags": ["Cloud"],
@@ -6044,90 +5990,6 @@
           "resource": {
             "$ref": "#/components/schemas/UserNotification",
             "name": "UserNotification"
-          }
-        }
-      }
-    },
-    "/cloud/v2/users/{user_id}:generateThumbnail": {
-      "get": {
-        "tags": ["Cloud"],
-        "summary": "Generate User Thumbnail",
-        "description": "Generates and returns the URL for the user's avatar thumbnail.",
-        "operationId": "Cloud_GenerateUserThumbnail",
-        "parameters": [
-          {
-            "name": "user_id",
-            "in": "path",
-            "description": "The user ID.",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "size",
-            "in": "query",
-            "description": "Size of the generated thumbnail. The generated thumbnail will have `size *\nsize` dimension.\n\nCurrently supported values:\n48, 50, 60, 75, 100, 110, 150, 180, 352, 420, 720\nDefault is 420.",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "format",
-            "in": "query",
-            "description": "Specify the format of the generated thumbnail. Default is `PNG`.\n\nPossible values:\n\n  | Value | Description |\n  | --- | --- |\n  | FORMAT_UNSPECIFIED | Default UserThumbnail Format -- set to png |\n  | PNG | Generate thumbnail in `.png` format |\n  | JPEG | Generate thumbnail in `.jpg` format |",
-            "schema": {
-              "example": "FORMAT_UNSPECIFIED",
-              "enum": ["FORMAT_UNSPECIFIED", "PNG", "JPEG"],
-              "type": "string",
-              "format": "enum"
-            }
-          },
-          {
-            "name": "shape",
-            "in": "query",
-            "description": "Specify the shape of the thumbnail. Default is `ROUND` (circular).\n\nPossible values:\n\n  | Value | Description |\n  | --- | --- |\n  | SHAPE_UNSPECIFIED | Default UserThumbnail Shape -- set to round |\n  | ROUND | Generate thumbnail as a circle. |\n  | SQUARE | Generate thumbnail as a rectangle. |",
-            "schema": {
-              "example": "SHAPE_UNSPECIFIED",
-              "enum": ["SHAPE_UNSPECIFIED", "ROUND", "SQUARE"],
-              "type": "string",
-              "format": "enum"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            }
-          }
-        },
-        "x-long-running-operation-parameters": {
-          "metadata": {
-            "$ref": "#/components/schemas/GenerateUserThumbnailMetadata"
-          },
-          "response": {
-            "$ref": "#/components/schemas/GenerateUserThumbnailResponse"
-          }
-        },
-        "x-visibility": "BETA",
-        "x-roblox-engine-usability": {
-          "apiKeyWithHttpService": false
-        },
-        "x-roblox-docs": {
-          "category": "Users and groups",
-          "methodProperties": {
-            "scopes": []
-          },
-          "resource": {
-            "$ref": "#/components/schemas/User",
-            "name": "User"
           }
         }
       }
@@ -6515,7 +6377,7 @@
           },
           "value": {
             "$ref": "#/components/schemas/GoogleProtobufValue",
-            "description": "The value of the entry."
+            "description": "The value of the entry.\n\nWhen a stored value contains a non-finite Luau number that JSON can't\nrepresent, Open Cloud responses replace the number with a tagged JSON\nobject:\n\n* Positive infinity: `{\"m\": null, \"t\": \"numeric\", \"v\": \"inf\"}`\n* Negative infinity: `{\"m\": null, \"t\": \"numeric\", \"v\": \"-inf\"}`\n* NaN: `{\"m\": null, \"t\": \"numeric\", \"v\": \"nan\"}`"
           },
           "id": {
             "readOnly": true,
@@ -6523,11 +6385,12 @@
             "description": "The resource ID of the entry.\n\nThis matches the last segment of the resource path, and is provided\nonly for convenience."
           },
           "users": {
+            "example": "users/123",
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Users associated with the entry."
+            "description": "Users associated with the entry.\n\nEach value must be a user resource path in the format `users/{user_id}`,\nnot a bare user ID."
           },
           "attributes": {
             "type": "object",
@@ -6580,11 +6443,6 @@
         "type": "object",
         "properties": {},
         "description": "Represents metadata about the long-running operation corresponding to a\nFlushMemoryStore request.\n\nThis is the type of the `Operation.metadata` field in the response to\n`GetOperation` requests for FlushMemoryStore operations."
-      },
-      "FlushMemoryStoreRequest": {
-        "type": "object",
-        "properties": {},
-        "description": "Request body not required."
       },
       "FlushMemoryStoreResponse": {
         "type": "object",
@@ -6647,21 +6505,6 @@
           }
         },
         "description": "Contains a generated audio asset in MPEG-2 Audio Layer III (MP3) format."
-      },
-      "GenerateUserThumbnailMetadata": {
-        "type": "object",
-        "properties": {},
-        "description": "Represents metadata about the long-running operation corresponding to a\nGenerateUserThumbnail request.\n\nThis is the type of the `Operation.metadata` field in the response to\n`GetOperation` requests for GenerateUserThumbnail operations."
-      },
-      "GenerateUserThumbnailResponse": {
-        "type": "object",
-        "properties": {
-          "imageUri": {
-            "type": "string",
-            "description": "URI for the generated thumbnail."
-          }
-        },
-        "description": "Returns the URL for the user's avatar thumbnail."
       },
       "GetInstanceMetadata": {
         "type": "object",
@@ -7247,11 +7090,12 @@
             "format": "double"
           },
           "users": {
+            "example": "users/123",
             "type": "array",
             "items": {
               "type": "string"
             },
-            "description": "Users associated with the entry.\n\nIf this is not provided, existing user IDs are cleared."
+            "description": "Users associated with the entry.\n\nEach value must be a user resource path in the format `users/{user_id}`,\nnot a bare user ID.\n\nIf this is not provided, existing user IDs are cleared."
           },
           "attributes": {
             "type": "object",
@@ -7739,12 +7583,12 @@
       "ListMemoryStoreSortedMapItemsResponse": {
         "type": "object",
         "properties": {
-          "memoryStoreSortedMapItems": {
+          "items": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/MemoryStoreSortedMapItem"
             },
-            "description": "The MemoryStoreSortedMapItems from the specified MemoryStoreSortedMap."
+            "description": "The MemoryStoreSortedMapItems from the specified MemoryStoreSortedMap.\n"
           },
           "nextPageToken": {
             "type": "string",

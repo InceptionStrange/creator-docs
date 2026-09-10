@@ -2,6 +2,8 @@ navigation:
   - heading: Creator Programs
   - title: Overview
     path: /creator-programs/
+  - title: Android TV Pilot Program
+    path: /creator-programs/android-tv-pilot
   - title: Brand Developer Directory
     path: /creator-programs/brand-developer-directory
   - title: Community Feedback
@@ -14,6 +16,8 @@ navigation:
     path: /creator-programs/spotlights
   - title: Developer Awards
     path: /creator-programs/developer-awards
+  - title: Early Access Programs
+    path: /early-access-programs
   - title: Inspire
     path: /creator-programs/inspire
   - title: Learn & Explore Sort

@@ -41,12 +41,21 @@ Version notes are required when publishing so you can clearly track what changes
 3. Enter a version name and any notes you might have.
 4. Click **Publish**.
 
+## Generate publish notes
+
+Studio can automatically draft publish notes for you by summarizing all of the version notes your team wrote between the previous publish and the current one. Because the summary is generated only from those version notes, no notes between the two publishes means no summary is generated; the more consistently your team logs notes on their saves, the more complete the summary is.
+
+Generated notes are always optional and are never saved without your approval. You can edit, keep, or dismiss any summary before writing it to the version notes. To generate publish notes, use either of the following methods:
+
+- Go to **File** &rang; **Publish with Notes**, review and edit the drafted summary, then publish.
+- Go to **Window** &rang; **Version History**, then click **Edit Notes** on a published version.
+
 ## Restore to a previous version
 
 You can restore to a previous place version through Studio or the Creator Dashboard. This action creates a new version of the place.
 
 <Alert severity="info">
-Restoring a place to a previous version does **not** automatically publish the changes. If the place is [public](../production/publishing/publish-experiences-and-places.md#make-experience-public) and you want the restored version to replace the live version, open the place in Studio, publish it, and [restart your servers](./update-experiences.md#restart-servers).
+Restoring a place to a previous version does **not** automatically publish the changes. If the place is [public](../production/publishing/publish-games-and-places.md#make-game-public) and you want the restored version to replace the live version, open the place in Studio, publish it, and [restart your servers](./update-games.md#restart-servers).
 </Alert>
 
 Through Studio:
@@ -55,12 +64,12 @@ Through Studio:
 2. Click **&vellip;** next to the version you want to restore to.
 3. Click **Open Local Copy** to open a copy of the place in a new Studio session.
 4. In the new Studio session, go to **File** &rang; **Save to Roblox As**.
-5. Select the experience and place you want to overwrite.
+5. Select the game and place you want to overwrite.
 6. Confirm the action to restore to that version.
 
 Through the Creator Dashboard:
 
-1. Go to [Creations](https://create.roblox.com/dashboard/creations) and select an experience.
+1. Go to [Creations](https://create.roblox.com/dashboard/creations) and select a game.
 2. Go to **Configure** &rang; **Places**.
 3. Select the place you want to restore to a previous version.
 4. Go to **Version History**.

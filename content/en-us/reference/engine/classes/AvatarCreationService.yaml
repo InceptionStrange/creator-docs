@@ -38,9 +38,9 @@ methods:
       Auto-setup has specific model requirements and accepts certain
       configurations of models. For more information, see
       [Auto-setup requirements](../../../avatar-setup/auto-setup-requirements.md).
-      In addition to the above requirements, the input model must use
-      `Class.EditableMesh` and `Class.EditableImage` objects for all mesh and
-      texture assets.
+
+      **Note**: this API requires the `Enable Mesh / Image APIs` setting to be
+      turned on under Content Settings for your experience.
     code_samples:
       - AvatarCreationService-AutoSetupAvatarAsync
     parameters:
@@ -85,26 +85,10 @@ methods:
       to retrieve the preview image on the client. This API can only be used on
       the game server.
 
-      ```lua
-      local AvatarCreationService = game:GetService("AvatarCreationService")
-
-      function generateAvatar2DPreview(sessionId, fileId, textPrompt)
-          local pcallSuccess, result = pcall(function()
-              local args = {}
-              args.SessionId = sessionId
-              args.FileId = fileId
-              args.TextPrompt = textPrompt
-              return AvatarCreationService:GenerateAvatar2DPreviewAsync(args)
-          end)
-
-          if not pcallSuccess then
-              warn("Generating 2D preview failed: ", result)
-          end
-
-          return result
-      end
-      ```
-    code_samples: []
+      **Note**: this API requires the `Enable Mesh / Image APIs` setting to be
+      turned on under Content Settings for your experience.
+    code_samples:
+      - AvatarCreationService-GenerateAvatar2DPreviewAsync
     parameters:
       - name: avatarGeneration2dPreviewParams
         type: Dictionary
@@ -112,6 +96,13 @@ methods:
         summary: |
           A table of arguments for 2D preview generation. Type:
           `avatarGeneration2dPreviewParams: {SessionId: string, FileId: string, TextPrompt: string?}`
+      - name: progressCallback
+        type: Function?
+        default:
+        summary: |
+          Optional callback function that will be invoked periodically with a
+          progressInfo table with the overall progress (from 0 to 1). Type:
+          `(progressInfo: { Progress: number }) -> ()`
     returns:
       - type: string
         summary: |
@@ -133,25 +124,10 @@ methods:
       `Class.HumanoidDescription` avatar. This API can only be used on the game
       server.
 
-      ```lua
-      local AvatarCreationService = game:GetService("AvatarCreationService")
-
-      function generateAvatar(sessionId, previewId)
-          local pcallSuccess, result = pcall(function()
-              local args = {}
-              args.SessionId = sessionId
-              args.PreviewId = previewId
-              return AvatarCreationService:GenerateAvatarAsync(args)
-          end)
-
-          if not pcallSuccess then
-              warn("Generating avatar failed: ", result)
-          end
-
-          return result
-      end
-      ```
-    code_samples: []
+      **Note**: this API requires the `Enable Mesh / Image APIs` setting to be
+      turned on under Content Settings for your experience.
+    code_samples:
+      - AvatarCreationService-GenerateAvatarAsync
     parameters:
       - name: avatarGenerationParams
         type: Dictionary
@@ -159,6 +135,13 @@ methods:
         summary: |
           A table of arguments for generating an avatar. Type:
           `avatarGenerationParams: {SessionId: string, PreviewId: string}`
+      - name: progressCallback
+        type: Function?
+        default:
+        summary: |
+          Optional callback function that will be invoked periodically with a
+          progressInfo table with the overall progress (from 0 to 1). Type:
+          `(progressInfo: { Progress: number }) -> ()`
     returns:
       - type: string
         summary: |
@@ -406,22 +389,10 @@ methods:
       Load an AvatarGeneration 2D preview as an `Class.EditableImage` on the
       client for the given previewId. This API can only be used on the client.
 
-      ```lua
-      local AvatarCreationService = game:GetService("AvatarCreationService")
-
-      function loadAvatar2DPreview(previewId)
-          local pcallSuccess, result = pcall(function()
-              return AvatarCreationService:LoadAvatar2DPreviewAsync(previewId)
-          end)
-
-          if not pcallSuccess then
-              warn("Failed to load preview: ", result)
-          end
-
-          return result
-      end
-      ```
-    code_samples: []
+      **Note**: this API requires the `Enable Mesh / Image APIs` setting to be
+      turned on under Content Settings for your experience.
+    code_samples:
+      - AvatarCreationService-LoadAvatar2DPreviewAsync
     parameters:
       - name: previewId
         type: string
@@ -461,6 +432,9 @@ methods:
       Once the method has been invoked on both the client and server, the data
       associated with the generation ID will be erased and subsequent calls to
       his method with the same generation ID will fail.
+
+      **Note**: this API requires the `Enable Mesh / Image APIs` setting to be
+      turned on under Content Settings for your experience.
     code_samples:
       - AvatarCreationService-LoadGeneratedAvatarAsync
     parameters:
@@ -509,7 +483,8 @@ methods:
           preview.
     returns:
       - type: ()
-        summary: ''
+        summary: |
+          void
     tags:
       - Yields
     deprecation_message: ''
@@ -812,35 +787,8 @@ methods:
       a session request. The estimated `waitTime` is used to provide the player
       an estimated time in seconds until the session will be ready. This API can
       only be used on the game server.
-
-      ```lua
-      local AvatarCreationService = game:GetService("AvatarCreationService")
-      local playerSessions = {}
-      local playerSessionRequests = {}
-
-      function requestAvatarGenerationSession(player)
-          local pcallSuccess, conn, waitTime = pcall(function()
-              return AvatarCreationService:RequestAvatarGenerationSessionAsync(player, function(sessionInfo)
-                  playerSessions[player.UserID] = sessionInfo
-                  playerSessionRequests[player.UserID] = nil
-              end)
-          end)
-
-          if not pcallSuccess then
-              warn("Failed to request Avatar generation session: ", conn)
-          end
-
-          playerSessionRequests[player.UserID] = conn
-          print("Wait time for session: ", tostring(waitTime))
-      end
-
-      function cancelAvatarGenerationSessionRequest(player)
-          if playerSessionRequests[player.UserID] ~= nil then
-              playerSessionRequests[player.UserID]:Disconnect()
-          end
-      end
-      ```
-    code_samples: []
+    code_samples:
+      - AvatarCreationService-RequestAvatarGenerationSessionAsync
     parameters:
       - name: player
         type: Player
@@ -888,10 +836,7 @@ methods:
         type: AccessoryType
         default:
         summary: |
-          `Enum.AccessoryType` the instance is expected to be. Expects
-          `Enum.AccessoryType.Eyebrow|Eyebrow`,
-          `Enum.AccessoryType.Eyelash|Eyelash`, or
-          `Enum.AccessoryType.Hair|Hair`.
+          The `Enum.AccessoryType` the instance is expected to be.
     returns:
       - type: Tuple
         summary: |
@@ -964,10 +909,10 @@ methods:
       instances in the `Class.HumanoidDescription` will be validated.
 
       The `Class.HumanoidDescription` is expected to include instances set on
-      `Class.BodyPartDescription` children for each of the 6 required
+      `Class.BodyPartDescription` children for each of the six required
       `Enum.BodyPart` values. Optionally, it can include instances set on
-      `Class.AccessoryDescription` children for `Eyebrow`, `Eyelash`, and `Hair`
-      `Enum.AccessoryType|AccessoryTypes`.
+      `Class.AccessoryDescription` children for any supported
+      `Enum.AccessoryType`.
     code_samples: []
     parameters:
       - name: player
@@ -1060,6 +1005,49 @@ events:
         default:
         summary: |
           The final `Enum.ModerationStatus` result after moderation completion.
+    tags: []
+    deprecation_message: |
+      This event is deprecated. Use
+      `Class.AvatarCreationService.AvatarOutfitModerationCompleted` instead; the
+      replacement event supports avatar outfits and other in-experience-created
+      outfit types.
+    security: None
+    capabilities:
+      - DynamicGeneration
+  - name: AvatarCreationService.AvatarOutfitModerationCompleted
+    summary: |
+      Fires on the client when moderation completes for an in-experience-created
+      outfit.
+    description: |
+      Fires on the client when an in-experience-created outfit's moderation
+      status changes from `Enum.ModerationStatus.NotReviewed|NotReviewed` to
+      another status. Use this event for any in-experience-created outfit type.
+      Current outfit creation flows include
+      `Class.AvatarCreationService:PromptCreateAvatarAsync()|PromptCreateAvatarAsync()`.
+      Future in-experience outfit types will use this event as well
+      (`Class.AvatarCreationService.AvatarModerationCompleted|AvatarModerationCompleted`
+      is deprecated).
+
+      Use `outfitType` to determine the kind of outfit that completed
+      moderation. This event is informational: an outfit cannot be used until
+      its moderation status permits it.
+    code_samples: []
+    parameters:
+      - name: outfitId
+        type: int64
+        default:
+        summary: |
+          The outfit ID of the outfit that has completed moderation.
+      - name: moderationStatus
+        type: ModerationStatus
+        default:
+        summary: |
+          The final `Enum.ModerationStatus` result after moderation completion.
+      - name: outfitType
+        type: OutfitType
+        default:
+        summary: |
+          The `Enum.OutfitType` of the moderated outfit.
     tags: []
     deprecation_message: ''
     security: None

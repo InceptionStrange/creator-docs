@@ -50,9 +50,7 @@ description: |
     <td><code>Minute</code></td><td>0&ndash;59</td><td >&mdash;</td>
   </tr>
   <tr>
-    <td><code>Second</code></td><td>0&ndash;60</td><td>Usually
-    0&ndash;59, sometimes 60 to accommodate leap seconds in certain
-    systems.</td>
+    <td><code>Second</code></td><td>0&ndash;59</td><td >&mdash;</td>
   </tr> <tr>
     <td><code>Millisecond</code></td><td>0&ndash;999</td><td >&mdash;</td>
   </tr>
@@ -412,15 +410,16 @@ tags: []
 deprecation_message: ''
 constructors:
   - name: DateTime.now
-    summary: Returns a `Datatype.DateTime` representing the current moment in time.
-    description: |-
-      Returns a new `Datatype.DateTime` representing the current moment in
-      time, using the device's local clock. Most operating systems automatically
-      sync their local time against online time servers, so this should be
-      within a few hundred milliseconds. However, users can easily disable
-      sync behavior and set the system time to anything they want; for
-      synchronized time between client and server, use
-      `Class.Workspace:GetServerTimeNow()` instead.
+    summary: |
+      Returns a `Datatype.DateTime` representing the current moment in time.
+    description: |
+      Returns a new `Datatype.DateTime` representing the current moment in time,
+      using the device's local clock. Most operating systems automatically sync
+      their local time against online time servers, so this should be within a
+      few hundred milliseconds. However, users can easily disable sync behavior
+      and set the system time to anything they want; for synchronized time
+      between client and server, use `Class.Workspace:GetServerTimeNow()`
+      instead.
 
       When you need to precisely measure the time elapsed between two points in
       time, like when testing performance, use `Library.os.clock()` instead.
@@ -429,8 +428,9 @@ constructors:
     tags: []
     deprecation_message: ''
   - name: DateTime.fromUnixTimestamp
-    summary: Returns a `Datatype.DateTime` representing the given Unix timestamp.
-    description: |-
+    summary: |
+      Returns a `Datatype.DateTime` representing the given Unix timestamp.
+    description: |
       Returns a new `Datatype.DateTime` object from the given Unix timestamp, or
       the number of **seconds** since January 1st, 1970 at 00:00 (UTC).
 
@@ -440,114 +440,152 @@ constructors:
       - name: unixTimestamp
         type: number
         default:
-        summary: ''
+        summary: |
+          The number of seconds since January 1st, 1970 at 00:00 UTC (the Unix
+          epoch). Must be between -17,987,443,200 and 253,402,300,799
+          (approximately years 1400 to 9999).
     code_samples: []
     tags: []
     deprecation_message: ''
   - name: DateTime.fromUnixTimestampMillis
-    summary: Returns a `Datatype.DateTime` representing the given Unix timestamp in milliseconds.
-    description: |-
+    summary: |
+      Returns a `Datatype.DateTime` representing the given Unix timestamp in
+      milliseconds.
+    description: |
       Returns a new `Datatype.DateTime` object from the given Unix timestamp, or
       the number of **milliseconds** since January 1st, 1970 at 00:00 (UTC).
     parameters:
       - name: unixTimestampMillis
         type: number
         default:
-        summary: ''
+        summary: |
+          The number of milliseconds since January 1st, 1970 at 00:00 UTC (the
+          Unix epoch). Must be between -17,987,443,200,000 and
+          253,402,300,799,999 (approximately years 1400 to 9999).
     code_samples: []
     tags: []
     deprecation_message: ''
   - name: DateTime.fromUniversalTime
-    summary: Returns a new `Datatype.DateTime` using the given units from a UTC time.
-    description: |-
-      Returns a new `Datatype.DateTime` using the given units from a UTC time. The values
-      accepted are similar to those found in the time value table returned by
-      `Datatype.DateTime:ToUniversalTime()|ToUniversalTime()`.
+    summary: |
+      Returns a new `Datatype.DateTime` using the given units from a UTC time.
+    description: |
+      Returns a new `Datatype.DateTime` using the given units from a UTC time.
+      The values accepted are similar to those found in the time value table
+      returned by `Datatype.DateTime:ToUniversalTime()|ToUniversalTime()`.
 
-      - Date units (year, month, day) that produce an invalid date will raise an error. For example, January 32nd or February 29th on a non-leap year.
-      - Time units (hour, minute, second, millisecond) that are outside their normal range are valid. For example, 90 minutes will cause the hour to roll over by 1; -10 seconds will cause the minute value to roll back by 1.
-      - Non-integer values are rounded down. For example, providing 2.5 hours will be equivalent to providing 2 hours, not 2 hours 30 minutes.
-      - Omitted values are assumed to be their lowest value in their normal range, except for year which defaults to 1970.
+      - Date units (year, month, day) that produce an invalid date will raise an
+        error. For example, January 32nd or February 29th on a non-leap year.
+      - Time units (hour, minute, second, millisecond) that are outside their
+        normal range are valid. For example, 90 minutes will cause the hour to
+        roll over by 1; -10 seconds will cause the minute value to roll back
+        by 1.
+      - Non-integer values are rounded down. For example, providing 2.5 hours
+        will be equivalent to providing 2 hours, not 2 hours 30 minutes.
+      - Omitted values are assumed to be their lowest value in their normal
+        range, except for year which defaults to 1970.
     parameters:
       - name: year
         type: number
         default: 1970
-        summary: ''
+        summary: |
+          The year value, between 1400 and 9999.
       - name: month
         type: number
         default: 1
-        summary: ''
+        summary: |
+          The month value, between 1 and 12.
       - name: day
         type: number
         default: 1
-        summary: ''
+        summary: |
+          The day of the month, between 1 and 31.
       - name: hour
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The hour value, between 0 and 23.
       - name: minute
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The minute value, between 0 and 59.
       - name: second
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The second value, between 0 and 60.
       - name: millisecond
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The millisecond value, between 0 and 999.
     code_samples: []
     tags: []
     deprecation_message: ''
   - name: DateTime.fromLocalTime
-    summary: Returns a new `Datatype.DateTime` using the given units from a local time.
-    description: |-
-      Returns a new `Datatype.DateTime` using the given units from a local time. The
-      values accepted are similar to those found in the time value table
+    summary: |
+      Returns a new `Datatype.DateTime` using the given units from a local time.
+    description: |
+      Returns a new `Datatype.DateTime` using the given units from a local time.
+      The values accepted are similar to those found in the time value table
       returned by `Datatype.DateTime:ToLocalTime()|ToLocalTime()`.
 
-      - Date units (year, month, day) that produce an invalid date will raise an error. For example, January 32nd or February 29th on a non-leap year.
-      - Time units (hour, minute, second, millisecond) that are outside their normal range are valid. For example, 90 minutes will cause the hour to roll over by 1; -10 seconds will cause the minute value to roll back by 1.
-      - Non-integer values are rounded down. For example, providing 2.5 hours will be equivalent to providing 2 hours, not 2 hours 30 minutes.
-      - Omitted values are assumed to be their lowest value in their normal range, except for year which defaults to 1970.
+      - Date units (year, month, day) that produce an invalid date will raise an
+        error. For example, January 32nd or February 29th on a non-leap year.
+      - Time units (hour, minute, second, millisecond) that are outside their
+        normal range are valid. For example, 90 minutes will cause the hour to
+        roll over by 1; -10 seconds will cause the minute value to roll back
+        by 1.
+      - Non-integer values are rounded down. For example, providing 2.5 hours
+        will be equivalent to providing 2 hours, not 2 hours 30 minutes.
+      - Omitted values are assumed to be their lowest value in their normal
+        range, except for year which defaults to 1970.
     parameters:
       - name: year
         type: number
         default: 1970
-        summary: ''
+        summary: |
+          The year value, between 1400 and 9999.
       - name: month
         type: number
         default: 1
-        summary: ''
+        summary: |
+          The month value, between 1 and 12.
       - name: day
         type: number
         default: 1
-        summary: ''
+        summary: |
+          The day of the month, between 1 and 31.
       - name: hour
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The hour value, between 0 and 23.
       - name: minute
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The minute value, between 0 and 59.
       - name: second
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The second value, between 0 and 60.
       - name: millisecond
         type: number
         default: 0
-        summary: ''
+        summary: |
+          The millisecond value, between 0 and 999.
     code_samples: []
     tags: []
     deprecation_message: ''
   - name: DateTime.fromIsoDate
-    summary: Returns a `Datatype.DateTime` from an ISO 8601 date-time string (in UTC).
-    description: |-
+    summary: |
+      Returns a `Datatype.DateTime` from an ISO 8601 date-time string (in UTC).
+    description: |
       Returns a `Datatype.DateTime` from an ISO 8601 date-time string in UTC
-      time, such as those returned by `Datatype.DateTime:ToIsoDate()|ToIsoDate()`. If the string parsing fails,
+      time, such as those returned by
+      `Datatype.DateTime:ToIsoDate()|ToIsoDate()`. If the string parsing fails,
       the function returns `nil`.
 
       An example ISO 8601 date-time string would be `2020-01-02T10:30:45Z`,
@@ -556,7 +594,8 @@ constructors:
       - name: isoDate
         type: string
         default:
-        summary: ''
+        summary: |
+          An ISO 8601 date-time string in UTC, such as `"2020-01-02T10:30:45Z"`.
     code_samples: []
     tags: []
     deprecation_message: ''
@@ -662,11 +701,15 @@ methods:
       - name: format
         type: string
         default:
-        summary: ''
+        summary: |
+          A format string containing tokens that are replaced with date and time
+          values, such as `"LL"` or `"YYYY-MM-DD"`.
       - name: locale
         type: string
         default:
-        summary: ''
+        summary: |
+          A BCP 47 locale identifier (such as `"en-us"`) that determines
+          language and formatting conventions.
     returns:
       - type: string
         summary: ''
@@ -694,11 +737,15 @@ methods:
       - name: format
         type: string
         default:
-        summary: ''
+        summary: |
+          A format string containing tokens that are replaced with date and time
+          values, such as `"LL"` or `"YYYY-MM-DD"`.
       - name: locale
         type: string
         default:
-        summary: ''
+        summary: |
+          A BCP 47 locale identifier (such as `"en-us"`) that determines
+          language and formatting conventions.
     returns:
       - type: string
         summary: ''

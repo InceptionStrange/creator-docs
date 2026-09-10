@@ -75,24 +75,6 @@ properties:
       can_load: false
       can_save: false
     capabilities: []
-  - name: DataModel.Environment
-    summary: ''
-    description: ''
-    code_samples: []
-    type: string
-    tags:
-      - ReadOnly
-      - NotReplicated
-    deprecation_message: ''
-    security:
-      read: RobloxScriptSecurity
-      write: RobloxScriptSecurity
-    thread_safety: ReadSafe
-    category: State
-    serialization:
-      can_load: false
-      can_save: false
-    capabilities: []
   - name: DataModel.GameId
     summary: |
       Describes the ID of the experience that the place running on the server
@@ -443,8 +425,13 @@ properties:
       can_save: true
     capabilities: []
   - name: DataModel.RunService
-    summary: ''
-    description: ''
+    summary: |
+      A reference to the `Class.RunService` service.
+    description: |
+      A reference to the `Class.RunService` service. Always points to
+      `Class.RunService` and is never `nil`. You can also retrieve it with
+      `Class.ServiceProvider:GetService()|GetService()`, for example
+      `game:GetService("RunService")`.
     code_samples: []
     type: RunService
     tags:
@@ -568,7 +555,8 @@ methods:
 
       The experience server waits 30 seconds for all bound functions to stop
       running before it shuts down. After 30 seconds, the server shuts down even
-      if functions are still running.
+      if functions are still running. Teleports are disabled during moderation
+      shutdowns.
 
       To verify that the current session is not in Roblox Studio, use
       `Class.RunService:IsStudio()`. This prevents bound functions from
@@ -1014,15 +1002,44 @@ events:
     deprecation_message: ''
     security: None
     capabilities: []
-  - name: DataModel.ServerLifecycleChanged
-    summary: ''
-    description: ''
-    code_samples: []
+  - name: DataModel.ServerRestartScheduled
+    summary: |
+      Fires on the server when the server has been scheduled to restart.
+      Provides the scheduled restart time, source, and custom attributes.
+    description: |
+      Fires when the server has been scheduled to restart, for example when you
+      restart servers from the Creator Hub or
+      [Open Cloud](https://create.roblox.com/docs/cloud/reference/features/universes#Restarts_LaunchRestart)
+      to [release an experience update](../../../projects/update-games.md), or
+      when Roblox needs to restart servers for infrastructure maintenance.
+
+      You can use this event to inform players on the server of the impending
+      restart. You could then let them save their progress or teleport them to
+      updated servers at the most convenient time for your game.
+    code_samples:
+      - DataModel-ServerRestartScheduled1
     parameters:
-      - name: serverLifecycleChangedEvent
+      - name: restartTime
+        type: DateTime
+        default:
+        summary: |
+          A `Datatype.DateTime` indicating when the server is scheduled to shut
+          down. The actual restart may happen slightly after this projected
+          time, but not before.
+      - name: source
+        type: CloseReason
+        default:
+        summary: |
+          An `Enum.CloseReason` describing what triggered the restart. The value
+          will be `Enum.CloseReason.DeveloperUpdate` for experience updates, and
+          `Enum.CloseReason.RobloxMaintenance` for server maintenance updates.
+      - name: attributes
         type: Dictionary
         default:
-        summary: ''
+        summary: |
+          A dictionary of developer-supplied metadata associated with the
+          restart. If no attributes are provided, then this will be an empty
+          table.
     tags: []
     deprecation_message: ''
     security: None

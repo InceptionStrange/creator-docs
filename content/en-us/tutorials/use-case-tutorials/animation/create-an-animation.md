@@ -3,7 +3,7 @@ title: Create character animations
 description: The process for using the Animation Editor to create custom character animations.
 ---
 
-**Character animations** include a series of key poses that programmatically flow together to make your characters appear as if they're moving in their environment. While Roblox provides a set of default character animations for every experience, creating custom animations for your characters helps players understand their unique personalities by how they carry themselves and interact with other characters.
+**Character animations** include a series of key poses that programmatically flow together to make your characters appear as if they're moving in their environment. While Roblox provides a set of default character animations for every game, creating custom animations for your characters helps players understand their unique personalities by how they carry themselves and interact with other characters.
 
 Using the [Walking Character Animations](https://www.roblox.com/games/134383324873456/Walking-Character-Animation) `.rbxl` file as a starting place, this tutorial shows you how to create a walk cycle character animation from start to finish, including guidance on:
 
@@ -12,7 +12,7 @@ Using the [Walking Character Animations](https://www.roblox.com/games/1343833248
 - Looping the animation to test how it looks at different speeds, angles, and easing styles.
 - Publishing the animation so that you can use it across projects in different scripts and contexts.
 
-After you complete this tutorial, you will have an asset ID for your animation, and skills to create additional types of animations that meet the needs for your own characters and experiences.
+After you complete this tutorial, you will have an asset ID for your animation, and skills to create additional types of animations that meet the needs for your own characters and games.
 
 <img src="../../../assets/tutorials/creating-character-animations/Ref-All.jpg" alt="" width="100%" />
 
@@ -20,7 +20,7 @@ After you complete this tutorial, you will have an asset ID for your animation, 
 
 ## Add rig
 
-**Rigs**, or collections of parts connected by joints like `Class.Bone` or `Class.Motor6D` objects, are necessary to create character animations because they include the internal structure you need to move and rotate body parts into different poses. While you can [create your own rigs](../../../art/modeling/rig-a-humanoid-model.md) using external 3D modeling tools, Studio provides several pre-built rigs that you can access through the [Rig Generator](../../../studio/rig-builder.md) tool.
+**Rigs**, or collections of parts connected by joints like `Class.Bone` or `Class.Motor6D` objects, are necessary to create character animations because they include the internal structure you need to move and rotate body parts into different poses. While you can [create your own rigs](../../../art/modeling/rig-a-humanoid-model.md) using external 3D modeling tools, Studio provides several pre-built [standard](../../../avatar/character-bodies/specifications.md#standard-r15-rigs) and [advanced](../../../avatar/character-bodies/specifications.md#advanced-r15-rigs) R15 rigs that you can access through the [Rig Generator](../../../studio/rig-builder.md) tool.
 
 <GridContainer numColumns="3">
   <figure>
@@ -77,7 +77,7 @@ While the central idea of these key poses remain the same for all walk cycles, d
 - A timid character may keep their arms tucked and their head down to avoid eye contact.
 - A cold character may cross their arms and take measured steps as they look around for warmth.
 
-Animation is an art form, and the design decisions you make for your character may look different from the design decisions within this tutorial for the masculine Rthro rig. While the following instruction focuses on how to recreate the key poses for a confident character's walk cycle, feel free to adjust the learnings to meet the design needs for your own experiences.
+Animation is an art form, and the design decisions you make for your character may look different from the design decisions within this tutorial for the masculine Rthro rig. While the following instruction focuses on how to recreate the key poses for a confident character's walk cycle, feel free to adjust the learnings to meet the design needs for your own games.
 
 <img src="../../../assets/tutorials/creating-character-animations/Ref-Masculine-Rig.jpg" alt="" width="100%" />
 
@@ -100,7 +100,7 @@ To create a first pass Contact pose for the left foot cycle:
 1. From the toolbar's **Avatar** tab, click **Clip Editor**. The [Animation Editor](../../../animation/editor.md) window displays.
 1. Select your rig. A contextual menu displays.
 1. In the **Animation Name** field, input a name for your animation, then click the **Create** button.
-1. **(Optional)** Set the timeline to 24 frames per second.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> Set the timeline to 24 frames per second.
    1. In the editor's playback tools, click the gear icon.
 
       <img src="../../../assets/tutorials/creating-character-animations/Gear-Icon.png" width="30%" />
@@ -154,7 +154,7 @@ To create a first pass Contact pose for the left foot cycle:
    1. Select **Save**.
 
 <Alert severity = 'warning'>
-Until you publish an animation, it's stored locally to your place file and cannot be used in other experiences. When you save an animation, it does **not** save your experience.
+Until you publish an animation, it's stored locally to your place file and cannot be used in other games. When you save an animation, it does **not** save your games.
 </Alert>
 
 #### Low
@@ -479,7 +479,7 @@ To create a first pass High pose for the right foot cycle:
 
 After you complete your first pass of your key poses, it's important to test your animation to see how it flows together. If there are any inconsistencies or choppy transitions, you can make subtle adjustments to ensure the animation is as smooth as it should be for your character's body and personality.
 
-In other words, if you want your character to be graceful and light on their feet, their movements should be fluid and flow together. However, if you want your character to be clumsy and stumble as they walk, smooth transitions may be less desirable for how you want them to present themselves in your experience.
+In other words, if you want your character to be graceful and light on their feet, their movements should be fluid and flow together. However, if you want your character to be clumsy and stumble as they walk, smooth transitions may be less desirable for how you want them to present themselves in your game.
 
 To test your poses:
 
@@ -508,7 +508,7 @@ To test your poses:
 
 ## Publish animation
 
-In order to play your animation in your open experience, as well as store it for reuse in other projects, you must publish the animation to the cloud. This process creates a unique asset ID for your animation that you can reference in scripts, which is especially important if you want to replace any of Roblox's default character animations.
+In order to play your animation in your open game, as well as store it for reuse in other projects, you must publish the animation to the cloud. This process creates a unique asset ID for your animation that you can reference in scripts, which is especially important if you want to replace any of Roblox's default character animations.
 
 To publish your animation:
 
@@ -518,7 +518,7 @@ To publish your animation:
 
 1. From the contextual menu, select **Publish to Roblox**. The **Asset Configuration** window displays.
 1. Fill out all applicable fields, then click the **Save** button.
-1. **(Optional)** You can copy the animation's asset ID to use within scripts by clicking the copy icon.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> You can copy the animation's asset ID to use within scripts by clicking the copy icon.
 
    <img src="../../../assets/tutorials/creating-character-animations/Publish-4.png" alt="" width="60%" />
 

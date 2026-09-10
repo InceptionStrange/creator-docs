@@ -20,11 +20,18 @@ As part of this program, you are:
 - Given access to the Community Feedback Program private Developer Forum category
 - Gifted physical Roblox swag as a reward for participation
 
+## Requirements
+
+You must meet the following requirements to be eligible for the Community Feedback Program:
+
+- Be 18 years of age or older
+- Have a completed age verification on your Roblox account
+
 ## Eligibility
 
-Eligibility can include, but is not limited to:
+In addition to the requirements above, eligibility can include, but is not limited to:
 
-- Has contributed to the development of an experience that has shown some success on the platform
+- Has contributed to the development of a game that has shown some success on the platform
 - Manages a large group with an active community
 - Created a community resource that has helped many
 - Designed avatar assets that have grown into a popular Roblox clothing line

@@ -44,9 +44,9 @@ As you are completing the questionnaire, **base your answers on the most mature 
 
 To generate content maturity information:
 
-1. **(Optional)** If you want your experience to include restricted content, confirm you are at least 18 years old by [verifying your account](../../production/publishing/account-verification.md) so the questionnaire can ask questions to generate the Restricted maturity label.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> If you want your experience to include restricted content, confirm you are at least 18 years old by [verifying your account](../../production/publishing/account-verification.md) so the questionnaire can ask questions to generate the Restricted maturity label.
 1. Navigate to the [Creator Dashboard](https://create.roblox.com/dashboard/creations) and click on the thumbnail of the experience you want to generate content maturity information for. The experience's **Overview** page displays.
-1. In the left-hand navigation, navigate to the **Audience** section, then select **Maturity & Compliance**.
+1. In the left-hand navigation, navigate to the **Configure** section, then select **Questionnaire**.
 1. If you've never taken the questionnaire before, read the notes and details, then click **Start** to proceed. If you've previously completed the questionnaire, the **Questionnaire Completed** page displays, but you can click the **Restart** button to start over.
 1. Answer each page of questions based on the content within your experience, then click the **Save and Continue** button. After you have answered every question, the **Questionnaire Preview** page displays all of your answers, the maturity label, applicable content descriptors, and any regions where your experience is non-compliant according to your answers.
 
@@ -100,7 +100,7 @@ After you submit the questionnaire, your experience receives a maturity label wi
 </Alert>
 
 <Alert severity="warning">
-   While parents can use parental controls to bypass most content restrictions according to what they believe is appropriate for their child, Roblox restricts [free-form user creation](#free-form-user-creation) and [social hangouts](#social-hangout) to players over 13.
+   While parents can use parental controls to bypass most content restrictions according to what they believe is appropriate for their child, Roblox restricts [free-form user creation](#free-form-user-creation) and [social hangouts](#social-hangout) to players over 16.
 </Alert>
 
 ### Violence
@@ -353,7 +353,7 @@ If your experience contains crude humor, you must specify the intensity of the e
 </tbody>
 </table>
 
-### Gambling
+### Unplayable gambling content
 
 **Question 1: Does this experience contain unplayable gambling content?**
 
@@ -370,7 +370,7 @@ Strong language is vulgar and obscene language that is not used to harass, discr
 If your experience includes strong language, you must disclose it within the Maturity & Compliance Questionnaire. Experiences that include strong language are only available to age-verified players that are at least 18 years old.
 
 <Alert severity="info">
-   If you want to enable strong language in player communication aside from content for your experiences with **Restricted** content maturity labels, see [here](../../projects/configure-experiences.md#allow-strong-language).
+   If you want to enable strong language in player communication aside from content for your experiences with **Restricted** content maturity labels, see [here](../../projects/configure-games.md#allow-strong-language).
 </Alert>
 
 ### Romantic themes

@@ -381,8 +381,14 @@ properties:
     capabilities:
       - Players
   - name: StarterPlayer.ClassicDeath
-    summary: ''
-    description: ''
+    summary: |
+      Controls whether the character uses the classic death behavior when the
+      Humanoid's health reaches zero.
+    description: |
+      When enabled, the character uses the classic death behavior (joints break
+      apart and parts scatter). When disabled, characters spawn with
+      `Class.Humanoid.BreakJointsOnDeath` = `false`, and will ragdoll when they
+      die.
     code_samples: []
     type: boolean
     tags: []
@@ -675,6 +681,12 @@ properties:
       clothing accessories equipped on them (Although
       `Class.Workspace.MeshPartHeadsAndAccessories` also need to be enabled in
       the `Class.Workspace`).
+
+      This property also gates the `Class.WrapLayer.AutoSkin` feature. When set
+      to `Disabled`, the automatic skinning transfer pipeline for WrapLayers
+      does not run, and `Class.WrapLayer.AutoSkin` has no effect. For more
+      information, see
+      [Automatic Skinning Transfer](../../../avatar/automatic-skinning-transfer.md).
     code_samples: []
     type: LoadCharacterLayeredClothing
     tags:
@@ -692,8 +704,12 @@ properties:
     capabilities:
       - Players
   - name: StarterPlayer.LuaCharacterController
-    summary: ''
-    description: ''
+    summary: |
+      Sets the character controller mode used by the player's character.
+    description: |
+      Determines which character controller implementation drives the player's
+      character movement. Accepts a value from `Enum.CharacterControlMode`:
+      `Default`, `Legacy`, `NoCharacterController`, or `LuaCharacterController`.
     code_samples: []
     type: CharacterControlMode
     tags: []

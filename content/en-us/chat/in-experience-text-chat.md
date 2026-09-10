@@ -7,7 +7,7 @@ Roblox offers text-based messaging between players in live sessions through `Cla
 
 ## UI configuration
 
-`Class.TextChatService` provides a default UI that can be customized to fit your experience's needs. Disable any of these configurations to hide its associated UI element. If desired, you can also replace these UI elements with custom interfaces:
+`Class.TextChatService` provides a default UI that can be customized to fit your game's needs. Disable any of these configurations to hide its associated UI element. If desired, you can also replace these UI elements with custom interfaces:
 
 - `Class.ChatWindowConfiguration`
 - `Class.ChatInputBarConfiguration`
@@ -22,6 +22,10 @@ For more information, see [Chat window](./chat-window.md) and [Bubble chat](./bu
 
   <Alert severity="info">
 	If `Class.TextChatService.CreateDefaultTextChannels` is set to `true`, the service automatically creates two text channels, `RBXGeneral` and `RBXSystem`. You can manually create additional `Class.TextChannel` instances and parent them to `Class.TextChatService`, as well.
+	</Alert>
+
+  <Alert severity="warning">
+	Having multiple `Class.TextChannel|TextChannels` with the same name can cause unintended behavior with the default [chat window](../chat/chat-window.md).
 	</Alert>
 
 - `Class.TextSource` — A user in a `Class.TextChannel`. Text sources are directly parented to the `Class.TextChannel` when `Class.TextChannel:AddUserAsync()|AddUserAsync()` is called. Text sources contains detailed permissions of a user in the channel, such as their ability to send messages. If a single user is in multiple text channels, they are associated with multiple text sources.
@@ -39,7 +43,7 @@ For more information, see [Chat window](./chat-window.md) and [Bubble chat](./bu
 Text chat uses the [client‑server](../projects/client-server.md) model, with a **sending client**, the **server**, and **receiving clients**.
 
 <img
-  alt="A flowchart for in-experience text chat."
+  alt="A flowchart for in-game text chat."
   src="../assets/players/in-experience-text-chat/Chat-Workflow.png"
   width="100%" />
 
@@ -145,7 +149,7 @@ Though both systems share the same basic chat functionalities, `Class.TextChatSe
     </tr>
     <tr>
       <td>Disable chat</td>
-      <td>[Experience Settings](../studio/experience-settings.md) in Studio and `ChatWindow/ChatSettings` module for hiding the chat window</td>
+      <td>`ChatWindow/ChatSettings` module for hiding the chat window</td>
       <td>`Class.ChatWindowConfiguration.Enabled`</td>
       <td></td>
     </tr>

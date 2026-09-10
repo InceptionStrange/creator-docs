@@ -23,26 +23,29 @@ jobs:
   quality:
     name: Quality Checks
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 20
     permissions:
       contents: read
       pull-requests: write
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2
+          show-progress: false
 
       # Avoid checking out any code outside of content/
       - name: Sparse checkout of content directory from fork to temp directory
         if: ${{ github.event_name == 'pull_request_target' }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           path: 'temp_content'
           sparse-checkout: 'content/'
           sparse-checkout-cone-mode: false
           fetch-depth: 1
+          # Tones down the thousands of repetitive log lines.
+          show-progress: false
 
       - name: Move the content from temp directory to main repo's content directory
         if: ${{ github.event_name == 'pull_request_target' }}
@@ -54,13 +57,24 @@ jobs:
           rm -rf temp_content/
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: 22.10.0
+          node-version-file: .nvmrc
+
+      - name: Cache node_modules
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: node-modules-${{ hashFiles('package-lock.json') }}
 
       - name: Install Node.js dependencies
         shell: bash
-        run: npm ci
+        run: |
+          if [ "${{ steps.cache-node-modules.outputs.cache-hit }}" != "true" ]; then
+            echo "Node modules cache not found, installing dependencies..."
+            npm ci --quiet
+          fi
 
       - name: Print workflow information
         env:

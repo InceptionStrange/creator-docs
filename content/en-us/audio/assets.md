@@ -1,13 +1,13 @@
 ---
 title: Audio assets
-description: Explore how to find and import audio assets for use in your experiences.
+description: Explore how to find and import audio assets for use in your games.
 ---
 
 You can [find](#find-audio) a wide variety of free‑to‑use audio assets in the Creator Store, or you can [import](#import-audio) audio assets that you're certain you have permission to use, such as audio that you make yourself. The [asset privacy](../projects/assets/privacy.md) system automatically ensures that the IDs of your imported audio can't be accessed by users without proper permissions.
 
 ## Find audio
 
-The [Creator Store](../production/creator-store.md) tab of the [Toolbox](../projects/assets/toolbox.md) contains a wide variety of free-to-use audio assets made by Roblox and the Roblox community for creators to use within their experiences, including more than 100,000 professionally-produced sound effects and music tracks from top audio and music partners.
+The [Creator Store](../production/creator-store.md) tab of the [Toolbox](../projects/assets/toolbox.md) contains a wide variety of free-to-use audio assets made by Roblox and the Roblox community for creators to use within their games, including more than 100,000 professionally-produced sound effects and music tracks from top audio and music partners.
 
 To find audio assets on the Creator Store:
 
@@ -38,7 +38,7 @@ You can import custom audio through the [Asset Manager](../projects/assets/manag
 
 If you're [ID verified](../production/publishing/account-verification.md), you can import 2,000 free audio assets per 30 days; if you're unverified, you can import 100 free audio assets per 30 days. If a daily import limit exists, it's removed and replaced with a simplified monthly limit.
 
-Studio assigns each new audio asset a **unique asset ID** that you can use within your experiences to [play the audio](../audio/objects.md).
+Studio assigns each new audio asset a **unique asset ID** that you can use within your games to [play the audio](../audio/objects.md).
 
 <Tabs>
   <TabItem key = "1" label="Asset Manager">
@@ -106,3 +106,21 @@ To import audio through an HTTP request:
 </Tabs>
 
 After the audio assets pass moderation, you can reuse them in any project on the platform. Although you are initially the only one who can view and use private audio assets, the [asset privacy](../projects/assets/privacy.md) system lets you grant usage permissions to specific friends and experiences.
+
+## Visibility
+
+When you upload audio to Roblox, it is automatically classified as a **sound effect** or a **song**. Sound effects are not eligible to appear on the details page of the game in which they're used, but they can be distributed on the [Creator Store](../production/creator-store.md). A song **can** appear on the game details page if:
+
+- It passes all moderation and copyright checks.
+- It meets the minimum duration, playback (number of unique plays), and platform age requirements.
+- It has a meaningful and appropriate title.
+- The uploader is [ID verified](../production/publishing/account-verification.md).
+- The uploader has acknowledged the Roblox [Audio Terms of Use](https://en.help.roblox.com/hc/en-us/articles/23359485439124-Audio-Upload-License-Agreement).
+
+<Alert severity="info">
+Eligible songs will become visible on the game details page by default when the above requirements are met. You can toggle this visibility on the asset's **Configure** page in the [Creator Hub](https://create.roblox.com/). You can also add the Roblox usernames of song composers and collaborators in the **Song Artist** field; if this field is left blank, you'll be listed as the artist.
+</Alert>
+
+Once a song is on the game details page, players can click the song tile to see the song details page. Here, they can view additional information about the track and listen to a 15-second preview.
+
+<img src="../assets/publishing/experiences-places-assets/Song-Preview-Details-Page.jpg" width="80%" alt="Song preview page linked from a game's details page" />

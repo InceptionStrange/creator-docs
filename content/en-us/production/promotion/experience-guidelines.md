@@ -30,7 +30,7 @@ As you are completing the questionnaire, **base your answers on the most mature 
 
 To generate experience guidelines:
 
-1. **(Optional)** If you want your experience to include 17+ content, confirm you are at least 17 years old by [verifying your account](../../production/publishing/account-verification.md) so the questionnaire can ask questions to generate the correct age recommendation of 17+.
+1. <Chip label="OPTIONAL" size="small" variant="outlined" /> If you want your experience to include 17+ content, confirm you are at least 17 years old by [verifying your account](../../production/publishing/account-verification.md) so the questionnaire can ask questions to generate the correct age recommendation of 17+.
 1. Navigate to the [Creator Dashboard](https://create.roblox.com/dashboard/creations) and click on the thumbnail of the experience you want to generate experience guidelines for. The experience's **Overview** page displays.
 1. In the left-hand navigation, navigate to the **Audience** section, then select **Maturity & Compliance**.
 1. If you've never taken the questionnaire before, read the notes and details and click **Start** to proceed. If you've previously completed the questionnaire, the **Questionnaire Completed** page displays, but you can click the **Restart** button to start over.
@@ -151,7 +151,7 @@ Strong language is vulgar and obscene language that players cannot use to harass
 If your experience includes strong language, you must disclose it within the experience questionnaire. Experiences that include strong language are only available to verified players that are at least 17 years old.
 
 <Alert severity="info">
-   If you want to enable strong language in user communication aside from content for your 17+ experiences, see [here](../../projects/configure-experiences.md#allow-strong-language).
+   If you want to enable strong language in user communication aside from content for your 17+ experiences, see [here](../../projects/configure-games.md#allow-strong-language).
 </Alert>
 
 ### Fear
